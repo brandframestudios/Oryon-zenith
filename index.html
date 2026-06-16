@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oryon Zenith Private Limited | Premium Export Company from Kerala, India</title>
+<meta name="description" content="Oryon Zenith Private Limited — Kerala's premier export company delivering coconut products, coir, spices, handicrafts, eggs & perishables globally with trust and precision.">
+<meta name="keywords" content="Kerala export company, Indian export company, coconut exporters India, coir exporters Kerala, Kerala spices export, handicraft exporters India, egg export company India, perishable export company Kerala">
+<meta property="og:title" content="Oryon Zenith Private Limited | Premium Exports from Kerala">
+<meta property="og:description" content="Exporting Kerala's excellence to the world. Premium agricultural, handcrafted, and perishable exports delivered globally.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.oryonzenith.com">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Oryon Zenith Private Limited","description":"Premium export company from Kerala, India","url":"https://www.oryonzenith.com","address":{"@type":"PostalAddress","addressLocality":"Kerala","addressCountry":"IN"},"industry":"Export"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{deep:'#F7F9FA','deep-light':'#FFFFFF','deep-mid':'#F1F4F6','metal':'#66707A','metal-light':'#A7ACB2','charcoal':'#47515A','silver-soft':'#EEF1F4','forest':'#1D6F41','forest-soft':'#E8F6ED','mint':'#D8EFE0'},fontFamily:{inter:['Inter','sans-serif'],poppins:['Poppins','sans-serif']}}}}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+::selection{background:rgba(34,197,94,0.25);color:#111827}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#F1F4F6}
+::-webkit-scrollbar-thumb{background:#C1C7CD;border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:#A7ACB2}
+html{scroll-behavior:auto}
+body{font-family:'Inter',sans-serif;background:#F7F9FA;color:#1F2933;overflow-x:hidden}
+
+/* Loader */
+#loader{position:fixed;inset:0;z-index:9999;background:#F7F9FA;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:300;letter-spacing:.4em;color:#47515A;text-transform:uppercase;opacity:0;animation:loaderFade 1s .3s forwards}
+.loader-bar-wrap{width:200px;height:1px;background:#E5E7EB;margin-top:2rem;overflow:hidden;border-radius:1px}
+.loader-bar{width:0;height:100%;background:linear-gradient(90deg,#1D6F41,#A7ACB2);animation:loaderFill 2s .5s ease-out forwards}
+@keyframes loaderFade{to{opacity:1}}
+@keyframes loaderFill{to{width:100%}}
+
+/* Glass */
+.glass{background:rgba(255,255,255,0.68);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(102,112,122,0.16)}
+.glass-strong{background:rgba(255,255,255,0.84);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border:1px solid rgba(102,112,122,0.18)}
+
+/* Globe */
+#globe-canvas{position:absolute;right:-5%;top:50%;transform:translateY(-50%);opacity:.2;pointer-events:none}
+
+/* Reveal animations */
+.reveal{opacity:0;transform:translateY(60px)}
+.reveal-left{opacity:0;transform:translateX(-60px)}
+.reveal-right{opacity:0;transform:translateX(60px)}
+.reveal-scale{opacity:0;transform:scale(.9)}
+
+/* Hero gradient overlay */
+.hero-gradient{background:radial-gradient(ellipse at 30% 50%,rgba(29,111,65,0.12) 0%,transparent 60%),radial-gradient(ellipse at 70% 30%,rgba(102,112,122,0.06) 0%,transparent 50%)}
+
+/* Product card hover */
+.product-card{transition:all .6s cubic-bezier(.23,1,.32,1)}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(29,111,65,0.12)}
+.product-card:hover .product-img{transform:scale(1.05)}
+.product-card .product-img{transition:transform .8s cubic-bezier(.23,1,.32,1)}
+
+/* Feature card */
+.feature-card{transition:all .5s cubic-bezier(.23,1,.32,1)}
+.feature-card:hover{transform:translateY(-4px);border-color:rgba(102,112,122,0.2)}
+.feature-card:hover .feature-icon{color:#1D6F41}
+
+/* Gallery */
+.gallery-item{overflow:hidden;cursor:pointer}
+.gallery-item img{transition:transform .8s cubic-bezier(.23,1,.32,1)}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-overlay{opacity:0;transition:opacity .4s}
+.gallery-item:hover .gallery-overlay{opacity:1}
+
+/* Lightbox */
+#lightbox{position:fixed;inset:0;z-index:10000;background:rgba(15,23,42,.9);display:none;align-items:center;justify-content:center;backdrop-filter:blur(20px);cursor:pointer}
+#lightbox.active{display:flex}
+#lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:4px}
+
+/* Testimonial */
+.testimonial-track{display:flex;transition:transform .7s cubic-bezier(.23,1,.32,1)}
+
+/* Map dot pulse */
+.map-dot{position:absolute;width:8px;height:8px;background:#A7ACB2;border-radius:50%;animation:dotPulse 2s infinite}
+.map-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(167,172,178,0.3);animation:dotRing 2s infinite}
+@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+@keyframes dotRing{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.5);opacity:0}}
+
+/* Floating animation */
+.float{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+
+/* Subtle line */
+.line-accent{width:40px;height:1px;background:linear-gradient(90deg,#A7ACB2,transparent)}
+
+/* Stat counter */
+.stat-num{font-variant-numeric:tabular-nums}
+
+/* Nav link underline */
+.nav-link{position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#1D6F41;transition:width .4s cubic-bezier(.23,1,.32,1)}
+.nav-link:hover::after{width:100%}
+
+/* Mobile menu */
+#mobile-menu{transform:translateX(100%);transition:transform .5s cubic-bezier(.23,1,.32,1)}
+#mobile-menu.open{transform:translateX(0)}
+
+/* Form */
+.form-input{background:rgba(255,255,255,0.88);border:1px solid rgba(102,112,122,0.18);transition:border-color .3s,box-shadow .3s}
+.form-input:focus{outline:none;border-color:rgba(34,197,94,0.4);box-shadow:0 0 0 3px rgba(34,197,94,0.08)}
+.form-input::placeholder{color:#95A0AB}
+
+/* Section divider */
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(102,112,122,0.15),transparent)}
+
+/* Route animation */
+.export-route{stroke-dasharray:8 6;animation:dashFlow 2s linear infinite}
+@keyframes dashFlow{to{stroke-dashoffset:-28}}
+
+/* Toast */
+#toast{position:fixed;bottom:2rem;right:2rem;z-index:10001;transform:translateY(120%);transition:transform .5s cubic-bezier(.23,1,.32,1)}
+#toast.show{transform:translateY(0)}
+
+/* Product section bg */
+.product-section:nth-child(even){background:rgba(255,255,255,0.9)}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-logo">ORYON ZENITH</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+  <button class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors z-10" aria-label="Close lightbox">
+    <span class="iconify text-2xl" data-icon="mdi:close"></span>
+  </button>
+  <img id="lightbox-img" src="" alt="Gallery image">
+</div>
+
+<!-- Toast
+<div id="toast" class="glass-strong rounded-xl px-6 py-4 flex items-center gap-3">
+  <span class="iconify text-metal-light text-xl" data-icon="mdi:check-circle"></span>
+  <span class="text-sm text-metal-light" id="toast-msg">Message sent successfully</span>
+</div>-->
+
+<!-- Navigation -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-[1000] transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-3">
+        <img src="LOGO.png" alt="Oryon Zenith logo" class="h-10 w-auto object-contain">
+        <div class="flex flex-col items-start">
+          <span class="font-poppins text-sm font-300 tracking-[.35em] text-metal-light uppercase">Oryon Zenith</span>
+          <span class="text-[9px] tracking-[.25em] text-metal/50 uppercase mt-0.5">Private Limited</span>
+        </div>
+      </a>
+      <!-- Desktop Nav -->
+      <div class="hidden lg:flex items-center gap-10">
+        <a href="#about" class="nav-link text-xs tracking-widest uppercase text-metal/70 hover:text-metal-light transition-colors">About</a>
+        <a href="#products" class="nav-link text-xs tracking-widest uppercase text-metal/70 hover:text-metal-light transition-colors">Products</a>
+        <a href="#network" class="nav-link text-xs tracking-widest uppercase text-metal/70 hover:text-metal-light transition-colors">Network</a>
+        <a href="#gallery" class="nav-link text-xs tracking-widest uppercase text-metal/70 hover:text-metal-light transition-colors">Gallery</a>
+        <a href="#contact" class="nav-link text-xs tracking-widest uppercase text-metal/70 hover:text-metal-light transition-colors">Contact</a>
+        <a href="#contact" class="ml-4 px-6 py-2.5 text-xs tracking-widest uppercase border border-emerald-200 rounded-full text-emerald-700 hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-300">Get Quote</a>
+      </div>
+      <!-- Mobile Toggle -->
+      <button id="menu-toggle" class="lg:hidden text-metal-light" aria-label="Toggle menu">
+        <span class="iconify text-2xl" data-icon="mdi:menu" id="menu-icon"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 z-[999] bg-white/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8">
+  <a href="#about" class="mobile-nav text-xl font-light tracking-widest text-metal/70 hover:text-metal-light transition-colors" onclick="closeMobile()">About</a>
+  <a href="#products" class="mobile-nav text-xl font-light tracking-widest text-metal/70 hover:text-metal-light transition-colors" onclick="closeMobile()">Products</a>
+  <a href="#network" class="mobile-nav text-xl font-light tracking-widest text-metal/70 hover:text-metal-light transition-colors" onclick="closeMobile()">Network</a>
+  <a href="#gallery" class="mobile-nav text-xl font-light tracking-widest text-metal/70 hover:text-metal-light transition-colors" onclick="closeMobile()">Gallery</a>
+  <a href="#contact" class="mobile-nav text-xl font-light tracking-widest text-metal/70 hover:text-metal-light transition-colors" onclick="closeMobile()">Contact</a>
+  <div class="section-divider w-16 my-4"></div>
+  <a href="#contact" class="px-8 py-3 text-sm tracking-widest uppercase border border-metal/30 rounded-full text-metal-light hover:bg-white/5 transition-all" onclick="closeMobile()">Get Quote</a>
+</div>
+
+<!-- ========== HERO ========== -->
+<section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img src="kerala backwaters.png" alt="Kerala landscape" class="w-full h-full object-cover opacity-20" loading="eager">
+    <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-slate-100/80 to-white/70"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-white/95 via-transparent to-slate-100/65"></div>
+  </div>
+  <!-- Hero Gradient -->
+  <div class="absolute inset-0 hero-gradient"></div>
+  <!-- Globe Canvas -->
+  <canvas id="globe-canvas" width="600" height="600"></canvas>
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 w-full">
+    <div class="max-w-3xl">
+      <div class="reveal mb-8">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-[10px] tracking-[.3em] uppercase text-metal/60">
+          <span class="w-1.5 h-1.5 rounded-full bg-metal-light/60"></span>
+          Kerala, India → Global
+        </span>
+      </div>
+      <h1 class="reveal font-poppins text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-300 leading-[1.05] tracking-tight text-slate-950 mb-8">
+        Exporting Kerala's<br>
+        <span class="text-emerald-700">Excellence</span> to the World.
+      </h1>
+      <p class="reveal text-lg sm:text-xl font-200 leading-relaxed text-metal/60 max-w-xl mb-12">
+        Premium agricultural, handcrafted, and perishable exports delivered globally with trust, quality, and precision.
+      </p>
+      <div class="reveal flex flex-wrap gap-4">
+        <a href="#products" class="group inline-flex items-center gap-3 px-8 py-4 bg-emerald-700 text-white text-sm tracking-widest uppercase font-500 rounded-full hover:bg-emerald-800 transition-all duration-300 hover:shadow-[0_0_40px_rgba(29,111,65,0.15)]">
+          Explore Products
+          <span class="iconify text-base transition-transform duration-300 group-hover:translate-x-1" data-icon="mdi:arrow-right"></span>
+        </a>
+        <a href="#contact" class="inline-flex items-center gap-3 px-8 py-4 border border-emerald-200 text-emerald-700 text-sm tracking-widest uppercase font-300 rounded-full hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-300">
+          Contact Us
+        </a>
+      </div>
+      <!-- Scroll indicator -->
+      <div class="reveal absolute bottom-12 left-6 lg:left-8 flex items-center gap-3">
+        <div class="w-px h-12 bg-gradient-to-b from-metal/40 to-transparent"></div>
+        <span class="text-[10px] tracking-[.3em] uppercase text-metal/30 -rotate-0">Scroll</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="relative py-32 lg:py-44">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-24">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <!-- Left -->
+      <div>
+        <span class="reveal text-[10px] tracking-[.3em] uppercase text-metal/40 mb-6 block">About Oryon Zenith</span>
+        <h2 class="reveal font-poppins text-4xl sm:text-5xl lg:text-6xl font-300 tracking-tight leading-[1.1] mb-8">
+          Rooted in Kerala.<br><span class="text-emerald-700">Trusted globally.</span>
+        </h2>
+        <div class="line-accent reveal mb-8"></div>
+        <p class="reveal text-base font-200 leading-relaxed text-metal/50 mb-6">
+          Oryon Zenith Private Limited is a Kerala-based export company specializing in delivering the finest agricultural products, handcrafted goods, and perishable items to international markets.
+        </p>
+        <p class="reveal text-base font-200 leading-relaxed text-metal/50 mb-10">
+          With deep roots in India's most fertile land, we combine traditional sourcing expertise with global quality standards, ensuring every shipment reflects the excellence that defines us.
+        </p>
+        <div class="reveal grid grid-cols-2 gap-6">
+          <div class="flex items-start gap-3">
+            <span class="iconify text-metal-light/60 text-lg mt-0.5" data-icon="mdi:shield-check-outline"></span>
+            <span class="text-sm text-metal/50 font-200">International compliance & certifications</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="iconify text-metal-light/60 text-lg mt-0.5" data-icon="mdi:leaf"></span>
+            <span class="text-sm text-metal/50 font-200">Sustainable & ethical sourcing</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="iconify text-metal-light/60 text-lg mt-0.5" data-icon="mdi:snowflake"></span>
+            <span class="text-sm text-metal/50 font-200">Cold-chain logistics for perishables</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="iconify text-metal-light/60 text-lg mt-0.5" data-icon="mdi:earth"></span>
+            <span class="text-sm text-metal/50 font-200">Exports to 25+ countries</span>
+          </div>
+        </div>
+      </div>
+      <!-- Right - Stats & Image -->
+      <div class="relative">
+        <div class="reveal-scale rounded-2xl overflow-hidden">
+          <img src="spice plantation.png" alt="Kerala spice plantation" class="w-full h-[500px] lg:h-[600px] object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent rounded-2xl"></div>
+        </div>
+        <!-- Floating stat card -->
+        <div class="absolute -bottom-8 -left-4 lg:-left-8 glass-strong rounded-2xl p-6 lg:p-8 float">
+          <div class="grid grid-cols-2 gap-6 lg:gap-10">
+            <div>
+              <div class="stat-num text-3xl lg:text-4xl font-poppins font-300 text-metal-light" data-target="25">0</div>
+              <div class="text-[10px] tracking-[.2em] uppercase text-metal/40 mt-1">Countries</div>
+            </div>
+            <div>
+              <div class="stat-num text-3xl lg:text-4xl font-poppins font-300 text-metal-light" data-target="6">0</div>
+              <div class="text-[10px] tracking-[.2em] uppercase text-metal/40 mt-1">Categories</div>
+            </div>
+            <div>
+              <div class="stat-num text-3xl lg:text-4xl font-poppins font-300 text-metal-light" data-target="99">0</div>
+              <div class="text-[10px] tracking-[.2em] uppercase text-metal/40 mt-1">% Reliability</div>
+            </div>
+            <div>
+              <div class="stat-num text-3xl lg:text-4xl font-poppins font-300 text-metal-light" data-target="500">0</div>
+              <div class="text-[10px] tracking-[.2em] uppercase text-metal/40 mt-1">Shipments/Year</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRODUCTS ========== -->
+<section id="products" class="relative">
+  <div class="section-divider"></div>
+  <!-- Section Header -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-16">
+    <div class="max-w-2xl">
+      <span class="reveal text-[10px] tracking-[.3em] uppercase text-metal/40 mb-6 block">Our Products</span>
+      <h2 class="reveal font-poppins text-4xl sm:text-5xl lg:text-6xl font-300 tracking-tight leading-[1.1] mb-6">
+        Crafted by nature.<br><span class="text-metal-light">Perfected by us.</span>
+      </h2>
+      <p class="reveal text-base font-200 text-metal/50">Every product in our portfolio is sourced from the finest origins, processed with care, and delivered with uncompromising quality.</p>
+    </div>
+  </div>
+
+  <!-- Product 1: Coconut -->
+  <div class="product-section py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="reveal-left order-2 lg:order-1">
+          <span class="text-[10px] tracking-[.3em] uppercase text-metal/30 mb-4 block">01 / 05</span>
+          <h3 class="font-poppins text-3xl sm:text-4xl lg:text-5xl font-300 tracking-tight mb-6">Coconut Products</h3>
+          <p class="text-base font-200 text-metal/50 leading-relaxed mb-8">From the coconut groves of Kerala, we export premium coconut oil, desiccated coconut, coconut powder, and shell-based products — each meeting stringent international quality benchmarks.</p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Coconut Oil</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Dry Coconut</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Coconut Powder</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Shell Products</span>
+          </div>
+          <a href="#contact" class="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-metal-light hover:text-emerald-700 transition-colors">
+            Inquire Now <span class="iconify" data-icon="mdi:arrow-right"></span>
+          </a>
+        </div>
+        <div class="reveal-right order-1 lg:order-2">
+          <div class="product-card rounded-2xl overflow-hidden glass">
+            <div class="overflow-hidden">
+              <img src="coconut products.png" alt="Coconut products" class="product-img w-full h-[350px] lg:h-[450px] object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 2: Coir -->
+  <div class="product-section py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="reveal-right">
+          <div class="product-card rounded-2xl overflow-hidden glass">
+            <div class="overflow-hidden">
+              <img src="coir products.png" alt="Coir products" class="product-img w-full h-[350px] lg:h-[450px] object-cover">
+            </div>
+          </div>
+        </div>
+        <div class="reveal-left">
+          <span class="text-[10px] tracking-[.3em] uppercase text-metal/30 mb-4 block">02 / 05</span>
+          <h3 class="font-poppins text-3xl sm:text-4xl lg:text-5xl font-300 tracking-tight mb-6">Coir Products</h3>
+          <p class="text-base font-200 text-metal/50 leading-relaxed mb-8">Eco-friendly coir mats, ropes, and geotextiles crafted from natural coconut fiber. Sustainable by nature, premium by design — exported to markets that value green alternatives.</p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Coir Mats</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Coir Ropes</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Geo-textiles</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Eco Products</span>
+          </div>
+          <a href="#contact" class="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-metal-light hover:text-emerald-700 transition-colors">
+            Inquire Now <span class="iconify" data-icon="mdi:arrow-right"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 3: Handicrafts -->
+  <div class="product-section py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="reveal-left order-2 lg:order-1">
+          <span class="text-[10px] tracking-[.3em] uppercase text-metal/30 mb-4 block">03 / 05</span>
+          <h3 class="font-poppins text-3xl sm:text-4xl lg:text-5xl font-300 tracking-tight mb-6">Kerala Handicrafts</h3>
+          <p class="text-base font-200 text-metal/50 leading-relaxed mb-8">Handcrafted by skilled Kerala artisans, our collection of wooden decor, traditional crafts, and artisan products carries centuries of heritage into modern homes and spaces worldwide.</p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Wooden Decor</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Traditional Crafts</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Artisan Products</span>
+          </div>
+          <a href="#contact" class="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-metal-light hover:text-emerald-700 transition-colors">
+            Inquire Now <span class="iconify" data-icon="mdi:arrow-right"></span>
+          </a>
+        </div>
+        <div class="reveal-right order-1 lg:order-2">
+          <div class="product-card rounded-2xl overflow-hidden glass">
+            <div class="overflow-hidden">
+              <img src="kerala handicrafts.png" alt="Kerala handicrafts" class="product-img w-full h-[350px] lg:h-[450px] object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 4: Spices -->
+  <div class="product-section py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="reveal-right">
+          <div class="product-card rounded-2xl overflow-hidden glass">
+            <div class="overflow-hidden">
+              <img src="indian spices.png" alt="Indian spices" class="product-img w-full h-[350px] lg:h-[450px] object-cover">
+            </div>
+          </div>
+        </div>
+        <div class="reveal-left">
+          <span class="text-[10px] tracking-[.3em] uppercase text-metal/30 mb-4 block">04 / 05</span>
+          <h3 class="font-poppins text-3xl sm:text-4xl lg:text-5xl font-300 tracking-tight mb-6">Indian Spices</h3>
+          <p class="text-base font-200 text-metal/50 leading-relaxed mb-8">The legendary spices of Kerala — pepper, cardamom, turmeric, cloves, and cinnamon — sourced from premium plantations and processed to preserve their authentic aroma, flavor, and potency.</p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Pepper</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Cardamom</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Turmeric</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Cloves</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Cinnamon</span>
+          </div>
+          <a href="#contact" class="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-metal-light hover:text-emerald-700 transition-colors">
+            Inquire Now <span class="iconify" data-icon="mdi:arrow-right"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 5: Eggs & Perishables -->
+  <div class="product-section py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="reveal-left order-2 lg:order-1">
+          <span class="text-[10px] tracking-[.3em] uppercase text-metal/30 mb-4 block">05 / 05</span>
+          <h3 class="font-poppins text-3xl sm:text-4xl lg:text-5xl font-300 tracking-tight mb-6">Eggs & Perishables</h3>
+          <p class="text-base font-200 text-metal/50 leading-relaxed mb-8">Export-grade eggs and fresh perishable products, delivered through temperature-controlled cold-chain logistics. From farm to destination — freshness guaranteed at every mile.</p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Export-Grade Eggs</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Fresh Produce</span>
+            <span class="px-4 py-1.5 rounded-full glass text-xs tracking-wider text-metal/50">Cold-Chain Logistics</span>
+          </div>
+          <a href="#contact" class="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-metal-light hover:text-emerald-700 transition-colors">
+            Inquire Now <span class="iconify" data-icon="mdi:arrow-right"></span>
+          </a>
+        </div>
+        <div class="reveal-right order-1 lg:order-2">
+          <div class="product-card rounded-2xl overflow-hidden glass">
+            <div class="overflow-hidden">
+              <img src="eggs and perishables.png" alt="Eggs and perishable products" class="product-img w-full h-[350px] lg:h-[450px] object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GLOBAL NETWORK ========== -->
+<section id="network" class="relative py-32 lg:py-44">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-24">
+    <div class="text-center max-w-2xl mx-auto mb-20">
+      <span class="reveal text-[10px] tracking-[.3em] uppercase text-metal/40 mb-6 block">Global Network</span>
+      <h2 class="reveal font-poppins text-4xl sm:text-5xl lg:text-6xl font-300 tracking-tight leading-[1.1] mb-6">
+        From Kerala<br><span class="text-metal-light">to the world.</span>
+      </h2>
+      <p class="reveal text-base font-200 text-metal/50">Our export network spans continents, delivering premium products through optimized logistics and trusted partnerships.</p>
+    </div>
+    <!-- Map -->
+    <div class="reveal-scale relative max-w-5xl mx-auto">
+      <div class="relative glass rounded-3xl p-8 lg:p-12 overflow-hidden">
+        <!-- Simplified World Map SVG -->
+        <svg viewBox="0 0 1000 500" class="w-full h-auto opacity-40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Simplified continents -->
+          <path d="M150 120 Q180 100 220 110 Q250 105 270 120 Q290 115 300 130 Q310 125 320 140 Q310 160 290 170 Q280 185 260 190 Q240 200 220 195 Q200 200 180 190 Q160 185 150 170 Q140 150 145 130 Z" fill="rgba(102,112,122,0.45)" stroke="rgba(102,112,122,0.25)" stroke-width="1"/>
+          <path d="M310 140 Q330 130 360 135 Q380 125 400 130 Q420 120 440 130 Q460 125 480 140 Q500 135 510 150 Q520 165 510 180 Q500 200 480 210 Q460 225 440 230 Q420 240 400 235 Q380 240 360 230 Q340 225 325 210 Q310 195 305 175 Q300 155 310 140 Z" fill="rgba(102,112,122,0.45)" stroke="rgba(102,112,122,0.25)" stroke-width="1"/>
+          <path d="M440 230 Q460 220 490 225 Q520 215 550 225 Q570 220 580 240 Q590 260 580 280 Q570 300 550 310 Q530 320 500 315 Q480 320 460 310 Q440 300 435 280 Q430 260 435 245 Z" fill="rgba(102,112,122,0.45)" stroke="rgba(102,112,122,0.25)" stroke-width="1"/>
+          <path d="M550 100 Q600 80 660 90 Q720 85 780 100 Q830 95 870 110 Q900 120 910 150 Q920 180 900 210 Q880 240 840 260 Q800 275 750 270 Q700 280 650 265 Q610 260 580 240 Q560 220 555 190 Q545 160 545 130 Z" fill="rgba(102,112,122,0.45)" stroke="rgba(102,112,122,0.25)" stroke-width="1"/>
+          <path d="M780 300 Q810 290 840 300 Q860 295 870 310 Q875 330 865 345 Q850 360 830 365 Q810 370 790 360 Q775 345 775 325 Z" fill="rgba(102,112,122,0.45)" stroke="rgba(102,112,122,0.25)" stroke-width="1"/>
+        </svg>
+        <!-- Kerala origin point -->
+        <div class="absolute" style="left:67%;top:42%">
+          <div class="w-4 h-4 bg-metal-light rounded-full shadow-[0_0_20px_rgba(217,217,217,0.5)] relative z-10"></div>
+          <div class="absolute inset-0 w-4 h-4 bg-metal-light rounded-full animate-ping opacity-30"></div>
+          <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] tracking-widest uppercase text-metal-light whitespace-nowrap font-500">Kerala</span>
+        </div>
+        <!-- Export destination dots -->
+        <div class="map-dot" style="left:22%;top:28%"><span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[8px] tracking-wider uppercase text-metal/40 whitespace-nowrap">USA</span></div>
+        <div class="map-dot" style="left:45%;top:22%"><span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[8px] tracking-wider uppercase text-metal/40 whitespace-nowrap">Europe</span></div>
+        <div class="map-dot" style="left:48%;top:55%"><span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[8px] tracking-wider uppercase text-metal/40 whitespace-nowrap">Africa</span></div>
+        <div class="map-dot" style="left:75%;top:35%"><span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[8px] tracking-wider uppercase text-metal/40 whitespace-nowrap">Japan</span></div>
+        <div class="map-dot" style="left:80%;top:50%"><span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[8px] tracking-wider uppercase text-metal/40 whitespace-nowrap">Australia</span></div>
+        <div class="map-dot" style="left:82%;top:65%"><span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[8px] tracking-wider uppercase text-metal/40 whitespace-nowrap">NZ</span></div>
+        <!-- Animated routes -->
+        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M670 210 Q445 100 220 140" class="export-route" stroke="#66707A" stroke-width="1"/>
+          <path d="M670 210 Q565 90 450 110" class="export-route" stroke="#66707A" stroke-width="1"/>
+          <path d="M670 210 Q575 340 480 275" class="export-route" stroke="#66707A" stroke-width="1"/>
+          <path d="M670 210 Q760 150 750 175" class="export-route" stroke="#66707A" stroke-width="1"/>
+          <path d="M670 210 Q780 300 800 250" class="export-route" stroke="#66707A" stroke-width="1"/>
+          <path d="M670 210 Q790 380 820 325" class="export-route" stroke="#66707A" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+    <!-- Network stats -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto">
+      <div class="reveal text-center">
+        <div class="stat-num text-3xl font-poppins font-300 text-metal-light" data-target="25">0</div>
+        <div class="text-[10px] tracking-[.2em] uppercase text-metal/30 mt-2">Countries Served</div>
+      </div>
+      <div class="reveal text-center">
+        <div class="stat-num text-3xl font-poppins font-300 text-metal-light" data-target="40">0</div>
+        <div class="text-[10px] tracking-[.2em] uppercase text-metal/30 mt-2">Port Partners</div>
+      </div>
+      <div class="reveal text-center">
+        <div class="stat-num text-3xl font-poppins font-300 text-metal-light" data-target="12">0</div>
+        <div class="text-[10px] tracking-[.2em] uppercase text-metal/30 mt-2">Shipping Lines</div>
+      </div>
+      <div class="reveal text-center">
+        <div class="stat-num text-3xl font-poppins font-300 text-metal-light" data-target="5">0</div>
+        <div class="text-[10px] tracking-[.2em] uppercase text-metal/30 mt-2">Continents</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHY CHOOSE US ========== -->
+<section id="why" class="relative py-32 lg:py-44">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-24">
+    <div class="text-center max-w-2xl mx-auto mb-20">
+      <span class="reveal text-[10px] tracking-[.3em] uppercase text-metal/40 mb-6 block">Why Choose Us</span>
+      <h2 class="reveal font-poppins text-4xl sm:text-5xl lg:text-6xl font-300 tracking-tight leading-[1.1]">
+        The Oryon <span class="text-metal-light">difference.</span>
+      </h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="reveal feature-card glass rounded-2xl p-8 lg:p-10">
+        <span class="feature-icon iconify text-3xl text-metal/40 mb-6 block transition-colors" data-icon="mdi:shield-star-outline"></span>
+        <h3 class="font-poppins text-lg font-400 tracking-tight mb-3">Global Quality Standards</h3>
+        <p class="text-sm font-200 text-metal/40 leading-relaxed">Every product meets international quality certifications and undergoes rigorous multi-stage inspection.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="reveal feature-card glass rounded-2xl p-8 lg:p-10">
+        <span class="feature-icon iconify text-3xl text-metal/40 mb-6 block transition-colors" data-icon="mdi:clock-fast"></span>
+        <h3 class="font-poppins text-lg font-400 tracking-tight mb-3">Timely Delivery</h3>
+        <p class="text-sm font-200 text-metal/40 leading-relaxed">Optimized logistics networks ensure on-time delivery with real-time shipment tracking for full visibility.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="reveal feature-card glass rounded-2xl p-8 lg:p-10">
+        <span class="feature-icon iconify text-3xl text-metal/40 mb-6 block transition-colors" data-icon="mdi:sprout"></span>
+        <h3 class="font-poppins text-lg font-400 tracking-tight mb-3">Sustainable Sourcing</h3>
+        <p class="text-sm font-200 text-metal/40 leading-relaxed">Ethical and eco-conscious sourcing practices that support local communities and protect the environment.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="reveal feature-card glass rounded-2xl p-8 lg:p-10">
+        <span class="feature-icon iconify text-3xl text-metal/40 mb-6 block transition-colors" data-icon="mdi:package-variant-closed"></span>
+        <h3 class="font-poppins text-lg font-400 tracking-tight mb-3">Premium Packaging</h3>
+        <p class="text-sm font-200 text-metal/40 leading-relaxed">Custom packaging solutions designed to preserve product integrity across long-distance international shipping.</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="reveal feature-card glass rounded-2xl p-8 lg:p-10">
+        <span class="feature-icon iconify text-3xl text-metal/40 mb-6 block transition-colors" data-icon="mdi:thermometer-snowflake"></span>
+        <h3 class="font-poppins text-lg font-400 tracking-tight mb-3">Cold-Chain Logistics</h3>
+        <p class="text-sm font-200 text-metal/40 leading-relaxed">End-to-end temperature-controlled supply chain for eggs, fresh produce, and all temperature-sensitive exports.</p>
+      </div>
+      <!-- Card 6 -->
+      <div class="reveal feature-card glass rounded-2xl p-8 lg:p-10">
+        <span class="feature-icon iconify text-3xl text-metal/40 mb-6 block transition-colors" data-icon="mdi:file-certificate-outline"></span>
+        <h3 class="font-poppins text-lg font-400 tracking-tight mb-3">International Compliance</h3>
+        <p class="text-sm font-200 text-metal/40 leading-relaxed">Full regulatory compliance with APEDA, FSSAI, HACCP, and destination-country import requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section id="gallery" class="relative py-32 lg:py-44">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-24">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
+      <div>
+        <span class="reveal text-[10px] tracking-[.3em] uppercase text-metal/40 mb-6 block">Gallery</span>
+        <h2 class="reveal font-poppins text-4xl sm:text-5xl font-300 tracking-tight leading-[1.1]">
+          A visual <span class="text-metal-light">journey.</span>
+        </h2>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 auto-rows-[200px] lg:auto-rows-[240px]">
+      <div class="reveal-scale gallery-item rounded-xl lg:rounded-2xl overflow-hidden relative row-span-2" onclick="openLightbox(this)">
+        <img src="spice plantation.png" alt="Spice market" class="w-full h-full object-cover" loading="lazy">
+        <div class="gallery-overlay absolute inset-0 bg-black/40 flex items-end p-4 lg:p-6">
+          <span class="text-xs tracking-wider text-white/80">Spice Plantation</span>
+        </div>
+      </div>
+      <div class="reveal-scale gallery-item rounded-xl lg:rounded-2xl overflow-hidden relative" onclick="openLightbox(this)">
+        <img src="shipping port.png" alt="Shipping port" class="w-full h-full object-cover" loading="lazy">
+        <div class="gallery-overlay absolute inset-0 bg-black/40 flex items-end p-4 lg:p-6">
+          <span class="text-xs tracking-wider text-white/80">Shipping Port</span>
+        </div>
+      </div>
+      <div class="reveal-scale gallery-item rounded-xl lg:rounded-2xl overflow-hidden relative" onclick="openLightbox(this)">
+        <img src="coconut farm.png" alt="Coconut farm" class="w-full h-full object-cover" loading="lazy">
+        <div class="gallery-overlay absolute inset-0 bg-black/40 flex items-end p-4 lg:p-6">
+          <span class="text-xs tracking-wider text-white/80">Coconut Farm</span>
+        </div>
+      </div>
+      <div class="reveal-scale gallery-item rounded-xl lg:rounded-2xl overflow-hidden relative row-span-2" onclick="openLightbox(this)">
+        <img src="artisan workshop.png" alt="Handicraft workshop" class="w-full h-full object-cover" loading="lazy">
+        <div class="gallery-overlay absolute inset-0 bg-black/40 flex items-end p-4 lg:p-6">
+          <span class="text-xs tracking-wider text-white/80">Artisan Workshop</span>
+        </div>
+      </div>
+      <div class="reveal-scale gallery-item rounded-xl lg:rounded-2xl overflow-hidden relative" onclick="openLightbox(this)">
+        <img src="warehouse.png" alt="Warehouse" class="w-full h-full object-cover" loading="lazy">
+        <div class="gallery-overlay absolute inset-0 bg-black/40 flex items-end p-4 lg:p-6">
+          <span class="text-xs tracking-wider text-white/80">Warehouse</span>
+        </div>
+      </div>
+      <div class="reveal-scale gallery-item rounded-xl lg:rounded-2xl overflow-hidden relative" onclick="openLightbox(this)">
+        <img src="coir production.png" alt="Coir factory" class="w-full h-full object-cover" loading="lazy">
+        <div class="gallery-overlay absolute inset-0 bg-black/40 flex items-end p-4 lg:p-6">
+          <span class="text-xs tracking-wider text-white/80">Coir Production</span>
+        </div>
+      </div>
+      <div class="reveal-scale gallery-item rounded-xl lg:rounded-2xl overflow-hidden relative col-span-2" onclick="openLightbox(this)">
+        <img src="global cargo.png" alt="Cargo containers" class="w-full h-full object-cover" loading="lazy">
+        <div class="gallery-overlay absolute inset-0 bg-black/40 flex items-end p-4 lg:p-6">
+          <span class="text-xs tracking-wider text-white/80">Global Cargo</span>
+        </div>
+      </div>
+      <div class="reveal-scale gallery-item rounded-xl lg:rounded-2xl overflow-hidden relative col-span-2" onclick="openLightbox(this)">
+        <img src="kerala backwaters.png" alt="Kerala backwaters" class="w-full h-full object-cover" loading="lazy">
+        <div class="gallery-overlay absolute inset-0 bg-black/40 flex items-end p-4 lg:p-6">
+          <span class="text-xs tracking-wider text-white/80">Kerala Backwaters</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section id="testimonials" class="relative py-32 lg:py-44">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-24">
+    <div class="text-center max-w-2xl mx-auto mb-20">
+      <span class="reveal text-[10px] tracking-[.3em] uppercase text-metal/40 mb-6 block">Testimonials</span>
+      <h2 class="reveal font-poppins text-4xl sm:text-5xl font-300 tracking-tight leading-[1.1]">
+        Trusted by <span class="text-metal-light">global buyers.</span>
+      </h2>
+    </div>
+    <div class="reveal relative max-w-4xl mx-auto overflow-hidden">
+      <div class="testimonial-track" id="testimonial-track">
+        <!-- Testimonial 1 -->
+        <div class="min-w-full px-4">
+          <div class="glass-strong rounded-3xl p-10 lg:p-16 text-center">
+            <span class="iconify text-3xl text-metal/20 mb-8 block mx-auto" data-icon="mdi:format-quote-open"></span>
+            <p class="text-lg lg:text-xl font-200 leading-relaxed text-metal/60 mb-10 max-w-2xl mx-auto">
+              "Oryon Zenith has been our most reliable spice supplier for over three years. Their quality consistency and on-time delivery have made them an indispensable partner for our European distribution network."
+            </p>
+            <div class="line-accent mx-auto mb-6"></div>
+            <div class="font-poppins text-sm font-400 tracking-wide text-metal-light">Marcus Heinrich</div>
+            <div class="text-xs text-metal/30 mt-1">Director, EuroSpice Trading GmbH — Germany</div>
+          </div>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="min-w-full px-4">
+          <div class="glass-strong rounded-3xl p-10 lg:p-16 text-center">
+            <span class="iconify text-3xl text-metal/20 mb-8 block mx-auto" data-icon="mdi:format-quote-open"></span>
+            <p class="text-lg lg:text-xl font-200 leading-relaxed text-metal/60 mb-10 max-w-2xl mx-auto">
+              "The coconut products from Oryon Zenith are exceptional. Their cold-chain logistics for perishable items is world-class. We've expanded our orders threefold since we started working together."
+            </p>
+            <div class="line-accent mx-auto mb-6"></div>
+            <div class="font-poppins text-sm font-400 tracking-wide text-metal-light">Sarah Al-Rashid</div>
+            <div class="text-xs text-metal/30 mt-1">Procurement Head, Gulf Naturals FZCO — UAE</div>
+          </div>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="min-w-full px-4">
+          <div class="glass-strong rounded-3xl p-10 lg:p-16 text-center">
+            <span class="iconify text-3xl text-metal/20 mb-8 block mx-auto" data-icon="mdi:format-quote-open"></span>
+            <p class="text-lg lg:text-xl font-200 leading-relaxed text-metal/60 mb-10 max-w-2xl mx-auto">
+              "Their Kerala handicrafts have become bestsellers in our retail chain. The craftsmanship is authentic, and Oryon Zenith ensures every piece arrives in pristine condition. Truly a premium export partner."
+            </p>
+            <div class="line-accent mx-auto mb-6"></div>
+            <div class="font-poppins text-sm font-400 tracking-wide text-metal-light">James Nakamura</div>
+            <div class="text-xs text-metal/30 mt-1">CEO, Pacific Heritage Imports — Japan</div>
+          </div>
+        </div>
+      </div>
+      <!-- Controls -->
+      <div class="flex items-center justify-center gap-4 mt-10">
+        <button onclick="moveTestimonial(-1)" class="w-12 h-12 rounded-full glass flex items-center justify-center text-metal/50 hover:text-metal-light hover:border-metal/30 transition-all" aria-label="Previous testimonial">
+          <span class="iconify text-lg" data-icon="mdi:arrow-left"></span>
+        </button>
+        <div class="flex gap-2" id="testimonial-dots">
+          <button class="w-2 h-2 rounded-full bg-metal-light transition-all" onclick="goToTestimonial(0)" aria-label="Testimonial 1"></button>
+          <button class="w-2 h-2 rounded-full bg-metal/20 transition-all" onclick="goToTestimonial(1)" aria-label="Testimonial 2"></button>
+          <button class="w-2 h-2 rounded-full bg-metal/20 transition-all" onclick="goToTestimonial(2)" aria-label="Testimonial 3"></button>
+        </div>
+        <button onclick="moveTestimonial(1)" class="w-12 h-12 rounded-full glass flex items-center justify-center text-metal/50 hover:text-metal-light hover:border-metal/30 transition-all" aria-label="Next testimonial">
+          <span class="iconify text-lg" data-icon="mdi:arrow-right"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="relative py-32 lg:py-44">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-24">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+      <!-- Left -->
+      <div>
+        <span class="reveal text-[10px] tracking-[.3em] uppercase text-metal/40 mb-6 block">Get In Touch</span>
+        <h2 class="reveal font-poppins text-4xl sm:text-5xl font-300 tracking-tight leading-[1.1] mb-6">
+          Let's start a<br><span class="text-metal-light">conversation.</span>
+        </h2>
+        <p class="reveal text-base font-200 text-metal/50 leading-relaxed mb-12">
+          Whether you're looking for a reliable export partner or want to explore our product range, we'd love to hear from you.
+        </p>
+        <!-- Contact Info -->
+        <div class="space-y-6 mb-12">
+          <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="reveal flex items-center gap-4 group">
+            <div class="w-12 h-12 rounded-full glass flex items-center justify-center group-hover:border-metal/30 transition-all">
+              <span class="iconify text-xl text-metal/50 group-hover:text-metal-light transition-colors" data-icon="mdi:whatsapp"></span>
+            </div>
+            <div>
+              <div class="text-xs tracking-wider uppercase text-metal/30 mb-0.5">WhatsApp</div>
+              <div class="text-sm text-metal-light">+91 98765 43210</div>
+            </div>
+          </a>
+          <a href="mailto:exports@oryonzenith.com" class="reveal flex items-center gap-4 group">
+            <div class="w-12 h-12 rounded-full glass flex items-center justify-center group-hover:border-metal/30 transition-all">
+              <span class="iconify text-xl text-metal/50 group-hover:text-metal-light transition-colors" data-icon="mdi:email-outline"></span>
+            </div>
+            <div>
+              <div class="text-xs tracking-wider uppercase text-metal/30 mb-0.5">Email</div>
+              <div class="text-sm text-metal-light">exports@oryonzenith.com</div>
+            </div>
+          </a>
+          <a href="tel:+919876543210" class="reveal flex items-center gap-4 group">
+            <div class="w-12 h-12 rounded-full glass flex items-center justify-center group-hover:border-metal/30 transition-all">
+              <span class="iconify text-xl text-metal/50 group-hover:text-metal-light transition-colors" data-icon="mdi:phone-outline"></span>
+            </div>
+            <div>
+              <div class="text-xs tracking-wider uppercase text-metal/30 mb-0.5">Phone</div>
+              <div class="text-sm text-metal-light">+91 98765 43210</div>
+            </div>
+          </a>
+          <div class="reveal flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full glass flex items-center justify-center">
+              <span class="iconify text-xl text-metal/50" data-icon="mdi:map-marker-outline"></span>
+            </div>
+            <div>
+              <div class="text-xs tracking-wider uppercase text-metal/30 mb-0.5">Office</div>
+              <div class="text-sm text-metal-light">Kerala, India</div>
+            </div>
+          </div>
+        </div>
+        <!-- Map -->
+        <div class="reveal rounded-2xl overflow-hidden border border-white/5">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125744.09829512676!2d76.21738005!3d9.931188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d514abec6bf%3A0xbd582caa5f3f59b8!2sKerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="250" style="border:0;filter:invert(0.9) hue-rotate(180deg) saturate(0.3) brightness(0.6)" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Oryon Zenith office location"></iframe>
+        </div>
+      </div>
+      <!-- Right - Form -->
+      <div class="reveal-right">
+        <form id="contact-form" class="glass-strong rounded-3xl p-8 lg:p-12 space-y-6" onsubmit="handleSubmit(event)">
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label class="text-[10px] tracking-[.2em] uppercase text-metal/30 mb-2 block">Full Name *</label>
+              <input type="text" name="name" required class="form-input w-full px-5 py-3.5 rounded-xl text-sm text-slate-900 font-200" placeholder="Your name">
+            </div>
+            <div>
+              <label class="text-[10px] tracking-[.2em] uppercase text-metal/30 mb-2 block">Company</label>
+              <input type="text" name="company" class="form-input w-full px-5 py-3.5 rounded-xl text-sm text-slate-900 font-200" placeholder="Company name">
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label class="text-[10px] tracking-[.2em] uppercase text-metal/30 mb-2 block">Email *</label>
+              <input type="email" name="email" required class="form-input w-full px-5 py-3.5 rounded-xl text-sm text-slate-900 font-200" placeholder="you@company.com">
+            </div>
+            <div>
+              <label class="text-[10px] tracking-[.2em] uppercase text-metal/30 mb-2 block">Phone</label>
+              <input type="tel" name="phone" class="form-input w-full px-5 py-3.5 rounded-xl text-sm text-slate-900 font-200" placeholder="+1 234 567 890">
+            </div>
+          </div>
+          <div>
+            <label class="text-[10px] tracking-[.2em] uppercase text-metal/30 mb-2 block">Product Interest</label>
+            <select name="product" class="form-input w-full px-5 py-3.5 rounded-xl text-sm text-metal/50 font-200 appearance-none cursor-pointer" style="background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22><path fill=%22%23A7ACB2%22 d=%22M7 10l5 5 5-5z%22/></svg>');background-repeat:no-repeat;background-position:right 1.2rem center">
+              <option value="">Select a category</option>
+              <option value="coconut">Coconut Products</option>
+              <option value="coir">Coir Products</option>
+              <option value="handicrafts">Kerala Handicrafts</option>
+              <option value="spices">Indian Spices</option>
+              <option value="eggs">Eggs & Perishables</option>
+              <option value="other">Other Products</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-[10px] tracking-[.2em] uppercase text-metal/30 mb-2 block">Message *</label>
+            <textarea name="message" required rows="5" class="form-input w-full px-5 py-3.5 rounded-xl text-sm text-slate-900 font-200 resize-none" placeholder="Tell us about your requirements..."></textarea>
+          </div>
+          <button type="submit" id="submit-btn" class="w-full py-4 bg-white text-deep text-sm tracking-widest uppercase font-500 rounded-xl hover:bg-metal-light transition-all duration-300 hover:shadow-[0_0_40px_rgba(217,217,217,0.1)] flex items-center justify-center gap-2">
+            <span id="submit-text">Send Inquiry</span>
+            <span id="submit-spinner" class="hidden">
+              <span class="iconify animate-spin text-base" data-icon="mdi:loading"></span>
+            </span>
+          </button>
+          <p class="text-[11px] text-metal/20 text-center">We typically respond within 24 hours on business days.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="relative border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+      <!-- Brand -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a href="#hero" class="flex flex-col items-start mb-6">
+          <span class="font-poppins text-sm font-300 tracking-[.35em] text-metal-light uppercase">Oryon Zenith</span>
+          <span class="text-[9px] tracking-[.25em] text-metal/40 uppercase mt-0.5">Private Limited</span>
+        </a>
+        <p class="text-sm font-200 text-metal/30 leading-relaxed max-w-xs">Exporting Kerala's finest to the world. Premium quality, trusted delivery.</p>
+      </div>
+      <!-- Products -->
+      <div>
+        <h4 class="text-[10px] tracking-[.2em] uppercase text-metal/40 mb-6">Products</h4>
+        <ul class="space-y-3">
+          <li><a href="#products" class="text-sm font-200 text-metal/30 hover:text-metal-light transition-colors">Coconut Products</a></li>
+          <li><a href="#products" class="text-sm font-200 text-metal/30 hover:text-metal-light transition-colors">Coir Products</a></li>
+          <li><a href="#products" class="text-sm font-200 text-metal/30 hover:text-metal-light transition-colors">Kerala Handicrafts</a></li>
+          <li><a href="#products" class="text-sm font-200 text-metal/30 hover:text-metal-light transition-colors">Indian Spices</a></li>
+          <li><a href="#products" class="text-sm font-200 text-metal/30 hover:text-metal-light transition-colors">Eggs & Perishables</a></li>
+        </ul>
+      </div>
+      <!-- Company -->
+      <div>
+        <h4 class="text-[10px] tracking-[.2em] uppercase text-metal/40 mb-6">Company</h4>
+        <ul class="space-y-3">
+          <li><a href="#about" class="text-sm font-200 text-metal/30 hover:text-metal-light transition-colors">About Us</a></li>
+          <li><a href="#network" class="text-sm font-200 text-metal/30 hover:text-metal-light transition-colors">Global Network</a></li>
+          <li><a href="#why" class="text-sm font-200 text-metal/30 hover:text-metal-light transition-colors">Why Choose Us</a></li>
+          <li><a href="#gallery" class="text-sm font-200 text-metal/30 hover:text-metal-light transition-colors">Gallery</a></li>
+          <li><a href="#contact" class="text-sm font-200 text-metal/30 hover:text-metal-light transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <!-- Connect -->
+      <div>
+        <h4 class="text-[10px] tracking-[.2em] uppercase text-metal/40 mb-6">Connect</h4>
+        <ul class="space-y-3 mb-8">
+          <li><a href="mailto:exports@oryonzenith.com" class="text-sm font-200 text-metal/30 hover:text-metal-light transition-colors">exports@oryonzenith.com</a></li>
+          <li><a href="tel:+919876543210" class="text-sm font-200 text-metal/30 hover:text-metal-light transition-colors">+91 98765 43210</a></li>
+          <li><span class="text-sm font-200 text-metal/30">Kerala, India</span></li>
+        </ul>
+        <div class="flex gap-3">
+          <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-metal/30 hover:text-metal-light hover:border-metal/30 transition-all" aria-label="LinkedIn">
+            <span class="iconify text-lg" data-icon="mdi:linkedin"></span>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-metal/30 hover:text-metal-light hover:border-metal/30 transition-all" aria-label="Instagram">
+            <span class="iconify text-lg" data-icon="mdi:instagram"></span>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-metal/30 hover:text-metal-light hover:border-metal/30 transition-all" aria-label="Facebook">
+            <span class="iconify text-lg" data-icon="mdi:facebook"></span>
+          </a>
+          <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="w-10 h-10 rounded-full glass flex items-center justify-center text-metal/30 hover:text-metal-light hover:border-metal/30 transition-all" aria-label="WhatsApp">
+            <span class="iconify text-lg" data-icon="mdi:whatsapp"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom -->
+    <div class="section-divider mb-8"></div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-metal/20 font-200">© 2025 Oryon Zenith Private Limited. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="#" class="text-xs text-metal/20 hover:text-metal/50 transition-colors font-200">Privacy Policy</a>
+        <a href="#" class="text-xs text-metal/20 hover:text-metal/50 transition-colors font-200">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg shadow-[#25D366]/20 hover:scale-110 transition-transform duration-300" aria-label="Chat on WhatsApp">
+  <span class="iconify text-white text-2xl" data-icon="mdi:whatsapp"></span>
+</a>
+
+<script>
+// ==================== LOADER ====================
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+    initAnimations();
+  }, 2800);
+});
+
+// ==================== LENIS SMOOTH SCROLL ====================
+const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true });
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+
+// Sync Lenis with GSAP ScrollTrigger
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => lenis.raf(time * 1000));
+gsap.ticker.lagSmoothing(0);
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) lenis.scrollTo(target, { offset: -80 });
+  });
+});
+
+// ==================== NAVBAR ====================
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+lenis.on('scroll', ({ scroll }) => {
+  if (scroll > 100) {
+    navbar.classList.add('glass');
+    navbar.style.borderBottom = '1px solid rgba(255,255,255,0.04)';
+  } else {
+    navbar.classList.remove('glass');
+    navbar.style.borderBottom = 'none';
+  }
+  lastScroll = scroll;
+});
+
+// ==================== MOBILE MENU ====================
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuIcon = document.getElementById('menu-icon');
+let menuOpen = false;
+menuToggle.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  mobileMenu.classList.toggle('open');
+  menuIcon.setAttribute('data-icon', menuOpen ? 'mdi:close' : 'mdi:menu');
+  document.body.style.overflow = menuOpen ? 'hidden' : '';
+});
+function closeMobile() {
+  menuOpen = false;
+  mobileMenu.classList.remove('open');
+  menuIcon.setAttribute('data-icon', 'mdi:menu');
+  document.body.style.overflow = '';
+}
+
+// ==================== GSAP ANIMATIONS ====================
+function initAnimations() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Reveal animations
+  gsap.utils.toArray('.reveal').forEach((el, i) => {
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+      delay: i % 3 * 0.1
+    });
+  });
+
+  gsap.utils.toArray('.reveal-left').forEach(el => {
+    gsap.to(el, {
+      opacity: 1, x: 0, duration: 1.2, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 80%', toggleActions: 'play none none none' }
+    });
+  });
+
+  gsap.utils.toArray('.reveal-right').forEach(el => {
+    gsap.to(el, {
+      opacity: 1, x: 0, duration: 1.2, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 80%', toggleActions: 'play none none none' }
+    });
+  });
+
+  gsap.utils.toArray('.reveal-scale').forEach(el => {
+    gsap.to(el, {
+      opacity: 1, scale: 1, duration: 1, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+    });
+  });
+
+  // Stat counters
+  gsap.utils.toArray('.stat-num').forEach(el => {
+    const target = parseFloat(el.dataset.target);
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: target, duration: 2, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+      onUpdate: () => { el.textContent = Math.round(obj.val) + (target === 99 ? '%' : '+'); }
+    });
+  });
+
+  // Parallax on hero image
+  gsap.to('#hero img', {
+    y: 80, scale: 1.05,
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
+  });
+}
+
+// ==================== GLOBE CANVAS ====================
+(function() {
+  const canvas = document.getElementById('globe-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const cx = W / 2, cy = H / 2, r = 220;
+  let angle = 0;
+
+  function drawGlobe() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.strokeStyle = 'rgba(169,169,169,0.15)';
+    ctx.lineWidth = 0.5;
+
+    // Latitude lines
+    for (let lat = -75; lat <= 75; lat += 25) {
+      const latRad = (lat * Math.PI) / 180;
+      const y = cy + r * Math.sin(latRad);
+      const rx = r * Math.cos(latRad);
+      ctx.beginPath();
+      ctx.ellipse(cx, y, rx, rx * 0.08, 0, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    // Longitude lines (rotating)
+    for (let lon = 0; lon < 180; lon += 20) {
+      const lonRad = ((lon + angle) * Math.PI) / 180;
+      const xOff = r * Math.sin(lonRad);
+      const z = Math.cos(lonRad);
+      if (z < -0.1) continue;
+      ctx.globalAlpha = Math.max(0.05, z * 0.5);
+      ctx.beginPath();
+      ctx.ellipse(cx + xOff * 0.3, cy, Math.abs(xOff) * 0.7 + 1, r, 0, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+
+    // Outline
+    ctx.strokeStyle = 'rgba(169,169,169,0.2)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Glow
+    const grd = ctx.createRadialGradient(cx, cy, r * 0.8, cx, cy, r * 1.3);
+    grd.addColorStop(0, 'rgba(169,169,169,0.03)');
+    grd.addColorStop(1, 'rgba(169,169,169,0)');
+    ctx.fillStyle = grd;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r * 1.3, 0, Math.PI * 2);
+    ctx.fill();
+
+    angle += 0.15;
+    requestAnimationFrame(drawGlobe);
+  }
+  drawGlobe();
+})();
+
+// ==================== TESTIMONIALS ====================
+let currentTestimonial = 0;
+const track = document.getElementById('testimonial-track');
+const dots = document.querySelectorAll('#testimonial-dots button');
+
+function goToTestimonial(index) {
+  currentTestimonial = index;
+  track.style.transform = `translateX(-${index * 100}%)`;
+  dots.forEach((d, i) => d.className = `w-2 h-2 rounded-full transition-all ${i === index ? 'bg-metal-light w-6' : 'bg-metal/20'}`);
+}
+
+function moveTestimonial(dir) {
+  let next = currentTestimonial + dir;
+  if (next < 0) next = 2;
+  if (next > 2) next = 0;
+  goToTestimonial(next);
+}
+
+// Auto-advance
+setInterval(() => moveTestimonial(1), 6000);
+
+// ==================== LIGHTBOX ====================
+function openLightbox(el) {
+  const img = el.querySelector('img');
+  if (img) {
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+// ==================== FORM ====================
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  const text = document.getElementById('submit-text');
+  const spinner = document.getElementById('submit-spinner');
+
+  text.textContent = 'Sending...';
+  spinner.classList.remove('hidden');
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+
+  setTimeout(() => {
+    text.textContent = 'Send Inquiry';
+    spinner.classList.add('hidden');
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    e.target.reset();
+    showToast('Thank you! Your inquiry has been sent. We\'ll respond within 24 hours.');
+  }, 2000);
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 5000);
+}
+</script>
+</body>
+</html>
