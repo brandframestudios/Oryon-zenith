@@ -210,14 +210,19 @@
       opacity: 1;
     }
     .page-shell { position: relative; z-index: 2; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-size: clamp(0.95rem, 0.92rem + 0.2vw, 1rem); line-height: 1.65; }
+    main { overflow-x: clip; }
+    section[id] { scroll-margin-top: 6rem; }
+    button, a, summary, input, textarea { touch-action: manipulation; }
     .topbar {
       position: sticky;
       top: 0;
       z-index: 50;
-      padding: 1rem 1.25rem 0;
+      padding: clamp(0.8rem, 2vw, 1.25rem) clamp(0.8rem, 3vw, 1.25rem) 0;
     }
     .nav {
-      max-width: 1240px;
+      max-width: min(1240px, calc(100% - clamp(1rem, 3vw, 2rem)));
       margin: 0 auto;
       padding: 1rem 1.2rem;
       display: flex;
@@ -241,8 +246,8 @@
     .nav-link:hover, .nav-link.active { color: var(--text); }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
     .menu-toggle { display: none; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text); padding: 0.6rem 0.8rem; border-radius: 999px; }
-    .section { max-width: 1240px; margin: 0 auto; padding: 0 1.25rem; }
-    .hero { padding: 5.5rem 0 3.6rem; }
+    .section { width: min(100%, 1240px); margin-inline: auto; padding-inline: clamp(1rem, 3.2vw, 1.5rem); }
+    .hero { padding: clamp(3.2rem, 7vw, 5.5rem) 0 clamp(2.1rem, 4vw, 3.6rem); }
     .hero-grid { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 2.4rem; align-items: center; }
     .eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.8rem; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,0.03); color: var(--text-soft); font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; }
     .eyebrow::before { content: ''; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: linear-gradient(135deg, var(--metal-3), var(--metal-1)); box-shadow: 0 0 12px rgba(236,236,236,0.2); }
@@ -250,7 +255,7 @@
     .hero h1 { font-size: clamp(2.7rem, 5vw, 4.8rem); line-height: 0.95; letter-spacing: -0.035em; margin-top: 1.15rem; max-width: 12ch; }
     .hero p { margin-top: 1.3rem; max-width: 58ch; font-size: 1.02rem; line-height: 1.8; color: var(--text-soft); }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.75rem; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; padding: 0.95rem 1.3rem; border-radius: 999px; border: 1px solid var(--border); transition: transform 0.3s cubic-bezier(.22,.61,.36,1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease; will-change: transform; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; min-height: 44px; padding: 0.95rem 1.3rem; border-radius: 999px; border: 1px solid var(--border); transition: transform 0.3s cubic-bezier(.22,.61,.36,1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease; will-change: transform; }
     .btn:hover { transform: translateY(-2px); }
     .btn:focus-visible, .nav-link:focus-visible, .menu-toggle:focus-visible, .contact-card input:focus-visible, .contact-card textarea:focus-visible { outline: 2px solid var(--metal-4); outline-offset: 3px; }
     .btn-primary { background: linear-gradient(135deg, rgba(236,236,236,0.16), rgba(255,255,255,0.04)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 16px 45px rgba(0,0,0,0.22); }
@@ -278,7 +283,7 @@
     .services-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
     .service-card { padding: 1.15rem; display: flex; flex-direction: column; gap: 0.9rem; min-height: 100%; transition: transform 0.35s cubic-bezier(.22,.61,.36,1), border-color 0.35s ease, box-shadow 0.35s ease; will-change: transform; }
     .service-card:hover { transform: translateY(-4px) scale(1.008); border-color: rgba(255,255,255,0.2); box-shadow: 0 20px 56px rgba(0,0,0,0.28); }
-    .service-card img { width: 100%; height: 220px; object-fit: cover; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.08); }
+    .service-card img { width: 100%; height: clamp(180px, 25vw, 220px); object-fit: cover; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.08); }
     .service-card h3 { font-size: 1.15rem; }
     .service-card p { color: var(--text-soft); font-size: 0.95rem; line-height: 1.7; }
     .service-card span { color: var(--metal-3); font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase; }
@@ -348,28 +353,34 @@
     .quote-mark { position: absolute; left: 0.9rem; top: -0.2rem; font-size: 3rem; line-height: 1; color: var(--metal-3); font-family: Manrope, sans-serif; }
     .founder-message p { margin-top: 0.9rem; padding-left: 1rem; color: var(--text-soft); font-size: 0.96rem; line-height: 1.8; }
     .founder-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent); margin: 0.2rem 0 0.3rem; }
-    .globe-shell { position: relative; border-radius: 1.4rem; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.007)); padding: 1rem; overflow: hidden; }
-    .globe-shell::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(236,236,236,0.12), transparent 35%); pointer-events: none; }
-    .globe-scene { position: relative; width: min(100%, 480px); aspect-ratio: 1; margin: 0 auto; display: grid; place-items: center; perspective: 1200px; isolation: isolate; overflow: hidden; background: radial-gradient(circle at 30% 20%, rgba(236,236,236,0.08), transparent 24%), linear-gradient(135deg, rgba(7,9,12,0.95), rgba(19,21,26,0.85)); border-radius: 50%; }
-    .globe-scene canvas { width: 100%; height: 100%; display: block; }
-    .globe-scene::after { content: ''; position: absolute; inset: -10%; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgba(236,236,236,0.14) 0%, rgba(236,236,236,0.03) 24%, transparent 62%); filter: blur(16px); opacity: 0.8; z-index: -1; }
-    .globe-fallback { position: relative; width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 1px solid rgba(255,255,255,0.14); box-shadow: inset -24px -24px 70px rgba(0,0,0,0.84), inset 16px 16px 30px rgba(255,255,255,0.07), 0 26px 70px rgba(0,0,0,0.34); transform-style: preserve-3d; }
-    .globe-fallback::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12); pointer-events: none; }
-    .globe-fallback .globe-surface { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 25% 25%, rgba(255,255,255,0.16), transparent 22%), radial-gradient(circle at 75% 75%, rgba(255,255,255,0.08), transparent 16%), linear-gradient(135deg, rgba(137,145,160,0.22), rgba(6,8,12,0.16)); }
-    .globe-fallback .globe-atmosphere { position: absolute; inset: -7%; border-radius: 50%; border: 1px solid rgba(236,236,236,0.16); box-shadow: 0 0 70px rgba(236,236,236,0.12); pointer-events: none; }
-    .globe-fallback .globe-routes { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .globe-fallback .route { stroke: rgba(236,236,236,0.82); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-    .globe-fallback .route.soft { stroke: rgba(236,236,236,0.35); }
-    .globe-fallback .continent { fill: none; stroke: rgba(236,236,236,0.18); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1.1 2.2; }
-    .globe-fallback .continent-dot { fill: rgba(236,236,236,0.82); opacity: 0.9; filter: drop-shadow(0 0 4px rgba(236,236,236,0.14)); }
-    .globe-fallback .marker { position: absolute; width: 0.72rem; height: 0.72rem; border-radius: 50%; background: #f6f3ef; box-shadow: 0 0 0 8px rgba(236,236,236,0.12); transform: translate(-50%, -50%); }
-    .globe-fallback .marker.origin { width: 0.9rem; height: 0.9rem; box-shadow: 0 0 0 10px rgba(236,236,236,0.16); }
-    .globe-tooltip { position: absolute; z-index: 3; display: inline-flex; flex-direction: column; gap: 0.2rem; padding: 0.7rem 0.8rem; border-radius: 0.9rem; border: 1px solid rgba(255,255,255,0.12); background: rgba(5,5,5,0.86); backdrop-filter: blur(16px); box-shadow: 0 14px 40px rgba(0,0,0,0.24); opacity: 0; transform: translate(-50%, -120%) scale(0.96); transition: opacity 0.24s ease, transform 0.24s ease; pointer-events: none; min-width: 9rem; }
+    .globe-shell { position: relative; border-radius: 1.45rem; border: 1px solid rgba(255,255,255,0.12); background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(10,12,16,0.72)); padding: 0.95rem; overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -24px 60px rgba(0,0,0,0.38), 0 24px 70px rgba(0,0,0,0.18); }
+    .globe-shell::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(236,236,236,0.12), transparent 36%); pointer-events: none; }
+    .globe-scene { position: relative; width: min(100%, 620px); aspect-ratio: 16 / 10.4; margin: 0 auto; isolation: isolate; overflow: hidden; border-radius: 1.2rem; border: 1px solid rgba(255,255,255,0.12); background: radial-gradient(circle at 24% 20%, rgba(236,236,236,0.08), transparent 24%), linear-gradient(135deg, rgba(6,8,12,0.95), rgba(18,20,24,0.92)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -20px 60px rgba(0,0,0,0.68); touch-action: manipulation; }
+    .globe-scene::after { content: ''; position: absolute; inset: -8%; border-radius: inherit; pointer-events: none; background: radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 34%), linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.06) 100%); filter: blur(18px); opacity: 0.8; z-index: 0; }
+    .globe-scene .map-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; opacity: 0.95; filter: saturate(0.9) contrast(1.05) brightness(0.8); background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%); }
+    .globe-scene .map-overlay { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; }
+    .globe-scene .map-overlay .route-line { fill: none; opacity: 0; pointer-events: none; transition: opacity 220ms ease; stroke-linecap: round; stroke-linejoin: round; }
+    .globe-scene .map-overlay .route-line.main { stroke: rgba(236,236,236,0.9); stroke-width: 2.6; stroke-dasharray: 6 8; animation: routeFlow 3.2s linear infinite; filter: drop-shadow(0 0 8px rgba(236,236,236,0.2)); }
+    .globe-scene .map-overlay .route-line.glow { stroke: rgba(255,255,255,0.26); stroke-width: 5.4; stroke-dasharray: 2 8; animation: routeFlow 4.6s linear infinite; }
+    .globe-scene .map-overlay .route-line.primary { stroke-opacity: 1; }
+    .globe-scene .map-overlay .route-line.secondary { stroke-opacity: 0.82; }
+    .globe-scene.is-active .map-overlay .route-line { opacity: 1; pointer-events: auto; }
+    .globe-scene .map-marker { cursor: pointer; fill: #f7f2eb; stroke: rgba(255,255,255,0.9); stroke-width: 1.4; filter: drop-shadow(0 0 10px rgba(236,236,236,0.2)); transform-origin: center; animation: markerPulse 1.8s ease-out infinite; }
+    .globe-scene .map-marker.origin { fill: #ffffff; stroke: rgba(236,236,236,0.95); animation-duration: 1.45s; }
+    .globe-scene .map-marker.secondary { animation-duration: 2.3s; }
+    .globe-scene .route-cargo { fill: #f7f2eb; opacity: 0; transition: opacity 180ms ease; filter: drop-shadow(0 0 10px rgba(236,236,236,0.32)); }
+    .globe-scene.is-active .route-cargo { opacity: 1; }
+    .globe-scene .map-hint { position: absolute; left: 1rem; bottom: 1rem; z-index: 3; padding: 0.48rem 0.64rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(5,5,5,0.7); backdrop-filter: blur(12px); color: var(--text-soft); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; pointer-events: none; transition: opacity 220ms ease; }
+    .globe-scene .map-hint.is-hidden { opacity: 0; }
+    .globe-tooltip { position: absolute; z-index: 4; display: inline-flex; flex-direction: column; gap: 0.2rem; padding: 0.7rem 0.8rem; border-radius: 0.9rem; border: 1px solid rgba(255,255,255,0.12); background: rgba(5,5,5,0.86); backdrop-filter: blur(16px); box-shadow: 0 14px 40px rgba(0,0,0,0.24); opacity: 0; transform: translate(-50%, -120%) scale(0.96); transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none; min-width: 9rem; }
     .globe-tooltip.is-visible { opacity: 1; transform: translate(-50%, -120%) scale(1); }
     .globe-tooltip strong { font-size: 0.76rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--metal-4); }
     .globe-tooltip span { color: var(--text-soft); font-size: 0.82rem; line-height: 1.4; }
     footer { padding: 2.4rem 1.25rem 3rem; max-width: 1240px; margin: 0 auto; color: var(--text-soft); font-size: 0.92rem; }
     footer .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+    footer .footer-social { display: inline-flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    footer .footer-social a { color: var(--text-soft); text-decoration: none; transition: color 0.25s ease, opacity 0.25s ease, text-shadow 0.25s ease; }
+    footer .footer-social a:hover, footer .footer-social a:focus-visible { color: var(--metal-4); opacity: 0.92; text-shadow: 0 0 14px rgba(236,236,236,0.12); }
     .reveal { opacity: 0; transform: translateY(22px) scale(0.985); filter: blur(6px); }
     .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); transition: opacity 0.8s cubic-bezier(.22,.61,.36,1), transform 0.8s cubic-bezier(.22,.61,.36,1), filter 0.8s cubic-bezier(.22,.61,.36,1); }
     #loader { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: linear-gradient(135deg, rgba(2,2,2,0.96), rgba(5,5,5,0.92)); transition: opacity 0.75s ease, visibility 0.75s ease; overflow: hidden; }
@@ -449,21 +460,56 @@
     @keyframes orbital { 0% { transform: rotateX(-18deg) rotateY(-24deg); } 100% { transform: rotateX(-18deg) rotateY(336deg); } }
     @keyframes flow { to { stroke-dashoffset: -40; } }
     @keyframes pulse { 0% { transform: scale(0.85); opacity: 0.6; } 70% { transform: scale(1.35); opacity: 0; } 100% { opacity: 0; } }
+    @keyframes routeFlow { 0% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -44; } }
+    @keyframes markerPulse { 0%,100% { transform: scale(0.92); opacity: 0.82; } 50% { transform: scale(1.08); opacity: 1; } }
     .ship-animate { animation: bob 5.2s ease-in-out infinite; transform-origin: center; }
-    @media (max-width: 980px) {
-      .hero-grid, .process-grid, .approach-grid { grid-template-columns: 1fr; }
+    @media (max-width: 1200px) {
+      .hero-grid, .process-grid, .approach-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .hero-visual { max-width: 760px; margin-inline: auto; }
       .services-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .nav-links { display: none; }
-      .menu-toggle { display: inline-flex; }
-      .mobile-nav { display: block; }
     }
-    @media (max-width: 680px) {
-      .topbar { padding: 0.8rem 0.8rem 0; }
-      .nav { padding: 0.8rem 1rem; border-radius: 1.2rem; }
-      .hero { padding-top: 3.8rem; }
-      .hero-stats, .grid-2, .services-list { grid-template-columns: 1fr; }
-      footer .footer-inner { flex-direction: column; align-items: flex-start; }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: inline-flex; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; }
+      .mobile-nav { display: block; }
+      .hero-stats, .grid-2, .services-list, .founders-grid { grid-template-columns: 1fr; }
+      .section-title p, .about-card p { max-width: 100%; }
+      .service-card img { height: clamp(170px, 32vw, 210px); }
+    }
+    @media (max-width: 720px) {
+      .topbar { padding: 0.7rem 0.7rem 0; }
+      .nav { padding: 0.8rem 0.95rem; border-radius: 1.2rem; }
+      .hero { padding-top: 3.25rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+      .hero-stats { grid-template-columns: 1fr; }
       .ship-card { padding: 0.75rem; }
+      .globe-tooltip { min-width: 8rem; max-width: min(76vw, 12rem); }
+      footer .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+      .wa-btn { width: 3.35rem; height: 3.35rem; }
+    }
+    @media (max-width: 480px) {
+      .nav { gap: 0.65rem; padding: 0.75rem 0.8rem; }
+      .brand-copy strong { font-size: 0.76rem; letter-spacing: 0.2em; }
+      .brand-copy span { font-size: 0.64rem; }
+      .nav-brand img { height: 1.8rem; }
+      .hero { padding-top: 2.9rem; }
+      .hero h1 { font-size: clamp(2.25rem, 8vw, 2.9rem); }
+      .hero p { font-size: 0.96rem; line-height: 1.75; }
+      .section { padding-inline: 0.8rem; }
+      .panel, .service-card, .timeline-item, .stat-card, .founder-card, .contact-card, .faq-item, .license-card { border-radius: 1rem; }
+      .founder-name-row { flex-direction: column; align-items: flex-start; }
+      .map-shell { padding: 0.7rem; }
+      .globe-scene { aspect-ratio: 1 / 1.05; }
+      .map-hint { left: 0.6rem; bottom: 0.6rem; font-size: 0.65rem; padding: 0.4rem 0.55rem; }
+      .mobile-nav { width: min(92vw, 320px); padding: 1rem; }
+    }
+    @media (min-width: 1441px) {
+      .section, .hero, footer { max-width: 1360px; }
+      .hero { padding-top: 6rem; }
+    }
+    @media (min-width: 1920px) {
+      .section { padding-inline: 2rem; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
@@ -699,6 +745,78 @@
         </div>
       </section>
 
+      <section class="section faq-section" aria-labelledby="faq-title">
+        <div class="section-title reveal">
+          <span class="kicker">Frequently Asked Questions</span>
+          <h2 id="faq-title">A premium export partner for modern buyers.</h2>
+          <p>Each answer reflects the same disciplined tone that defines Oryon Zenith’s service approach and global trade delivery.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item reveal">
+            <summary>What does Oryon Zenith export? <span class="faq-plus">+</span></summary>
+            <p>Oryon Zenith exports premium eggs, spices, coconut products, fresh produce, and selected agricultural commodities for international trade.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Which countries does Oryon Zenith serve? <span class="faq-plus">+</span></summary>
+            <p>Oryon Zenith serves buyers across the UAE, Sri Lanka, the UK, Germany, the Netherlands, Singapore, and Canada.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Does Oryon Zenith handle export documentation? <span class="faq-plus">+</span></summary>
+            <p>Yes. Documentation, quality oversight, and export coordination are managed through a disciplined, compliance-focused workflow.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>How can international buyers contact Oryon Zenith? <span class="faq-plus">+</span></summary>
+            <p>International buyers can use the WhatsApp button, the website inquiry form, or direct contact channels for prompt commercial discussions.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Does Oryon Zenith support bulk export orders? <span class="faq-plus">+</span></summary>
+            <p>Yes. Oryon Zenith supports structured export programs and bulk trade requirements with sourcing discipline and shipment alignment.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>What makes Oryon Zenith reliable? <span class="faq-plus">+</span></summary>
+            <p>Reliability comes from transparent communication, quality control, operational discipline, and a long-term focus on trust.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section marquee-section" aria-label="Licenses and compliance">
+        <div class="marquee-shell reveal">
+          <div class="marquee-title">Licenses & Compliance</div>
+          <div class="marquee-track">
+            <article class="license-card">
+              <strong>License Placeholder</strong>
+              <span>Official license title to be inserted when certification documentation is confirmed.</span>
+              <small>Replace with official data</small>
+            </article>
+            <article class="license-card">
+              <strong>Compliance Placeholder</strong>
+              <span>Official compliance record to be inserted after verification from company records.</span>
+              <small>Replace with official data</small>
+            </article>
+            <article class="license-card">
+              <strong>Certification Placeholder</strong>
+              <span>Certification name to be added once the approved documentation is available.</span>
+              <small>Replace with official data</small>
+            </article>
+            <article class="license-card">
+              <strong>License Placeholder</strong>
+              <span>Official license title to be inserted when certification documentation is confirmed.</span>
+              <small>Replace with official data</small>
+            </article>
+            <article class="license-card">
+              <strong>Compliance Placeholder</strong>
+              <span>Official compliance record to be inserted after verification from company records.</span>
+              <small>Replace with official data</small>
+            </article>
+            <article class="license-card">
+              <strong>Certification Placeholder</strong>
+              <span>Certification name to be added once the approved documentation is available.</span>
+              <small>Replace with official data</small>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="section approach">
         <div class="approach-grid">
           <article class="panel founder-card reveal" style="padding:1.3rem;">
@@ -729,82 +847,13 @@
       </section>
     </main>
 
-    <section class="section faq-section" aria-labelledby="faq-title">
-      <div class="section-title reveal">
-        <span class="kicker">Frequently Asked Questions</span>
-        <h2 id="faq-title">A premium export partner for modern buyers.</h2>
-        <p>Each answer reflects the same disciplined tone that defines Oryon Zenith’s service approach and global trade delivery.</p>
-      </div>
-      <div class="faq-list">
-        <details class="faq-item reveal">
-          <summary>What does Oryon Zenith export? <span class="faq-plus">+</span></summary>
-          <p>Oryon Zenith exports premium eggs, spices, coconut products, fresh produce, and selected agricultural commodities for international trade.</p>
-        </details>
-        <details class="faq-item reveal">
-          <summary>Which countries does Oryon Zenith serve? <span class="faq-plus">+</span></summary>
-          <p>Oryon Zenith serves buyers across the UAE, Sri Lanka, the UK, Germany, the Netherlands, Singapore, and Canada.</p>
-        </details>
-        <details class="faq-item reveal">
-          <summary>Does Oryon Zenith handle export documentation? <span class="faq-plus">+</span></summary>
-          <p>Yes. Documentation, quality oversight, and export coordination are managed through a disciplined, compliance-focused workflow.</p>
-        </details>
-        <details class="faq-item reveal">
-          <summary>How can international buyers contact Oryon Zenith? <span class="faq-plus">+</span></summary>
-          <p>International buyers can use the WhatsApp button, the website inquiry form, or direct contact channels for prompt commercial discussions.</p>
-        </details>
-        <details class="faq-item reveal">
-          <summary>Does Oryon Zenith support bulk export orders? <span class="faq-plus">+</span></summary>
-          <p>Yes. Oryon Zenith supports structured export programs and bulk trade requirements with sourcing discipline and shipment alignment.</p>
-        </details>
-        <details class="faq-item reveal">
-          <summary>What makes Oryon Zenith reliable? <span class="faq-plus">+</span></summary>
-          <p>Reliability comes from transparent communication, quality control, operational discipline, and a long-term focus on trust.</p>
-        </details>
-      </div>
-    </section>
-
-    <section class="section marquee-section" aria-label="Licenses and compliance">
-      <div class="marquee-shell reveal">
-        <div class="marquee-title">Licenses & Compliance</div>
-        <div class="marquee-track">
-          <article class="license-card">
-            <strong>License Placeholder</strong>
-            <span>Official license title to be inserted when certification documentation is confirmed.</span>
-            <small>Replace with official data</small>
-          </article>
-          <article class="license-card">
-            <strong>Compliance Placeholder</strong>
-            <span>Official compliance record to be inserted after verification from company records.</span>
-            <small>Replace with official data</small>
-          </article>
-          <article class="license-card">
-            <strong>Certification Placeholder</strong>
-            <span>Certification name to be added once the approved documentation is available.</span>
-            <small>Replace with official data</small>
-          </article>
-          <article class="license-card">
-            <strong>License Placeholder</strong>
-            <span>Official license title to be inserted when certification documentation is confirmed.</span>
-            <small>Replace with official data</small>
-          </article>
-          <article class="license-card">
-            <strong>Compliance Placeholder</strong>
-            <span>Official compliance record to be inserted after verification from company records.</span>
-            <small>Replace with official data</small>
-          </article>
-          <article class="license-card">
-            <strong>Certification Placeholder</strong>
-            <span>Certification name to be added once the approved documentation is available.</span>
-            <small>Replace with official data</small>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <footer>
       <div class="footer-inner">
         <div>© 2026 Oryon Zenith Private Limited. All rights reserved.</div>
-        <div>Thiruvananthapuram • Kerala • India</div>
+        <div class="footer-social" aria-label="Social links">
+          <a href="https://www.instagram.com/oryonzenith/" target="_blank" rel="noopener noreferrer" aria-label="Visit Oryon Zenith on Instagram">Instagram</a>
+          <a href="https://www.linkedin.com/company/oryon-zenith/" target="_blank" rel="noopener noreferrer" aria-label="Visit Oryon Zenith on LinkedIn">LinkedIn</a>
+        </div>
       </div>
     </footer>
   </div>
@@ -1040,459 +1089,204 @@
     const globeContainer = document.getElementById('globe-scene');
     const globeTooltip = document.getElementById('globe-tooltip');
 
-    function renderFallbackGlobe() {
-      globeContainer.innerHTML = `
-        <div class="globe-fallback" role="img" aria-label="Oryon Zenith export network globe">
-          <div class="globe-atmosphere"></div>
-          <div class="globe-surface"></div>
-          <svg class="globe-routes" viewBox="0 0 400 400" aria-hidden="true">
-            <g id="globe-geo-dots"></g>
-            <path class="route" d="M138 176 C160 160 186 150 214 153" />
-            <path class="route soft" d="M138 178 C168 195 198 208 228 208" />
-            <path class="route" d="M138 176 C178 205 228 224 270 243" />
-            <path class="route soft" d="M138 176 C170 140 230 128 284 134" />
-            <path class="route" d="M138 176 C182 165 242 170 298 188" />
-            <path class="route soft" d="M138 176 C188 180 246 194 306 222" />
-            <path class="route" d="M138 176 C202 216 266 245 318 258" />
-          </svg>
-          <button class="marker origin" type="button" style="left: 34%; top: 56%;" data-label="India" data-product="Origin • Kerala Exports"></button>
-          <button class="marker" type="button" style="left: 62%; top: 47%;" data-label="UAE" data-product="Premium Table Eggs"></button>
-          <button class="marker" type="button" style="left: 72%; top: 61%;" data-label="Sri Lanka" data-product="Fresh Produce"></button>
-          <button class="marker" type="button" style="left: 49%; top: 25%;" data-label="United Kingdom" data-product="Premium Perishables"></button>
-          <button class="marker" type="button" style="left: 51%; top: 24%;" data-label="Germany" data-product="Spices & Coconut Products"></button>
-          <button class="marker" type="button" style="left: 50%; top: 24%;" data-label="Netherlands" data-product="High-Value Agricultural Cargo"></button>
-          <button class="marker" type="button" style="left: 77%; top: 70%;" data-label="Singapore" data-product="Kerala Spices"></button>
-          <button class="marker" type="button" style="left: 20%; top: 19%;" data-label="Canada" data-product="Global Bulk Logistics"></button>
-        </div>`;
+    function renderMapNetwork() {
+      if (!globeContainer) return;
 
-      const fallbackGlobe = globeContainer.querySelector('.globe-fallback');
-      const markers = globeContainer.querySelectorAll('.marker');
-      const geoDotGroup = globeContainer.querySelector('#globe-geo-dots');
-      let angle = 0;
-      function animateFallback() {
-        angle = (angle + 0.006) % (Math.PI * 2);
-        fallbackGlobe.style.transform = `rotateY(${angle}rad) rotateX(-0.24rad)`;
-        requestAnimationFrame(animateFallback);
-      }
-      animateFallback();
+      const viewWidth = 1200;
+      const viewHeight = 1200;
+      const origin = { lat: 10.8505, lon: 76.2711 };
+      const destinations = [
+        { label: 'UAE', detail: 'Primary Market', lat: 25.2048, lon: 55.2708, primary: true, curve: -95 },
+        { label: 'Sri Lanka', detail: 'Primary Market', lat: 7.8731, lon: 80.7718, primary: true, curve: 88 },
+        { label: 'United Kingdom', detail: 'Secondary Market', lat: 55.3781, lon: -3.4360, primary: false, curve: -145 },
+        { label: 'Germany', detail: 'Secondary Market', lat: 51.1657, lon: 10.4515, primary: false, curve: -125 },
+        { label: 'Netherlands', detail: 'Secondary Market', lat: 52.1326, lon: 5.2913, primary: false, curve: -92 },
+        { label: 'Singapore', detail: 'Secondary Market', lat: 1.3521, lon: 103.8198, primary: false, curve: 132 },
+        { label: 'Canada', detail: 'Secondary Market', lat: 56.1304, lon: -106.3468, primary: false, curve: -210 }
+      ];
 
-      function pointInPolygon(point, polygon) {
-        const [px, py] = point;
-        let inside = false;
-        for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-          const [xi, yi] = polygon[i];
-          const [xj, yj] = polygon[j];
-          const intersects = ((yi > py) !== (yj > py)) && (px < ((xj - xi) * (py - yi)) / (yj - yi) + xi);
-          if (intersects) inside = !inside;
-        }
-        return inside;
-      }
-
-      function latLonToSvgPoint(lat, lon) {
-        const radius = 158;
-        const lonRad = (lon + 180) * (Math.PI / 180);
-        const latRad = (lat) * (Math.PI / 180);
-        const x = 200 + Math.cos(latRad) * Math.sin(lonRad) * radius;
-        const y = 200 - Math.sin(latRad) * radius;
+      function project(lat, lon) {
+        const x = ((lon + 180) / 360) * viewWidth;
+        const y = ((90 - lat) / 180) * viewHeight;
         return { x, y };
       }
 
-      function renderGeoDots(geojson) {
-        if (!geoDotGroup) return;
-        const features = (geojson.features || []).filter((feature) => {
-          const type = feature.geometry?.type;
-          return type === 'Polygon' || type === 'MultiPolygon';
-        });
+      function createRoutePath(from, to, curveOffset) {
+        const midX = (from.x + to.x) / 2;
+        const midY = (from.y + to.y) / 2;
+        const controlX = midX + curveOffset;
+        const controlY = Math.max(140, Math.min(viewHeight - 140, midY - 118));
+        const startControlX = from.x + (to.x - from.x) * 0.28;
+        const endControlX = to.x - (to.x - from.x) * 0.28;
+        return `M ${from.x.toFixed(2)} ${from.y.toFixed(2)} C ${startControlX.toFixed(2)} ${Math.max(120, from.y - 90).toFixed(2)} ${controlX.toFixed(2)} ${controlY.toFixed(2)} ${to.x.toFixed(2)} ${to.y.toFixed(2)}`;
+      }
 
-        const latStep = 2.2;
-        const lonStep = 2.2;
-        const dots = [];
+      const originPoint = project(origin.lat, origin.lon);
+      const routeMarkup = destinations.map((route) => {
+        const destination = project(route.lat, route.lon);
+        const path = createRoutePath(originPoint, destination, route.curve);
+        return `
+          <path class="route-line glow ${route.primary ? 'primary' : 'secondary'}" d="${path}" data-label="${route.label}" data-detail="${route.detail}" data-x="${destination.x.toFixed(2)}" data-y="${destination.y.toFixed(2)}" />
+          <path class="route-line main ${route.primary ? 'primary' : 'secondary'}" d="${path}" data-label="${route.label}" data-detail="${route.detail}" data-x="${destination.x.toFixed(2)}" data-y="${destination.y.toFixed(2)}" />
+        `;
+      }).join('');
 
-        for (let lat = -90; lat <= 90; lat += latStep) {
-          for (let lon = -180; lon <= 180; lon += lonStep) {
-            const point = [lon, lat];
-            let inside = false;
-            for (const feature of features) {
-              const geometry = feature.geometry;
-              const polygons = geometry.type === 'Polygon' ? [geometry.coordinates] : geometry.coordinates;
-              for (const polygon of polygons) {
-                if (pointInPolygon(point, polygon[0])) {
-                  inside = true;
-                  break;
-                }
-              }
-              if (inside) break;
-            }
-            if (inside) {
-              const { x, y } = latLonToSvgPoint(lat, lon);
-              dots.push({ x, y });
-            }
+      const markerMarkup = destinations.map((route) => {
+        const point = project(route.lat, route.lon);
+        const className = route.primary ? 'map-marker origin' : 'map-marker secondary';
+        return `<circle class="${className}" cx="${point.x.toFixed(2)}" cy="${point.y.toFixed(2)}" r="${route.primary ? 6.4 : 5.4}" data-label="${route.label}" data-detail="${route.detail}" data-x="${point.x.toFixed(2)}" data-y="${point.y.toFixed(2)}" />`;
+      }).join('');
+
+      const originMarker = `<circle class="map-marker origin" cx="${originPoint.x.toFixed(2)}" cy="${originPoint.y.toFixed(2)}" r="7.2" data-label="Kerala / South India" data-detail="Origin • Oryon Zenith" data-x="${originPoint.x.toFixed(2)}" data-y="${originPoint.y.toFixed(2)}" />`;
+
+      globeContainer.innerHTML = `
+        <img class="map-image" src="./global%20map.png" alt="Flat world map showing Oryon Zenith export routes" />
+        <svg class="map-overlay" id="map-overlay" viewBox="0 0 ${viewWidth} ${viewHeight}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <g id="route-layer">
+            ${routeMarkup}
+          </g>
+          <g id="cargo-layer"></g>
+          <g id="marker-layer">
+            ${originMarker}
+            ${markerMarkup}
+          </g>
+        </svg>
+        <div class="globe-tooltip" id="globe-tooltip" aria-live="polite">
+          <strong>Kerala / South India</strong>
+          <span>Origin • Oryon Zenith</span>
+        </div>
+        <div class="map-hint">Hover or tap map to explore export routes</div>
+      `;
+
+      const tooltip = globeContainer.querySelector('#globe-tooltip');
+      const hint = globeContainer.querySelector('.map-hint');
+      const markers = [...globeContainer.querySelectorAll('.map-marker')];
+      const routePaths = [...globeContainer.querySelectorAll('.route-line.main')];
+      const cargoLayer = globeContainer.querySelector('#cargo-layer');
+      const cargoNodes = [];
+      const prefersHover = window.matchMedia('(hover: hover)').matches;
+
+      routePaths.forEach((pathEl, index) => {
+        const cargo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        cargo.setAttribute('class', 'route-cargo');
+        cargo.setAttribute('r', '4.8');
+        cargoLayer.appendChild(cargo);
+        cargoNodes.push({ element: cargo, path: pathEl, progress: 0.08 + index * 0.08, speed: 0.006 + (index % 3) * 0.0012 });
+      });
+
+      function positionTooltip(target) {
+        const rect = globeContainer.getBoundingClientRect();
+        const x = (Number(target.dataset.x || 0) / viewWidth) * rect.width;
+        const y = (Number(target.dataset.y || 0) / viewHeight) * rect.height;
+        tooltip.style.left = `${Math.max(84, Math.min(rect.width - 84, x))}px`;
+        tooltip.style.top = `${Math.max(72, Math.min(rect.height - 72, y))}px`;
+      }
+
+      function showTooltip(target) {
+        tooltip.querySelector('strong').textContent = target.dataset.label || 'Route';
+        tooltip.querySelector('span').textContent = target.dataset.detail || 'Export corridor';
+        tooltip.classList.add('is-visible');
+        positionTooltip(target);
+      }
+
+      function hideTooltip() {
+        tooltip.classList.remove('is-visible');
+      }
+
+      const setActive = () => {
+        globeContainer.classList.add('is-active');
+        hint.classList.add('is-hidden');
+      };
+
+      const clearActive = () => {
+        if (!prefersHover) return;
+        globeContainer.classList.remove('is-active');
+        hint.classList.remove('is-hidden');
+        hideTooltip();
+      };
+
+      if (prefersHover) {
+        globeContainer.addEventListener('mouseenter', setActive);
+        globeContainer.addEventListener('mouseleave', clearActive);
+      } else {
+        globeContainer.addEventListener('click', (event) => {
+          const target = event.target.closest('.map-marker, .route-line');
+          if (target) {
+            event.stopPropagation();
+            showTooltip(target);
+            setActive();
+            return;
           }
-        }
-
-        dots.forEach(({ x, y }) => {
-          const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-          dot.setAttribute('class', 'continent-dot');
-          dot.setAttribute('cx', x);
-          dot.setAttribute('cy', y);
-          dot.setAttribute('r', '1.15');
-          geoDotGroup.appendChild(dot);
+          globeContainer.classList.toggle('is-active');
+          hint.classList.toggle('is-hidden');
+          if (!globeContainer.classList.contains('is-active')) {
+            hideTooltip();
+          }
         });
       }
 
-      fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/geo-countries.geojson')
-        .then((res) => res.ok ? res.json() : Promise.reject(new Error('Geo data load failed')))
-        .then((geojson) => renderGeoDots(geojson))
-        .catch(() => {
-          const fallbackPaths = [
-            'M136 126 C148 112 170 108 182 118 C194 128 200 142 204 156 C208 172 216 182 232 186 C246 190 256 184 268 176 C282 166 300 166 312 176 C324 186 326 200 322 214 C318 232 308 246 296 258 C286 268 272 278 258 284 C244 290 228 292 214 288 C194 282 180 272 166 262 C152 252 142 236 136 220 C128 200 128 150 136 126 Z',
-            'M100 182 C110 170 124 168 136 176 C148 184 150 200 146 214 C142 228 132 240 118 246 C104 252 90 248 84 234 C78 220 78 196 100 182 Z',
-            'M244 214 C254 204 270 202 280 208 C292 214 298 224 296 236 C294 250 284 260 272 264 C258 268 244 264 238 252 C232 240 238 224 244 214 Z',
-            'M226 278 C238 272 252 272 264 278 C276 284 286 296 284 308 C282 322 270 330 256 330 C242 330 228 322 220 312 C214 302 214 286 226 278 Z'
-          ];
-          const pathGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-          fallbackPaths.forEach((d) => {
-            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path.setAttribute('class', 'continent');
-            path.setAttribute('d', d);
-            pathGroup.appendChild(path);
-          });
-          geoDotGroup?.appendChild(pathGroup);
-        });
+      globeContainer.addEventListener('focusin', setActive);
+      globeContainer.addEventListener('focusout', clearActive);
 
       markers.forEach((marker) => {
         marker.addEventListener('mouseenter', () => {
-          globeTooltip.querySelector('strong').textContent = marker.dataset.label || 'Market';
-          globeTooltip.querySelector('span').textContent = marker.dataset.product || 'Export route';
-          globeTooltip.classList.add('is-visible');
+          showTooltip(marker);
+          setActive();
         });
-        marker.addEventListener('mouseleave', () => globeTooltip.classList.remove('is-visible'));
+        marker.addEventListener('mouseleave', hideTooltip);
+        marker.addEventListener('focus', () => {
+          showTooltip(marker);
+          setActive();
+        });
+        marker.addEventListener('blur', hideTooltip);
+        marker.addEventListener('click', (event) => {
+          event.stopPropagation();
+          showTooltip(marker);
+          setActive();
+        });
+      });
+
+      routePaths.forEach((route) => {
+        route.addEventListener('mouseenter', () => {
+          showTooltip(route);
+          setActive();
+        });
+        route.addEventListener('mouseleave', hideTooltip);
+        route.addEventListener('focus', () => {
+          showTooltip(route);
+          setActive();
+        });
+        route.addEventListener('blur', hideTooltip);
+      });
+
+      let lastFrame = performance.now();
+      function animateCargo(now) {
+        const delta = Math.min(0.03, (now - lastFrame) / 1000 || 0.016);
+        lastFrame = now;
+        const active = globeContainer.classList.contains('is-active');
+        cargoNodes.forEach((cargoNode) => {
+          cargoNode.progress = (cargoNode.progress + delta * cargoNode.speed) % 1;
+          const point = cargoNode.path.getPointAtLength(cargoNode.progress * cargoNode.path.getTotalLength());
+          cargoNode.element.setAttribute('cx', point.x);
+          cargoNode.element.setAttribute('cy', point.y);
+          cargoNode.element.style.opacity = active ? '1' : '0';
+        });
+        requestAnimationFrame(animateCargo);
+      }
+      requestAnimationFrame(animateCargo);
+
+      window.addEventListener('resize', () => {
+        if (tooltip.classList.contains('is-visible')) {
+          const activeTarget = globeContainer.querySelector('.map-marker:hover, .route-line:hover');
+          if (activeTarget) {
+            positionTooltip(activeTarget);
+          }
+        }
       });
     }
 
     if (globeContainer) {
-      if (window.THREE) {
-        try {
-          const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-          renderer.setSize(globeContainer.clientWidth, globeContainer.clientHeight);
-          renderer.outputColorSpace = THREE.SRGBColorSpace;
-          renderer.toneMapping = THREE.ACESFilmicToneMapping;
-          renderer.toneMappingExposure = 1.08;
-          renderer.physicallyCorrectLights = true;
-          renderer.domElement.style.touchAction = 'none';
-          globeContainer.appendChild(renderer.domElement);
-
-          const scene = new THREE.Scene();
-          scene.fog = new THREE.FogExp2(0x050505, 0.03);
-
-          const camera = new THREE.PerspectiveCamera(32, globeContainer.clientWidth / globeContainer.clientHeight, 0.1, 100);
-          camera.position.set(0, 0, 3.2);
-
-          const globeGroup = new THREE.Group();
-          globeGroup.rotation.set(0.24, 0, 0);
-          scene.add(globeGroup);
-
-          const ambientLight = new THREE.AmbientLight(0x9fa9bb, 0.72);
-          const keyLight = new THREE.DirectionalLight(0xffffff, 1.82);
-          keyLight.position.set(2.6, 1.5, 2.2);
-          const fillLight = new THREE.DirectionalLight(0x8088a0, 0.38);
-          fillLight.position.set(-3.1, -1.45, -1.6);
-          const rimLight = new THREE.PointLight(0xdfe7f8, 0.32);
-          rimLight.position.set(0, 0, 2.7);
-          scene.add(ambientLight, keyLight, fillLight, rimLight);
-
-          const textureLoader = new THREE.TextureLoader();
-          const earthTexture = textureLoader.load('https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg');
-          const bumpTexture = textureLoader.load('https://threejs.org/examples/textures/earthbump1k.jpg');
-          const specTexture = textureLoader.load('https://threejs.org/examples/textures/earthspec1k.jpg');
-          const cloudTexture = textureLoader.load('https://threejs.org/examples/textures/earthcloudmap.jpg');
-
-          [earthTexture, bumpTexture, specTexture, cloudTexture].forEach((texture) => {
-            texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-            texture.minFilter = THREE.LinearMipMapLinearFilter;
-            texture.magFilter = THREE.LinearFilter;
-          });
-
-          earthTexture.colorSpace = THREE.SRGBColorSpace;
-          earthTexture.encoding = THREE.sRGBEncoding;
-
-          const globeGeometry = new THREE.SphereGeometry(1, 360, 360);
-          const globeMaterial = new THREE.MeshPhysicalMaterial({
-            color: 0x121620,
-            map: earthTexture,
-            bumpMap: bumpTexture,
-            bumpScale: 0.018,
-            roughnessMap: specTexture,
-            roughness: 0.96,
-            metalness: 0.02,
-            emissive: 0x05070e,
-            emissiveIntensity: 0.14,
-            clearcoat: 0.42,
-            clearcoatRoughness: 0.2,
-            sheen: 0.14,
-          });
-          const globe = new THREE.Mesh(globeGeometry, globeMaterial);
-          globeGroup.add(globe);
-
-          const atmosphere = new THREE.Mesh(
-            new THREE.SphereGeometry(1.04, 160, 160),
-            new THREE.MeshBasicMaterial({ color: 0xb9c2d3, transparent: true, opacity: 0.16, side: THREE.BackSide })
-          );
-          globeGroup.add(atmosphere);
-
-          const cloudLayer = new THREE.Mesh(
-            new THREE.SphereGeometry(1.012, 180, 180),
-            new THREE.MeshPhongMaterial({ map: cloudTexture, transparent: true, opacity: 0.23, depthWrite: false, side: THREE.DoubleSide })
-          );
-          cloudLayer.rotation.y = 0.35;
-          globeGroup.add(cloudLayer);
-
-          const routeGroup = new THREE.Group();
-          globeGroup.add(routeGroup);
-
-          const markerGroup = new THREE.Group();
-          globeGroup.add(markerGroup);
-
-          const routes = [
-            { from: { lat: 20.5937, lon: 78.9629 }, to: { lat: 25.2048, lon: 55.2708 }, label: 'UAE', product: 'Premium Table Eggs' },
-            { from: { lat: 20.5937, lon: 78.9629 }, to: { lat: 7.8731, lon: 80.7718 }, label: 'Sri Lanka', product: 'Fresh Produce' },
-            { from: { lat: 20.5937, lon: 78.9629 }, to: { lat: 55.3781, lon: -3.4360 }, label: 'United Kingdom', product: 'Premium Perishables' },
-            { from: { lat: 20.5937, lon: 78.9629 }, to: { lat: 51.1657, lon: 10.4515 }, label: 'Germany', product: 'Spices & Coconut Products' },
-            { from: { lat: 20.5937, lon: 78.9629 }, to: { lat: 52.1326, lon: 5.2913 }, label: 'Netherlands', product: 'High-Value Agricultural Cargo' },
-            { from: { lat: 20.5937, lon: 78.9629 }, to: { lat: 1.3521, lon: 103.8198 }, label: 'Singapore', product: 'Kerala Spices' },
-            { from: { lat: 20.5937, lon: 78.9629 }, to: { lat: 56.1304, lon: -106.3468 }, label: 'Canada', product: 'Global Bulk Logistics' },
-          ];
-
-          function latLonToVector3(lat, lon, radius = 1) {
-            const phi = (90 - lat) * (Math.PI / 180);
-            const theta = (lon + 180) * (Math.PI / 180);
-            return new THREE.Vector3(
-              -Math.sin(phi) * Math.cos(theta),
-              Math.cos(phi),
-              Math.sin(phi) * Math.sin(theta)
-            ).multiplyScalar(radius);
-          }
-
-          function createRouteCurve(start, end) {
-            const startVec = latLonToVector3(start.lat, start.lon, 1.01);
-            const endVec = latLonToVector3(end.lat, end.lon, 1.01);
-            const midpoint = startVec.clone().add(endVec).normalize().multiplyScalar(1.09);
-            const control = midpoint.clone().add(new THREE.Vector3(0, 0.18 + (Math.abs(start.lon - end.lon) / 180) * 0.08, 0.02)).normalize().multiplyScalar(1.12);
-            return new THREE.CatmullRomCurve3([startVec, control, endVec]);
-          }
-
-          routes.forEach((route, index) => {
-            const curve = createRouteCurve(route.from, route.to);
-            const pathGeometry = new THREE.TubeGeometry(curve, 128, 0.0032, 16, false);
-            const pathMaterial = new THREE.MeshPhysicalMaterial({
-              color: 0xf1f3f6,
-              metalness: 0.95,
-              roughness: 0.18,
-              emissive: 0x626b78,
-              emissiveIntensity: 0.08,
-              transparent: true,
-              opacity: 0.93,
-              clearcoat: 0.75,
-              clearcoatRoughness: 0.16,
-            });
-            const line = new THREE.Mesh(pathGeometry, pathMaterial);
-            line.userData = { route, curve, index };
-            routeGroup.add(line);
-
-            const glowGeometry = new THREE.TubeGeometry(curve, 128, 0.0085, 12, false);
-            const glowMaterial = new THREE.MeshBasicMaterial({ color: 0xe9eef5, transparent: true, opacity: 0.08 });
-            const glowLine = new THREE.Mesh(glowGeometry, glowMaterial);
-            routeGroup.add(glowLine);
-
-            const trailNodes = [];
-            for (let i = 0; i < 9; i += 1) {
-              const node = new THREE.Mesh(new THREE.SphereGeometry(0.008, 12, 12), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.0 }));
-              routeGroup.add(node);
-              trailNodes.push(node);
-            }
-
-            const cargo = new THREE.Mesh(new THREE.SphereGeometry(0.0115, 16, 16), new THREE.MeshBasicMaterial({ color: 0xfaf9f5 }));
-            routeGroup.add(cargo);
-
-            route.userData = { curve, cargo, trailNodes, progress: 0.15 + index * 0.06, speed: 0.18 + (index % 3) * 0.04 };
-          });
-
-          const markerGeometry = new THREE.SphereGeometry(0.0165, 24, 24);
-          const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xf7f5f0 });
-          const markerHaloMaterial = new THREE.MeshBasicMaterial({ color: 0xf6f3ef, transparent: true, opacity: 0.16, depthWrite: false });
-
-          const markerPositions = [
-            { lat: 20.5937, lon: 78.9629, label: 'India', product: 'Origin • Kerala Exports', origin: true },
-            ...routes.map((route) => ({ lat: route.to.lat, lon: route.to.lon, label: route.label, product: route.product }))
-          ];
-
-          const markerObjects = markerPositions.map((markerData) => {
-            const marker = new THREE.Mesh(markerGeometry, markerMaterial);
-            const halo = new THREE.Mesh(new THREE.SphereGeometry(markerData.origin ? 0.033 : 0.028, 20, 20), markerHaloMaterial);
-            marker.position.copy(latLonToVector3(markerData.lat, markerData.lon, 1.012));
-            halo.position.copy(marker.position);
-            halo.userData = markerData;
-            marker.userData = markerData;
-            markerGroup.add(marker);
-            markerGroup.add(halo);
-            return { marker, halo, data: markerData };
-          });
-
-          const raycaster = new THREE.Raycaster();
-          const pointer = new THREE.Vector2();
-          const tempVector = new THREE.Vector3();
-          let hoveredMarker = null;
-          let isPointerActive = false;
-          let isHovering = false;
-          let dragVelocity = 0;
-          let dragOffset = 0;
-          let pointerLast = null;
-
-          function setTooltipForMarker(markerData) {
-            globeTooltip.querySelector('strong').textContent = markerData.label;
-            globeTooltip.querySelector('span').textContent = markerData.product;
-            globeTooltip.classList.add('is-visible');
-          }
-
-          function hideTooltip() {
-            globeTooltip.classList.remove('is-visible');
-          }
-
-          function updateTooltipPosition(object) {
-            const rect = renderer.domElement.getBoundingClientRect();
-            const worldPosition = object.getWorldPosition(tempVector);
-            worldPosition.project(camera);
-            const x = (worldPosition.x * 0.5 + 0.5) * rect.width;
-            const y = (-worldPosition.y * 0.5 + 0.5) * rect.height;
-            globeTooltip.style.left = `${x}px`;
-            globeTooltip.style.top = `${y}px`;
-          }
-
-          function onPointerMove(event) {
-            const rect = renderer.domElement.getBoundingClientRect();
-            pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-            pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
-            if (isPointerActive && pointerLast) {
-              const deltaX = event.clientX - pointerLast.x;
-              const deltaY = event.clientY - pointerLast.y;
-              dragVelocity = deltaX * 0.0035;
-              dragOffset = THREE.MathUtils.clamp(deltaY * 0.0025, -0.45, 0.45);
-            }
-            pointerLast = { x: event.clientX, y: event.clientY };
-
-            raycaster.setFromCamera(pointer, camera);
-            const intersects = raycaster.intersectObjects(markerObjects.map((entry) => entry.marker), false);
-            if (intersects.length > 0) {
-              const hit = intersects[0].object;
-              if (hoveredMarker !== hit) {
-                hoveredMarker = hit;
-                setTooltipForMarker(hit.userData);
-              }
-              updateTooltipPosition(hit);
-            } else if (hoveredMarker) {
-              hoveredMarker = null;
-              hideTooltip();
-            }
-          }
-
-          renderer.domElement.addEventListener('pointerenter', () => {
-            isHovering = true;
-          });
-          renderer.domElement.addEventListener('pointerleave', () => {
-            isHovering = false;
-            isPointerActive = false;
-            pointerLast = null;
-            hideTooltip();
-          });
-          renderer.domElement.addEventListener('pointerdown', (event) => {
-            isPointerActive = true;
-            pointerLast = { x: event.clientX, y: event.clientY };
-            renderer.domElement.setPointerCapture(event.pointerId);
-          });
-          renderer.domElement.addEventListener('pointermove', onPointerMove);
-          renderer.domElement.addEventListener('pointerup', () => {
-            isPointerActive = false;
-            pointerLast = null;
-          });
-
-          const clock = new THREE.Clock();
-          const baseSpin = (Math.PI * 2) / 80;
-          const rotationState = { x: 0.24, y: 0 };
-          function animate() {
-            const elapsed = clock.getElapsedTime();
-            const delta = clock.getDelta();
-            const shouldPause = isPointerActive || isHovering;
-
-            if (shouldPause) {
-              rotationState.x = THREE.MathUtils.lerp(rotationState.x, 0.24 + dragOffset * 0.25, 0.1);
-              rotationState.y += dragVelocity * 0.35;
-              dragVelocity *= 0.86;
-            } else {
-              rotationState.y += delta * baseSpin;
-              rotationState.x = THREE.MathUtils.lerp(rotationState.x, 0.24, 0.03);
-              dragVelocity *= 0.9;
-            }
-
-            globeGroup.rotation.x = rotationState.x;
-            globeGroup.rotation.y = rotationState.y;
-            globeGroup.rotation.z = 0;
-            atmosphere.rotation.y = elapsed * 0.01;
-            cloudLayer.rotation.y = elapsed * 0.007 + 0.35;
-            cloudLayer.rotation.x = Math.sin(elapsed * 0.12) * 0.01;
-
-            routes.forEach((route) => {
-              const { curve, cargo, trailNodes } = route.userData;
-              route.userData.progress = (route.userData.progress + delta * route.userData.speed) % 1;
-              const t = route.userData.progress;
-              const point = curve.getPointAt(t);
-              cargo.position.copy(point);
-              cargo.scale.setScalar(1 + Math.sin(elapsed * 5 + t * 8) * 0.08);
-              trailNodes.forEach((node, index) => {
-                const trailT = (t - (index + 1) * 0.045 + 1) % 1;
-                const trailPoint = curve.getPointAt(trailT);
-                node.position.copy(trailPoint);
-                const alpha = Math.max(0.04, 0.3 - index * 0.028);
-                node.material.opacity = alpha;
-                node.scale.setScalar(0.7 + (1 - index / trailNodes.length) * 0.45);
-              });
-            });
-
-            markerObjects.forEach(({ marker, halo }, index) => {
-              const pulse = 1 + Math.sin(elapsed * 2.6 + index * 0.5) * 0.04;
-              if (marker.userData?.origin) {
-                marker.scale.setScalar(1.2 + pulse * 0.08);
-                halo.scale.setScalar(1.6 + pulse * 0.08);
-                halo.material.opacity = 0.18 + Math.sin(elapsed * 2.2) * 0.05;
-              } else {
-                marker.scale.setScalar(1 + pulse * 0.06);
-                halo.scale.setScalar(1.2 + pulse * 0.06);
-                halo.material.opacity = 0.12 + Math.sin(elapsed * 1.7 + index * 0.2) * 0.04;
-              }
-            });
-
-            renderer.render(scene, camera);
-            requestAnimationFrame(animate);
-          }
-
-          function resizeGlobe() {
-            const width = globeContainer.clientWidth;
-            const height = globeContainer.clientHeight;
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-            renderer.setSize(width, height);
-          }
-
-          window.addEventListener('resize', resizeGlobe);
-          resizeGlobe();
-          animate();
-        } catch (error) {
-          renderFallbackGlobe();
-        }
-      } else {
-        renderFallbackGlobe();
-      }
+      renderMapNetwork();
     }
   </script>
 </body>

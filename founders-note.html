@@ -88,6 +88,11 @@
     }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-size: clamp(0.95rem, 0.92rem + 0.2vw, 1rem); line-height: 1.65; }
+    main { overflow-x: clip; }
+    section[id] { scroll-margin-top: 6rem; }
+    button, a, summary, input, textarea { touch-action: manipulation; }
     .galaxy-layer {
       position: fixed;
       inset: 0;
@@ -98,8 +103,8 @@
       opacity: 1;
     }
     .page-shell { position: relative; z-index: 2; }
-    .topbar { position: sticky; top: 0; z-index: 50; padding: 1rem 1.25rem 0; }
-    .nav { max-width: 1180px; margin: 0 auto; padding: 1rem 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-radius: 999px; border: 1px solid var(--border); background: rgba(10,10,10,0.78); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); box-shadow: 0 12px 30px rgba(0,0,0,0.24); }
+    .topbar { position: sticky; top: 0; z-index: 50; padding: clamp(0.8rem, 2vw, 1.25rem) clamp(0.8rem, 3vw, 1.25rem) 0; }
+    .nav { max-width: min(1180px, calc(100% - clamp(1rem, 3vw, 2rem))); margin: 0 auto; padding: 1rem 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-radius: 999px; border: 1px solid var(--border); background: rgba(10,10,10,0.78); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); box-shadow: 0 12px 30px rgba(0,0,0,0.24); }
     .brand { display: flex; align-items: center; gap: 0.75rem; }
     .brand img { height: 2rem; width: auto; }
     .brand strong { display: block; font-size: 0.85rem; letter-spacing: 0.28em; text-transform: uppercase; }
@@ -108,16 +113,16 @@
     .nav-links a { padding: 0.3rem 0; position: relative; }
     .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -0.2rem; width: 0; height: 1px; background: linear-gradient(90deg, var(--metal-3), var(--metal-1)); transition: width 0.3s ease; }
     .nav-links a:hover::after { width: 100%; }
-    .hero { max-width: 1180px; margin: 0 auto; padding: 4.8rem 1.25rem 2.5rem; }
-    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 2rem; align-items: center; }
+    .hero { width: min(100%, 1180px); margin-inline: auto; padding: clamp(3.3rem, 6vw, 4.8rem) clamp(1rem, 3.2vw, 1.25rem) clamp(2rem, 4vw, 2.5rem); }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(1.2rem, 3vw, 2rem); align-items: center; }
     .eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border); border-radius: 999px; padding: 0.45rem 0.8rem; font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-soft); }
     .eyebrow::before { content: ''; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: linear-gradient(135deg, var(--metal-4), var(--metal-2)); box-shadow: 0 0 12px rgba(236,236,236,0.2); }
     h1, h2, h3 { font-family: Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     .hero h1 { font-size: clamp(2.5rem, 4vw, 3.8rem); line-height: 0.98; letter-spacing: -0.03em; margin-top: 1rem; max-width: 10ch; }
     .hero p { margin-top: 1rem; color: var(--text-soft); font-size: 1.02rem; line-height: 1.8; max-width: 62ch; }
-    .hero-card { border: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.014)); box-shadow: 0 28px 90px rgba(0,0,0,0.24); border-radius: 1.7rem; padding: 1.1rem; }
+    .hero-card { border: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.014)); box-shadow: 0 28px 90px rgba(0,0,0,0.24); border-radius: 1.7rem; padding: 1.1rem; max-width: 680px; margin-inline: auto; }
     .hero-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 1.2rem; }
-    .content { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem 3rem; }
+    .content { width: min(100%, 1180px); margin-inline: auto; padding: 0 clamp(1rem, 3.2vw, 1.25rem) 3rem; }
     .panel { border: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.014)); border-radius: 1.5rem; padding: 1.25rem; box-shadow: 0 16px 40px rgba(0,0,0,0.18); }
     .section-title { margin-bottom: 1rem; }
     .section-title h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); margin-bottom: 0.4rem; }
@@ -129,10 +134,10 @@
     .article-grid { display: grid; gap: 1rem; }
     .founders-section { margin-top: 1rem; }
     .founders-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-    .founder-card { display: grid; grid-template-columns: 180px 1fr; gap: 1rem; align-items: start; }
+    .founder-card { display: grid; grid-template-columns: minmax(180px, 220px) minmax(0, 1fr); gap: 1rem; align-items: start; }
     .founder-portrait-shell { border: 1px solid var(--border); border-radius: 1.2rem; padding: 0.45rem; background: rgba(255,255,255,0.03); }
     .founder-portrait { border-radius: 1rem; overflow: hidden; aspect-ratio: 1 / 1; }
-    .founder-portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .founder-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
     .founder-name-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.7rem; }
     .founder-name-row h3 { font-size: 1.15rem; }
     .founder-role { margin-top: 0.25rem; color: var(--text-soft); font-size: 0.9rem; }
@@ -156,7 +161,7 @@
     .list { display: grid; gap: 0.8rem; margin-top: 0.9rem; }
     .list li { list-style: none; padding-left: 1rem; position: relative; color: var(--text-soft); }
     .list li::before { content: '•'; position: absolute; left: 0; color: var(--metal-4); }
-    footer { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem 2rem; color: var(--text-soft); font-size: 0.92rem; }
+    footer { width: min(100%, 1180px); margin-inline: auto; padding: 0 clamp(1rem, 3.2vw, 1.25rem) 2rem; color: var(--text-soft); font-size: 0.92rem; }
     .reveal { opacity: 0; transform: translateY(22px); filter: blur(6px); }
     .reveal.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); transition: opacity 0.8s cubic-bezier(.22,.61,.36,1), transform 0.8s cubic-bezier(.22,.61,.36,1), filter 0.8s cubic-bezier(.22,.61,.36,1); }
     #loader { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: linear-gradient(135deg, rgba(2,2,2,0.96), rgba(5,5,5,0.92)); transition: opacity 0.75s ease, visibility 0.75s ease; overflow: hidden; }
@@ -167,13 +172,54 @@
     .loader-card { position: relative; z-index: 2; width: min(92vw, 360px); padding: 1.4rem; border-radius: 1.6rem; border: 1px solid var(--border); background: rgba(255,255,255,0.04); box-shadow: 0 20px 70px rgba(0,0,0,0.36); text-align: center; overflow: hidden; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
     .loader-card img { height: 3.2rem; width: auto; margin: 0 auto 0.9rem; }
     .loader-card span { font-size: 0.74rem; letter-spacing: 0.27em; text-transform: uppercase; color: var(--text-soft); }
-    .wa-btn { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 140; width: 3.35rem; height: 3.35rem; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgba(255,255,255,0.14); background: #25D366; box-shadow: 0 18px 40px rgba(0,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.16); color: #FFFFFF; transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease; }
+    .wa-btn { position: fixed; right: clamp(0.85rem, 2vw, 1.25rem); bottom: clamp(0.85rem, 2vw, 1.25rem); z-index: 140; width: 3.5rem; height: 3.5rem; min-width: 44px; min-height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgba(255,255,255,0.14); background: #25D366; box-shadow: 0 18px 40px rgba(0,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.16); color: #FFFFFF; transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease; }
     .wa-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 24px 48px rgba(0,0,0,0.32); background: #1EBE5D; }
     .wa-btn svg { width: 1.35rem; height: 1.35rem; color: #FFFFFF; }
     @keyframes drift { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(2%, -1.5%, 0); } }
     @keyframes sweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
     @keyframes twinkle { 0%,100% { opacity: 0.28; transform: translateY(0); } 50% { opacity: 0.42; transform: translateY(-6px); } }
-    @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .founders-grid { grid-template-columns: 1fr; } .founder-card { grid-template-columns: 1fr; } }
+    .menu-toggle { display: none; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text); padding: 0.7rem 0.8rem; border-radius: 999px; min-height: 44px; min-width: 44px; }
+    .mobile-nav { display: none; position: fixed; inset: 0 0 0 auto; z-index: 120; width: min(86vw, 320px); padding: 1.2rem; background: rgba(6,6,6,0.96); border-left: 1px solid rgba(255,255,255,0.12); transform: translateX(100%); transition: transform 0.35s cubic-bezier(.22,.61,.36,1); }
+    .mobile-nav.open { transform: translateX(0); }
+    .mobile-nav a { display: block; padding: 0.8rem 0; color: var(--text-soft); font-size: 0.8rem; letter-spacing: 0.26em; text-transform: uppercase; }
+    .mobile-nav .close { margin-bottom: 1rem; }
+    @media (max-width: 920px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .mobile-nav { display: block; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .founders-grid { grid-template-columns: 1fr; }
+      .founder-card { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 720px) {
+      .topbar { padding: 0.7rem 0.7rem 0; }
+      .nav { padding: 0.8rem 0.95rem; border-radius: 1.2rem; }
+      .hero { padding-top: 3.1rem; }
+      .hero h1 { max-width: 100%; }
+      .hero-card { padding: 0.8rem; }
+      .founder-name-row { flex-direction: column; align-items: flex-start; }
+      .founder-message { flex-direction: column; gap: 0.4rem; }
+      .wa-btn { width: 3.35rem; height: 3.35rem; }
+    }
+    @media (max-width: 480px) {
+      .nav { gap: 0.65rem; padding: 0.75rem 0.8rem; }
+      .brand strong { font-size: 0.76rem; }
+      .brand span { font-size: 0.64rem; }
+      .brand img { height: 1.8rem; }
+      .hero { padding-inline: 0.8rem; }
+      .hero h1 { font-size: clamp(2.2rem, 7.5vw, 2.85rem); }
+      .hero p { font-size: 0.96rem; }
+      .panel, .founder-card, .vision-card { border-radius: 1rem; padding: 1rem; }
+      .founder-portrait-shell { padding: 0.4rem; }
+      .founder-message p { font-size: 0.95rem; }
+      .mobile-nav { width: min(92vw, 320px); padding: 1rem; }
+    }
+    @media (min-width: 1441px) {
+      .hero, .content, footer { max-width: 1300px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
   </style>
 </head>
 <body>
@@ -185,6 +231,14 @@
       <img src="LOGO.png" alt="Oryon Zenith logo" />
       <span>Oryon Zenith Pvt Ltd</span>
     </div>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="close menu-toggle" type="button" aria-label="Close navigation">✕</button>
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="founders-note.html">Founder’s Note</a>
   </div>
 
   <div class="page-shell">
@@ -202,8 +256,64 @@
           <a href="index.html#services">Services</a>
           <a href="index.html#contact">Contact</a>
         </div>
+        <button class="menu-toggle" type="button" aria-label="Open navigation" id="menu-toggle">☰</button>
       </nav>
     </header>
+
+    <section class="founders-section reveal" style="max-width: min(1180px, calc(100% - clamp(1rem, 3vw, 2rem))); margin: 1.25rem auto 0; padding: 0 clamp(1rem, 3.2vw, 1.25rem) 0;">
+      <div class="section-title">
+        <h2>Message from Our Founders</h2>
+        <p>Our founders lead with calm authority, international perspective, and a deep respect for the precision required in premium global trade.</p>
+      </div>
+      <div class="founders-grid">
+        <article class="panel founder-card">
+          <div class="founder-portrait-shell">
+            <div class="founder-portrait">
+              <img src="ChatGPT Image Jul 7, 2026, 02_09_24 AM.png" alt="Portrait of the Executive Chairman of Oryon Zenith" loading="lazy" />
+            </div>
+          </div>
+          <div>
+            <div class="founder-name-row">
+              <div>
+                <h3>Arjun A S</h3>
+                <p class="founder-role">Managing Director</p>
+              </div>
+              <div class="signature-mark">AS</div>
+            </div>
+            <div class="founder-divider"></div>
+            <div class="founder-message">
+              <span class="quote-mark">“</span>
+              <p>I founded Oryon Zenith in 2026 at the age of twenty-three with a simple vision: to build a trusted export company connecting India's finest agricultural products with global markets.
+
+Inspired by Orion—the constellation that guided navigators—our foundation is built on transparency, quality, and lasting partnerships. Oryon Zenith is the first step toward a larger vision of building businesses rooted in trust and excellence.</p>
+            </div>
+          </div>
+        </article>
+        <article class="panel founder-card">
+          <div class="founder-portrait-shell">
+            <div class="founder-portrait">
+              <img src="ChatGPT Image Jul 2, 2026, 01_31_35 AM.png" alt="Portrait of the Chief Strategy Officer of Oryon Zenith" loading="lazy" />
+            </div>
+          </div>
+          <div>
+            <div class="founder-name-row">
+              <div>
+                <h3>Parvana Nair</h3>
+                <p class="founder-role">Director</p>
+              </div>
+              <div class="signature-mark">PN</div>
+            </div>
+            <div class="founder-divider"></div>
+            <div class="founder-message">
+              <span class="quote-mark">“</span>
+              <p>As Director of Oryon Zenith, my focus is ensuring we deliver exactly what we promise. From supplier relationships and documentation to operational compliance, I believe trust in global trade is built through consistency, transparency, and attention to detail.
+
+Oryon Zenith was created to bring Kerala's finest agricultural products to the world through reliable and professional exports. As we begin this journey, I remain committed to building lasting partnerships based on integrity and excellence.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
 
     <section class="hero">
       <div class="hero-grid">
@@ -220,61 +330,6 @@
 
     <section class="content">
       <div class="article-grid">
-        <section class="founders-section reveal">
-          <div class="section-title">
-            <h2>Message from Our Founders</h2>
-            <p>Our founders lead with calm authority, international perspective, and a deep respect for the precision required in premium global trade.</p>
-          </div>
-          <div class="founders-grid">
-            <article class="panel founder-card">
-              <div class="founder-portrait-shell">
-                <div class="founder-portrait">
-                  <img src="ChatGPT Image Jul 7, 2026, 02_09_24 AM.png" alt="Portrait of the Executive Chairman of Oryon Zenith" loading="lazy" />
-                </div>
-              </div>
-              <div>
-                <div class="founder-name-row">
-                  <div>
-                    <h3>Arjun A S</h3>
-                    <p class="founder-role">Managing Director</p>
-                  </div>
-                  <div class="signature-mark">AS</div>
-                </div>
-                <div class="founder-divider"></div>
-                <div class="founder-message">
-                  <span class="quote-mark">“</span>
-                  <p>I founded Oryon Zenith in 2026 at the age of twenty-three with a simple vision: to build a trusted export company connecting India's finest agricultural products with global markets.
-
-Inspired by Orion—the constellation that guided navigators—our foundation is built on transparency, quality, and lasting partnerships. Oryon Zenith is the first step toward a larger vision of building businesses rooted in trust and excellence.</p>
-                </div>
-              </div>
-            </article>
-            <article class="panel founder-card">
-              <div class="founder-portrait-shell">
-                <div class="founder-portrait">
-                  <img src="ChatGPT Image Jul 2, 2026, 01_31_35 AM.png" alt="Portrait of the Chief Strategy Officer of Oryon Zenith" loading="lazy" />
-                </div>
-              </div>
-              <div>
-                <div class="founder-name-row">
-                  <div>
-                    <h3>Parvana Nair</h3>
-                    <p class="founder-role">Director</p>
-                  </div>
-                  <div class="signature-mark">PN</div>
-                </div>
-                <div class="founder-divider"></div>
-                <div class="founder-message">
-                  <span class="quote-mark">“</span>
-                  <p>As Director of Oryon Zenith, my focus is ensuring we deliver exactly what we promise. From supplier relationships and documentation to operational compliance, I believe trust in global trade is built through consistency, transparency, and attention to detail.
-
-Oryon Zenith was created to bring Kerala's finest agricultural products to the world through reliable and professional exports. As we begin this journey, I remain committed to building lasting partnerships based on integrity and excellence.</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
         <article class="panel reveal">
           <div class="section-title">
             <h2>Our foundation</h2>
@@ -310,61 +365,6 @@ Oryon Zenith was created to bring Kerala's finest agricultural products to the w
           <p>Our long-term vision is to grow Oryon Zenith into a trusted global export company recognized for quality, compliance, and international discipline. We aim to strengthen every relationship through integrity, operational consistency, and a clear commitment to premium standards.</p>
         </article>
 
-      </div>
-    </section>
-         <!---- <div class="section-title">
-            <h2>Message from Our Founders</h2>
-            <p>Our founders lead with calm authority, international perspective, and a deep respect for the precision required in premium global trade.</p>
-          </div>
-          <div class="founders-grid">
-            <article class="panel founder-card">
-              <div class="founder-portrait-shell">
-                <div class="founder-portrait">
-                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Portrait of the Executive Chairman of Oryon Zenith" loading="lazy" />
-                </div>
-              </div>
-              <div>
-                <div class="founder-name-row">
-                  <div>
-                    <h3>Arjun A S</h3>
-                    <p class="founder-role">Managing Director</p>
-                  </div>
-                  <div class="signature-mark">AS</div>
-                </div>
-                <div class="founder-divider"></div>
-                <div class="founder-message">
-                  <span class="quote-mark">“</span>
-                  <p>I founded Oryon Zenith in 2026 at the age of twenty-three with a simple vision: to build a trusted export company connecting India's finest agricultural products with global markets.
-
-Inspired by Orion—the constellation that guided navigators—our foundation is built on transparency, quality, and lasting partnerships. Oryon Zenith is the first step toward a larger vision of building businesses rooted in trust and excellence.</p>
-                </div>
-              </div>
-            </article>
-            <article class="panel founder-card">
-              <div class="founder-portrait-shell">
-                <div class="founder-portrait">
-                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80" alt="Portrait of the Chief Strategy Officer of Oryon Zenith" loading="lazy" />
-                </div>
-              </div>
-              <div>
-                <div class="founder-name-row">
-                  <div>
-                    <h3>Parvana Nair</h3>
-                    <p class="founder-role">Director</p>
-                  </div>
-                  <div class="signature-mark">PN</div>
-                </div>
-                <div class="founder-divider"></div>
-                <div class="founder-message">
-                  <span class="quote-mark">“</span>
-                  <p>As Director of Oryon Zenith, my focus is ensuring we deliver exactly what we promise. From supplier relationships and documentation to operational compliance, I believe trust in global trade is built through consistency, transparency, and attention to detail.
-
-Oryon Zenith was created to bring Kerala's finest agricultural products to the world through reliable and professional exports. As we begin this journey, I remain committed to building lasting partnerships based on integrity and excellence.</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
       </div>
     </section>
   </div>
@@ -516,8 +516,24 @@ Oryon Zenith was created to bring Kerala's finest agricultural products to the w
     initGalaxyCanvas(document.getElementById('loader-canvas'), { starCount: 140, isLoader: true });
 
     const loader = document.getElementById('loader');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
     window.addEventListener('load', () => {
       setTimeout(() => loader.classList.add('hidden'), 900);
+    });
+
+    menuToggle?.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mobile-nav a').forEach((link) => {
+      link.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 920) {
+        mobileNav.classList.remove('open');
+      }
     });
 
     const lenis = new Lenis({ duration: 1.05, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
