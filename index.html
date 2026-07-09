@@ -95,18 +95,50 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Which products does Oryon Zenith export?",
+        "name": "What does Oryon Zenith export?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Oryon Zenith exports eggs, spices, coconut products, fresh produce, and selected agricultural commodities across premium international markets."
+          "text": "Oryon Zenith exports premium eggs, spices, coconut products, fresh produce, and selected agricultural commodities for international trade."
         }
       },
       {
         "@type": "Question",
-        "name": "Where is Oryon Zenith based?",
+        "name": "Which countries does Oryon Zenith serve?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The company is based in Thiruvananthapuram, Kerala, India, and serves global buyers in the UAE, Sri Lanka, the UK, Germany, the Netherlands, Singapore, and Canada."
+          "text": "Oryon Zenith serves buyers across the UAE, Sri Lanka, the UK, Germany, the Netherlands, Singapore, and Canada, with a strong focus on reliable, premium export execution."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Oryon Zenith handle export documentation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Oryon Zenith manages documentation, quality oversight, and export coordination with a disciplined, compliance-focused approach."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can international buyers contact Oryon Zenith?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "International buyers can contact Oryon Zenith through the website inquiry form, email, or WhatsApp for prompt commercial discussions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Oryon Zenith support bulk export orders?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Oryon Zenith supports structured export programs and bulk trade requirements with sourcing discipline and shipment coordination."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What makes Oryon Zenith reliable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oryon Zenith is reliable because of its disciplined operations, quality standards, transparent communication, and long-term focus on trust and compliance."
         }
       }
     ]
@@ -136,10 +168,11 @@
     html { scroll-behavior: auto; }
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, rgba(236,236,236,0.06), transparent 28%), linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 48%, var(--bg-3) 100%);
+      background: #020202;
       color: var(--text);
       overflow-x: hidden;
       min-height: 100vh;
+      position: relative;
     }
     body::before, body::after {
       content: "";
@@ -149,19 +182,34 @@
       z-index: 0;
     }
     body::before {
-      background: radial-gradient(circle at 20% 20%, rgba(236,236,236,0.08), transparent 20%);
-      filter: blur(20px);
-      opacity: 0.65;
-      animation: drift 16s ease-in-out infinite alternate;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(236,236,236,0.10), transparent 15%),
+        radial-gradient(circle at 78% 24%, rgba(236,236,236,0.06), transparent 18%),
+        radial-gradient(circle at 46% 82%, rgba(236,236,236,0.05), transparent 16%),
+        linear-gradient(120deg, rgba(255,255,255,0.03), transparent 45%, rgba(255,255,255,0.02));
+      filter: blur(24px);
+      opacity: 0.85;
+      animation: drift 18s ease-in-out infinite alternate;
     }
     body::after {
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
-      transform: translateX(-100%);
-      animation: sweep 12s linear infinite;
+      background:
+        radial-gradient(circle, rgba(255,255,255,0.18) 0 1px, transparent 1px) 0 0 / 220px 220px,
+        radial-gradient(circle, rgba(255,255,255,0.12) 0 1px, transparent 1px) 40px 80px / 280px 280px;
+      opacity: 0.34;
+      animation: twinkle 7s linear infinite;
     }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
-    .page-shell { position: relative; z-index: 1; }
+    .galaxy-layer {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 1;
+    }
+    .page-shell { position: relative; z-index: 2; }
     .topbar {
       position: sticky;
       top: 0;
@@ -229,7 +277,7 @@
     .services { padding: 2.2rem 0 2.6rem; }
     .services-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
     .service-card { padding: 1.15rem; display: flex; flex-direction: column; gap: 0.9rem; min-height: 100%; transition: transform 0.35s cubic-bezier(.22,.61,.36,1), border-color 0.35s ease, box-shadow 0.35s ease; will-change: transform; }
-    .service-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.2); box-shadow: 0 16px 50px rgba(0,0,0,0.26); }
+    .service-card:hover { transform: translateY(-4px) scale(1.008); border-color: rgba(255,255,255,0.2); box-shadow: 0 20px 56px rgba(0,0,0,0.28); }
     .service-card img { width: 100%; height: 220px; object-fit: cover; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.08); }
     .service-card h3 { font-size: 1.15rem; }
     .service-card p { color: var(--text-soft); font-size: 0.95rem; line-height: 1.7; }
@@ -261,9 +309,32 @@
     .founders-section { padding: 2.6rem 0 2.2rem; }
     .founders-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; }
     .founder-card { position: relative; overflow: hidden; padding: 1.15rem; min-height: 100%; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 1px solid var(--border); border-radius: 1.6rem; box-shadow: 0 24px 70px rgba(0,0,0,0.22); transition: transform 0.35s cubic-bezier(.22,.61,.36,1), box-shadow 0.35s cubic-bezier(.22,.61,.36,1), border-color 0.35s ease; will-change: transform; }
-    .founder-card:hover { transform: translateY(-4px); box-shadow: 0 30px 90px rgba(0,0,0,0.28); border-color: rgba(255,255,255,0.2); }
+    .founder-card:hover { transform: translateY(-4px) scale(1.008); box-shadow: 0 30px 90px rgba(0,0,0,0.28); border-color: rgba(255,255,255,0.2); }
     .founder-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.12) 45%, transparent 70%); transform: translateX(-150%); transition: transform 0.7s cubic-bezier(.22,.61,.36,1); pointer-events: none; }
     .founder-card:hover::before { transform: translateX(150%); }
+    .panel, .service-card, .timeline-item, .stat-card, .founder-card, .contact-card, .faq-item, .license-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(.22,.61,.36,1), border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+      will-change: transform;
+    }
+    .panel::before, .service-card::before, .timeline-item::before, .stat-card::before, .founder-card::before, .contact-card::before, .faq-item::before, .license-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.14) 45%, transparent 70%);
+      transform: translateX(-150%);
+      transition: transform 0.7s cubic-bezier(.22,.61,.36,1);
+      pointer-events: none;
+    }
+    .panel:hover, .service-card:hover, .timeline-item:hover, .stat-card:hover, .founder-card:hover, .contact-card:hover, .faq-item:hover, .license-card:hover {
+      transform: translateY(-4px) scale(1.008);
+      border-color: rgba(255,255,255,0.2);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.28);
+    }
+    .panel:hover::before, .service-card:hover::before, .timeline-item:hover::before, .stat-card:hover::before, .founder-card:hover::before, .contact-card:hover::before, .faq-item:hover::before, .license-card:hover::before {
+      transform: translateX(150%);
+    }
     .founder-portrait-shell { position: relative; padding: 0.6rem; border-radius: 1.2rem; border: 1px solid rgba(255,255,255,0.1); background: linear-gradient(145deg, rgba(236,236,236,0.08), rgba(255,255,255,0.02)); overflow: hidden; }
     .founder-portrait { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 1rem; background: #111; }
     .founder-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.5s cubic-bezier(.22,.61,.36,1) scale(1.01); }
@@ -301,9 +372,24 @@
     footer .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
     .reveal { opacity: 0; transform: translateY(22px) scale(0.985); filter: blur(6px); }
     .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); transition: opacity 0.8s cubic-bezier(.22,.61,.36,1), transform 0.8s cubic-bezier(.22,.61,.36,1), filter 0.8s cubic-bezier(.22,.61,.36,1); }
-    #loader { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: radial-gradient(circle at 20% 20%, rgba(236,236,236,0.08), transparent 24%), linear-gradient(135deg, var(--bg-1), var(--bg-2)); transition: opacity 0.75s ease, visibility 0.75s ease; }
+    #loader { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: linear-gradient(135deg, rgba(2,2,2,0.96), rgba(5,5,5,0.92)); transition: opacity 0.75s ease, visibility 0.75s ease; overflow: hidden; }
+    #loader::before, #loader::after { content: ''; position: absolute; inset: 0; pointer-events: none; }
+    #loader::before {
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255,255,255,0.16) 0 1px, transparent 1px) 0 0 / 180px 180px,
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.10) 0 1px, transparent 1px) 30px 60px / 220px 220px,
+        radial-gradient(circle at 72% 72%, rgba(255,255,255,0.08) 0 1px, transparent 1px) 70px 90px / 260px 260px;
+      opacity: 0.65;
+      animation: twinkle 8s linear infinite;
+    }
+    #loader::after {
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.04) 45%, transparent 100%);
+      transform: translateX(-120%);
+      animation: sweep 1.2s ease-out forwards;
+      opacity: 0.65;
+    }
     #loader.hidden { opacity: 0; visibility: hidden; }
-    .loader-card { position: relative; width: min(92vw, 360px); padding: 1.4rem; border-radius: 1.6rem; border: 1px solid var(--border); background: rgba(255,255,255,0.04); box-shadow: 0 20px 70px rgba(0,0,0,0.36); text-align: center; overflow: hidden; }
+    .loader-card { position: relative; z-index: 2; width: min(92vw, 360px); padding: 1.4rem; border-radius: 1.6rem; border: 1px solid var(--border); background: rgba(255,255,255,0.04); box-shadow: 0 20px 70px rgba(0,0,0,0.36); text-align: center; overflow: hidden; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
     .loader-card::before { content: ''; position: absolute; top: 0; left: -18%; width: 38%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent); transform: skewX(-24deg); animation: shine 0.9s ease forwards; }
     .loader-card img { height: 3.2rem; width: auto; margin: 0 auto 0.9rem; }
     .loader-card span { font-size: 0.74rem; letter-spacing: 0.27em; text-transform: uppercase; color: var(--text-soft); }
@@ -312,8 +398,51 @@
     .mobile-nav a { display: block; padding: 0.8rem 0; color: var(--text-soft); font-size: 0.8rem; letter-spacing: 0.26em; text-transform: uppercase; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
     .mobile-nav .close { margin-bottom: 1rem; }
+    .wa-btn {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 140;
+      width: 3.35rem;
+      height: 3.35rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: #25D366;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.16);
+      color: #FFFFFF;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+    .wa-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.32);
+      background: #1EBE5D;
+    }
+    .wa-btn:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 4px; }
+    .wa-btn svg { width: 1.35rem; height: 1.35rem; color: #FFFFFF; }
+    .faq-section { padding: 1rem 0 2.2rem; }
+    .faq-list { display: grid; gap: 0.8rem; }
+    .faq-item { border: 1px solid var(--border); border-radius: 1.15rem; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)); padding: 1rem 1.2rem; }
+    .faq-item summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; font-weight: 600; color: var(--metal-4); }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item .faq-plus { font-size: 1.1rem; color: var(--metal-3); transition: transform 0.25s ease; }
+    .faq-item[open] .faq-plus { transform: rotate(45deg); }
+    .faq-item p { margin-top: 0.8rem; color: var(--text-soft); line-height: 1.8; font-size: 0.95rem; }
+    .marquee-section { padding: 0 0 2.4rem; }
+    .marquee-shell { border: 1px solid var(--border); border-radius: 1.35rem; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)); padding: 1rem 0; overflow: hidden; position: relative; }
+    .marquee-shell::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,5,5,0.9) 0%, transparent 12%, transparent 88%, rgba(5,5,5,0.9) 100%); pointer-events: none; z-index: 1; }
+    .marquee-title { padding: 0 1.2rem 0.8rem; font-size: 0.8rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--metal-3); }
+    .marquee-track { display: flex; gap: 0.8rem; width: max-content; animation: marquee 22s linear infinite; padding: 0 0.4rem; }
+    .marquee-track:hover { animation-play-state: paused; }
+    .license-card { min-width: 220px; padding: 0.95rem 1rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); }
+    .license-card strong { display: block; font-size: 0.9rem; color: var(--metal-4); margin-bottom: 0.35rem; }
+    .license-card span { color: var(--text-soft); font-size: 0.83rem; line-height: 1.6; }
+    .license-card small { display: block; margin-top: 0.45rem; color: var(--metal-2); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.7rem; }
     @keyframes drift { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(2%, -1.5%, 0); } }
     @keyframes sweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+    @keyframes twinkle { 0%,100% { opacity: 0.28; transform: translateY(0); } 50% { opacity: 0.42; transform: translateY(-6px); } }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes dash { to { stroke-dashoffset: -80; } }
     @keyframes shine { 0% { left: -26%; opacity: 0; } 100% { left: 126%; opacity: 1; } }
     @keyframes bob { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
@@ -342,7 +471,10 @@
   </style>
 </head>
 <body>
+  <canvas class="galaxy-layer" id="galaxy-canvas" aria-hidden="true"></canvas>
+
   <div id="loader">
+    <canvas class="galaxy-layer" id="loader-canvas" aria-hidden="true"></canvas>
     <div class="loader-card">
       <img src="LOGO.png" alt="Oryon Zenith logo" />
       <span>Oryon Zenith Pvt Ltd</span>
@@ -489,6 +621,30 @@
             <p>Consistent access to fruits, vegetables, and staples supported by sourcing discipline and export planning.</p>
           </article>
           <article class="panel service-card reveal">
+            <img src="global cargo.png" alt="Vehicles and logistics support for premium export operations" />
+            <span>Vehicles</span>
+            <h3>Premium transport support</h3>
+            <p>Specialized vehicle and logistics support for cross-border movement, inland handling, and operational readiness.</p>
+          </article>
+          <article class="panel service-card reveal">
+            <img src="warehouse.png" alt="Electronics and industrial export categories" />
+            <span>Electronics</span>
+            <h3>High-value commercial trade</h3>
+            <p>Structured support for premium electronics and technology-linked consignments with disciplined execution.</p>
+          </article>
+          <article class="panel service-card reveal">
+            <img src="shipping port.png" alt="Additional product categories and export solutions" />
+            <span>Kerala Handicrafts</span>
+            <h3>Expanding Artworks</h3>
+            <p>Additional product categories and export solutions are coordinated through the same premium trade framework.</p>
+          </article>
+          <article class="panel service-card reveal">
+            <img src="shipping port.png" alt="Additional product categories and export solutions" />
+            <span>Many More</span>
+            <h3>Expanding global scope</h3>
+            <p>More product categories and export solutions are coming soon</p>
+          </article>
+          <!--<article class="panel service-card reveal">
             <img src="global cargo.png" alt="Global export and cargo operations" />
             <span>Route Coordination</span>
             <h3>International logistics</h3>
@@ -499,7 +655,7 @@
             <span>Compliance & Oversight</span>
             <h3>Operational governance</h3>
             <p>Documentation, inspection, and quality oversight that gives buyers confidence in every order and every handoff.</p>
-          </article>
+          </article>-->
         </div>
       </section>
 
@@ -573,6 +729,78 @@
       </section>
     </main>
 
+    <section class="section faq-section" aria-labelledby="faq-title">
+      <div class="section-title reveal">
+        <span class="kicker">Frequently Asked Questions</span>
+        <h2 id="faq-title">A premium export partner for modern buyers.</h2>
+        <p>Each answer reflects the same disciplined tone that defines Oryon Zenith’s service approach and global trade delivery.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>What does Oryon Zenith export? <span class="faq-plus">+</span></summary>
+          <p>Oryon Zenith exports premium eggs, spices, coconut products, fresh produce, and selected agricultural commodities for international trade.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Which countries does Oryon Zenith serve? <span class="faq-plus">+</span></summary>
+          <p>Oryon Zenith serves buyers across the UAE, Sri Lanka, the UK, Germany, the Netherlands, Singapore, and Canada.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Does Oryon Zenith handle export documentation? <span class="faq-plus">+</span></summary>
+          <p>Yes. Documentation, quality oversight, and export coordination are managed through a disciplined, compliance-focused workflow.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How can international buyers contact Oryon Zenith? <span class="faq-plus">+</span></summary>
+          <p>International buyers can use the WhatsApp button, the website inquiry form, or direct contact channels for prompt commercial discussions.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Does Oryon Zenith support bulk export orders? <span class="faq-plus">+</span></summary>
+          <p>Yes. Oryon Zenith supports structured export programs and bulk trade requirements with sourcing discipline and shipment alignment.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>What makes Oryon Zenith reliable? <span class="faq-plus">+</span></summary>
+          <p>Reliability comes from transparent communication, quality control, operational discipline, and a long-term focus on trust.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section marquee-section" aria-label="Licenses and compliance">
+      <div class="marquee-shell reveal">
+        <div class="marquee-title">Licenses & Compliance</div>
+        <div class="marquee-track">
+          <article class="license-card">
+            <strong>License Placeholder</strong>
+            <span>Official license title to be inserted when certification documentation is confirmed.</span>
+            <small>Replace with official data</small>
+          </article>
+          <article class="license-card">
+            <strong>Compliance Placeholder</strong>
+            <span>Official compliance record to be inserted after verification from company records.</span>
+            <small>Replace with official data</small>
+          </article>
+          <article class="license-card">
+            <strong>Certification Placeholder</strong>
+            <span>Certification name to be added once the approved documentation is available.</span>
+            <small>Replace with official data</small>
+          </article>
+          <article class="license-card">
+            <strong>License Placeholder</strong>
+            <span>Official license title to be inserted when certification documentation is confirmed.</span>
+            <small>Replace with official data</small>
+          </article>
+          <article class="license-card">
+            <strong>Compliance Placeholder</strong>
+            <span>Official compliance record to be inserted after verification from company records.</span>
+            <small>Replace with official data</small>
+          </article>
+          <article class="license-card">
+            <strong>Certification Placeholder</strong>
+            <span>Certification name to be added once the approved documentation is available.</span>
+            <small>Replace with official data</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <div class="footer-inner">
         <div>© 2026 Oryon Zenith Private Limited. All rights reserved.</div>
@@ -581,7 +809,155 @@
     </footer>
   </div>
 
+  <a class="wa-btn" href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.04 2.25A9.76 9.76 0 0 0 2.29 12.01c0 1.72.45 3.4 1.31 4.87L2.25 21.75l4.96-1.3a9.75 9.75 0 0 0 4.83 1.2h.01a9.76 9.76 0 1 0 0-19.52Zm5.39 13.93c-.23.65-.95 1.18-1.62 1.34-.4.08-.93.15-2.68-.57-2.27-.74-3.73-2.57-3.84-2.69-.11-.12-1.57-2.09-1.57-3.98 0-1.88.98-2.8 1.33-3.18.34-.37.75-.46.98-.46h.7c.16 0 .35.01.5.39.14.35.48 1.1.52 1.18.05.08.09.18.02.33-.07.14-.1.23-.2.36-.1.12-.2.27-.29.36-.1.1-.2.21-.09.4.11.2.49.81 1.05 1.31.72.64 1.32.84 1.52.93.2.08.32.07.43-.04.12-.12.49-.57.62-.76.14-.19.28-.16.47-.1.19.06 1.16.55 1.35.65.2.1.33.15.38.09.05-.01.2-.08.4-.18.2-.1 1.19-.56 1.38-.66.2-.1.32-.16.37-.3.05-.15.04-.3-.04-.42Z" />
+    </svg>
+  </a>
+
   <script>
+    initGalaxyCanvas(document.getElementById('galaxy-canvas'));
+    initGalaxyCanvas(document.getElementById('loader-canvas'), { starCount: 140, isLoader: true });
+
+    function initGalaxyCanvas(canvas, options = {}) {
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const starCount = options.starCount || 260;
+      const width = () => window.innerWidth;
+      const height = () => window.innerHeight;
+      let stars = [];
+      let nebulae = [];
+      let dust = [];
+      let shootingStar = null;
+      let nextShooting = performance.now() + 9000 + Math.random() * 7000;
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(width() * dpr);
+        canvas.height = Math.round(height() * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        stars = Array.from({ length: starCount }, () => ({
+          x: Math.random() * width(),
+          y: Math.random() * height(),
+          radius: Math.random() * 1.2 + 0.3,
+          alpha: Math.random() * 0.7 + 0.12,
+          twinkle: Math.random() * 0.02 + 0.01,
+          phase: Math.random() * Math.PI * 2,
+        }));
+        nebulae = [
+          { x: width() * 0.24, y: height() * 0.22, radius: Math.min(width(), height()) * 0.26, alpha: 0.035, hue: 0.6 },
+          { x: width() * 0.76, y: height() * 0.7, radius: Math.min(width(), height()) * 0.24, alpha: 0.028, hue: 0.28 },
+          { x: width() * 0.5, y: height() * 0.12, radius: Math.min(width(), height()) * 0.19, alpha: 0.022, hue: 0.82 },
+        ];
+        dust = Array.from({ length: options.isLoader ? 70 : 120 }, () => ({
+          x: Math.random() * width(),
+          y: Math.random() * height(),
+          size: Math.random() * 1.2 + 0.2,
+          alpha: Math.random() * 0.18 + 0.04,
+          speedX: (Math.random() - 0.5) * 0.015,
+          speedY: (Math.random() - 0.5) * 0.009,
+        }));
+      }
+
+      function drawBackground(time) {
+        const w = width();
+        const h = height();
+        const bg = ctx.createLinearGradient(0, 0, w, h);
+        bg.addColorStop(0, '#020202');
+        bg.addColorStop(0.35, '#050505');
+        bg.addColorStop(1, '#0b0b0b');
+        ctx.fillStyle = bg;
+        ctx.fillRect(0, 0, w, h);
+
+        const glow = ctx.createRadialGradient(w * 0.2, h * 0.18, 0, w * 0.2, h * 0.18, w * 0.55);
+        glow.addColorStop(0, 'rgba(236,236,236,0.06)');
+        glow.addColorStop(1, 'rgba(236,236,236,0)');
+        ctx.fillStyle = glow;
+        ctx.fillRect(0, 0, w, h);
+
+        ctx.save();
+        ctx.globalCompositeOperation = 'screen';
+        nebulae.forEach((cloud, index) => {
+          const gradient = ctx.createRadialGradient(cloud.x, cloud.y, 0, cloud.x, cloud.y, cloud.radius);
+          gradient.addColorStop(0, `rgba(220,220,220,${cloud.alpha * (0.85 + Math.sin(time * 0.00016 + index) * 0.06)})`);
+          gradient.addColorStop(0.55, `rgba(135,135,135,${cloud.alpha * 0.42})`);
+          gradient.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(cloud.x, cloud.y, cloud.radius, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        ctx.restore();
+
+        stars.forEach((star) => {
+          const twinkle = 0.7 + Math.sin(time * 0.001 + star.phase) * 0.3;
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(245,245,245,${Math.max(0.08, star.alpha * twinkle)})`;
+          ctx.arc(star.x, star.y, star.radius * (0.8 + twinkle * 0.35), 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        if (!reducedMotion) {
+          dust.forEach((particle) => {
+            particle.x += particle.speedX;
+            particle.y += particle.speedY;
+            if (particle.x < -4) particle.x = w + 4;
+            if (particle.x > w + 4) particle.x = -4;
+            if (particle.y < -4) particle.y = h + 4;
+            if (particle.y > h + 4) particle.y = -4;
+            ctx.fillStyle = `rgba(224,224,224,${particle.alpha})`;
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+            ctx.fill();
+          });
+
+          if (!shootingStar && performance.now() > nextShooting) {
+            const startX = Math.random() * w * 0.8 + w * 0.1;
+            const startY = Math.random() * h * 0.25 + h * 0.08;
+            shootingStar = { x: startX, y: startY, length: 140 + Math.random() * 120, angle: -0.35 - Math.random() * 0.2, speed: 1.8 + Math.random() * 1.4, opacity: 0.85 };
+          }
+
+          if (shootingStar) {
+            const trail = ctx.createLinearGradient(shootingStar.x, shootingStar.y, shootingStar.x - Math.cos(shootingStar.angle) * shootingStar.length, shootingStar.y - Math.sin(shootingStar.angle) * shootingStar.length);
+            trail.addColorStop(0, `rgba(245,245,245,${shootingStar.opacity})`);
+            trail.addColorStop(1, 'rgba(245,245,245,0)');
+            ctx.strokeStyle = trail;
+            ctx.lineWidth = 1.1;
+            ctx.beginPath();
+            ctx.moveTo(shootingStar.x, shootingStar.y);
+            ctx.lineTo(shootingStar.x - Math.cos(shootingStar.angle) * shootingStar.length, shootingStar.y - Math.sin(shootingStar.angle) * shootingStar.length);
+            ctx.stroke();
+            shootingStar.x += Math.cos(shootingStar.angle) * shootingStar.speed;
+            shootingStar.y += Math.sin(shootingStar.angle) * shootingStar.speed;
+            shootingStar.opacity *= 0.98;
+            if (shootingStar.x < -120 || shootingStar.y > h + 120 || shootingStar.opacity < 0.03) {
+              shootingStar = null;
+              nextShooting = performance.now() + 10000 + Math.random() * 9000;
+            }
+          }
+        }
+      }
+
+      function animate(time) {
+        if (reducedMotion) {
+          drawBackground(time);
+          return;
+        }
+        drawBackground(time);
+        requestAnimationFrame(animate);
+      }
+
+      resize();
+      if (reducedMotion) {
+        drawBackground(performance.now());
+      } else {
+        requestAnimationFrame(animate);
+      }
+      window.addEventListener('resize', resize);
+    }
+
     const loader = document.getElementById('loader');
     const menuToggle = document.getElementById('menu-toggle');
     const mobileNav = document.getElementById('mobile-nav');
