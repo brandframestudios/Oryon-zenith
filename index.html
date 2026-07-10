@@ -661,13 +661,13 @@
             <p>Specialty spices and aromatics supplied with documentation integrity, grading discipline, and global buyer readiness.</p>
           </article>
           <article class="panel service-card reveal">
-            <img src="spice plantation.png" alt="Agricultural produce from Kerala" />
+            <img src="agriculture.jpg" alt="Agricultural produce from Kerala" />
             <span>Agricultural Produce</span>
             <h3>Seasonal supply execution</h3>
             <p>Consistent access to fruits, vegetables, and staples supported by sourcing discipline and export planning.</p>
           </article>
           <article class="panel service-card reveal">
-            <img src="global cargo.png" alt="Vehicles and logistics support for premium export operations" />
+            <img src="cars.jpg" alt="Vehicles and logistics support for premium export operations" />
             <span>Vehicles</span>
             <h3>Premium transport support</h3>
             <p>Specialized vehicle and logistics support for cross-border movement, inland handling, and operational readiness.</p>
@@ -880,7 +880,7 @@
       let nebulae = [];
       let dust = [];
       let shootingStar = null;
-      let nextShooting = performance.now() + 9000 + Math.random() * 7000;
+      let nextShooting = performance.now() + 2600 + Math.random() * 2200;
 
       function resize() {
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -983,7 +983,7 @@
             shootingStar.opacity *= 0.98;
             if (shootingStar.x < -120 || shootingStar.y > h + 120 || shootingStar.opacity < 0.03) {
               shootingStar = null;
-              nextShooting = performance.now() + 10000 + Math.random() * 9000;
+              nextShooting = performance.now() + 3000 + Math.random() * 2600;
             }
           }
         }
