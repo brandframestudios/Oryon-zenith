@@ -163,9 +163,25 @@
       --shadow: rgba(0,0,0,0.35);
       --glow: rgba(236,236,236,0.18);
       --accent: #ececec;
+      --space-1: 0.5rem;
+      --space-2: 0.75rem;
+      --space-3: 1rem;
+      --space-4: 1.5rem;
+      --space-5: 2rem;
+      --space-6: 2.5rem;
+      --space-7: 3rem;
+      --space-8: 4rem;
+      --space-9: 5rem;
+      --space-10: 6rem;
+      --section-pad-y: clamp(5rem, 8vw, 7.25rem);
+      --section-pad-y-sm: clamp(3.75rem, 7vw, 5.5rem);
+      --section-gap: clamp(1.5rem, 3vw, 2rem);
+      --card-gap: 1.5rem;
+      --card-padding: 1.5rem;
+      --content-max: min(1160px, calc(100% - 2rem));
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: auto; }
+    html { scroll-behavior: auto; overflow-x: hidden; }
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #020202;
@@ -216,19 +232,22 @@
     section[id] { scroll-margin-top: 6rem; }
     button, a, summary, input, textarea { touch-action: manipulation; }
     .topbar {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 50;
       padding: clamp(0.8rem, 2vw, 1.25rem) clamp(0.8rem, 3vw, 1.25rem) 0;
+      background: transparent;
     }
     .nav {
-      max-width: min(1240px, calc(100% - clamp(1rem, 3vw, 2rem)));
+      max-width: min(1220px, calc(100% - clamp(1rem, 3vw, 2rem)));
       margin: 0 auto;
-      padding: 1rem 1.2rem;
+      padding: 1rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 1.2rem;
       border: 1px solid var(--border);
       background: rgba(10,10,10,0.78);
       backdrop-filter: blur(24px);
@@ -240,61 +259,111 @@
     .nav-brand img { height: 2.2rem; width: auto; }
     .brand-copy strong { display: block; font-size: 0.85rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text); }
     .brand-copy span { display: block; font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-soft); }
-    .nav-links { display: flex; align-items: center; gap: 1.25rem; font-size: 0.8rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-soft); }
-    .nav-link { position: relative; padding: 0.4rem 0; transition: color 0.25s ease; }
+    .nav-links { display: flex; align-items: center; gap: 1.4rem; font-size: 0.8rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-soft); }
+    .nav-link { position: relative; padding: 0.45rem 0; transition: color 0.25s ease; }
     .nav-link::after { content: ''; position: absolute; left: 0; bottom: -0.2rem; width: 0; height: 1px; background: linear-gradient(90deg, var(--metal-3), var(--metal-1)); transition: width 0.3s cubic-bezier(.22,.61,.36,1); }
     .nav-link:hover, .nav-link.active { color: var(--text); }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
     .menu-toggle { display: none; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text); padding: 0.6rem 0.8rem; border-radius: 999px; }
-    .section { width: min(100%, 1240px); margin-inline: auto; padding-inline: clamp(1rem, 3.2vw, 1.5rem); }
-    .hero { padding: clamp(3.2rem, 7vw, 5.5rem) 0 clamp(2.1rem, 4vw, 3.6rem); }
-    .hero-grid { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 2.4rem; align-items: center; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.8rem; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,0.03); color: var(--text-soft); font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; }
+    .section { width: min(100%, 1160px); margin-inline: auto; padding-inline: clamp(1rem, 3vw, 2rem); }
+    .hero.section {
+      width: 100vw;
+      max-width: 100vw;
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+    .hero {
+      position: relative;
+      padding: calc(clamp(3.2rem, 7vw, 5.5rem) + 140px) 0 clamp(3.25rem, 5vw, 4.75rem);
+      min-height: 100vh;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        linear-gradient(115deg, rgba(3,3,3,0.7) 0%, rgba(3,3,3,0.3) 45%, rgba(3,3,3,0.55) 100%),
+        url("port bw.png") center center/cover no-repeat fixed;
+      background-color: #050505;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-top: -120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.12), transparent 24%),
+        radial-gradient(circle at 82% 20%, rgba(236,236,236,0.08), transparent 18%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 50%, rgba(2,2,2,0.12));
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent 30%, rgba(255,255,255,0.04));
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      align-items: center;
+      max-width: min(100%, 1240px);
+      width: 100%;
+      padding: clamp(2rem, 5vw, 3.25rem) clamp(1rem, 3.2vw, 1.5rem) 0;
+    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.8rem; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,0.06); color: rgba(248,248,248,0.96); font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; box-shadow: inset 0 1px 0 rgba(255,255,255,0.12); text-shadow: 0 0 18px rgba(0,0,0,0.26); }
     .eyebrow::before { content: ''; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: linear-gradient(135deg, var(--metal-3), var(--metal-1)); box-shadow: 0 0 12px rgba(236,236,236,0.2); }
     h1, h2, h3, .display-font { font-family: Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .hero h1 { font-size: clamp(2.7rem, 5vw, 4.8rem); line-height: 0.95; letter-spacing: -0.035em; margin-top: 1.15rem; max-width: 12ch; }
-    .hero p { margin-top: 1.3rem; max-width: 58ch; font-size: 1.02rem; line-height: 1.8; color: var(--text-soft); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.75rem; }
+    .hero h1 { font-size: clamp(2.7rem, 5vw, 4.8rem); line-height: 0.95; letter-spacing: -0.035em; margin-top: 1.15rem; max-width: 12ch; color: #f6f4ee; text-shadow: 0 2px 24px rgba(0,0,0,0.55), 0 0 36px rgba(0,0,0,0.28); }
+    .hero p { margin-top: 1.45rem; max-width: 56ch; font-size: 1.02rem; line-height: 1.85; color: rgba(236,236,236,0.94); text-shadow: 0 2px 18px rgba(0,0,0,0.42); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; min-height: 44px; padding: 0.95rem 1.3rem; border-radius: 999px; border: 1px solid var(--border); transition: transform 0.3s cubic-bezier(.22,.61,.36,1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease; will-change: transform; }
     .btn:hover { transform: translateY(-2px); }
     .btn:focus-visible, .nav-link:focus-visible, .menu-toggle:focus-visible, .contact-card input:focus-visible, .contact-card textarea:focus-visible { outline: 2px solid var(--metal-4); outline-offset: 3px; }
     .btn-primary { background: linear-gradient(135deg, rgba(236,236,236,0.16), rgba(255,255,255,0.04)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 16px 45px rgba(0,0,0,0.22); }
     .btn-secondary { background: rgba(255,255,255,0.03); }
-    .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; margin-top: 2rem; }
-    .stat-card { padding: 1rem 0.95rem; border-radius: 1.2rem; border: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08); }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.4rem; }
+    .stat-card { padding: 1.15rem 1rem; border-radius: 1.2rem; border: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08); }
     .stat-card strong { display: block; font-size: 1.2rem; color: var(--metal-4); }
     .stat-card span { display: block; margin-top: 0.25rem; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-soft); }
-    .hero-visual { position: relative; padding: 1.2rem; border-radius: 2rem; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)); border: 1px solid var(--border); box-shadow: 0 28px 90px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08); overflow: hidden; }
-    .hero-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(236,236,236,0.16), transparent 30%); pointer-events: none; }
-    .ship-card { position: relative; padding: 1rem; border-radius: 1.5rem; background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; }
-    .ship-card svg { width: 100%; height: auto; display: block; }
-    .hero-visual .halo { position: absolute; inset: auto 10% 8% 10%; height: 24%; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(236,236,236,0.2), transparent 70%); filter: blur(28px); opacity: 0.8; }
-    .section-title { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 1.45rem; }
+    .hero-visual {
+      display: none;
+    }
+    .section-title { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
     .section-title .kicker { font-size: 0.73rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-soft); }
     .section-title h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); letter-spacing: -0.025em; }
-    .section-title p { font-size: 1rem; line-height: 1.75; color: var(--text-soft); max-width: 68ch; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+    .section-title p { font-size: 1rem; line-height: 1.8; color: var(--text-soft); max-width: 62ch; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
     .panel { border: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border-radius: 1.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
     .panel-soft { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)); }
-    .about { padding: 2.5rem 0 2rem; }
-    .about-card { padding: 1.4rem; }
+    .about { padding: var(--section-pad-y-sm) 0; }
+    .about-card { padding: var(--card-padding); }
     .about-card p { margin-top: 0.8rem; color: var(--text-soft); line-height: 1.8; font-size: 0.96rem; }
-    .services { padding: 2.2rem 0 2.6rem; }
-    .services-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-    .service-card { padding: 1.15rem; display: flex; flex-direction: column; gap: 0.9rem; min-height: 100%; transition: transform 0.35s cubic-bezier(.22,.61,.36,1), border-color 0.35s ease, box-shadow 0.35s ease; will-change: transform; }
+    .services { padding: var(--section-pad-y-sm) 0; }
+    .services-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--card-gap); }
+    .service-card { padding: 1.35rem; display: flex; flex-direction: column; gap: 1rem; min-height: 100%; transition: transform 0.35s cubic-bezier(.22,.61,.36,1), border-color 0.35s ease, box-shadow 0.35s ease; will-change: transform; }
     .service-card:hover { transform: translateY(-4px) scale(1.008); border-color: rgba(255,255,255,0.2); box-shadow: 0 20px 56px rgba(0,0,0,0.28); }
-    .service-card img { width: 100%; height: clamp(180px, 25vw, 220px); object-fit: cover; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.08); }
+    .service-card img { width: 100%; height: clamp(180px, 25vw, 220px); object-fit: cover; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 0.25rem; }
     .service-card h3 { font-size: 1.15rem; }
     .service-card p { color: var(--text-soft); font-size: 0.95rem; line-height: 1.7; }
     .service-card span { color: var(--metal-3); font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase; }
-    .process { padding: 2.2rem 0 2.6rem; }
-    .process-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 1.2rem; }
-    .timeline { display: grid; gap: 0.8rem; }
-    .timeline-item { padding: 1rem 1.1rem; border-radius: 1.2rem; border: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)); }
+    .process { padding: var(--section-pad-y-sm) 0; }
+    .process-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 1.5rem; }
+    .timeline { display: grid; gap: 1rem; }
+    .timeline-item { padding: 1.15rem 1.25rem; border-radius: 1.2rem; border: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)); }
     .timeline-item strong { display: block; margin-bottom: 0.3rem; color: var(--metal-4); }
     .timeline-item span { color: var(--text-soft); font-size: 0.95rem; line-height: 1.7; }
-    .map-panel { padding: 1.15rem; }
-    .map-shell { position: relative; overflow: hidden; border-radius: 1.4rem; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2)); padding: 1rem; }
+    .map-panel { padding: 1.35rem; }
+    .map-shell { position: relative; overflow: hidden; border-radius: 1.4rem; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2)); padding: 1.15rem; }
     .map-shell svg { width: 100%; height: auto; display: block; }
     .route-line { stroke: rgba(236,236,236,0.75); stroke-width: 1.1; fill: none; stroke-dasharray: 8 8; stroke-linecap: round; animation: dash 8s linear infinite; }
     .route-line.secondary { stroke: rgba(236,236,236,0.45); }
@@ -302,17 +371,17 @@
     .route-node.origin { fill: #f6f3ef; }
     .route-label { fill: #d5d5d5; font-size: 13px; font-family: Inter, sans-serif; }
     .map-note { margin-top: 0.9rem; color: var(--text-soft); font-size: 0.9rem; line-height: 1.7; }
-    .approach { padding: 2.2rem 0 2.8rem; }
-    .approach-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 1.2rem; }
-    .founder-card, .contact-card { padding: 1.3rem; }
+    .approach { padding: var(--section-pad-y-sm) 0; }
+    .approach-grid { display: grid; grid-template-columns: 1fr; gap: clamp(3rem, 6vw, 4.5rem); align-items: start; }
+    .founder-card, .contact-card { padding: 1.5rem; width: 100%; }
     .quote { margin-top: 0.95rem; font-size: 1.05rem; line-height: 1.8; color: var(--text-soft); }
     .signature { margin-top: 1rem; font-size: 0.82rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--metal-3); }
     .contact-card form { display: grid; gap: 0.8rem; margin-top: 1rem; }
     .contact-card input, .contact-card textarea { width: 100%; border: 1px solid var(--border); border-radius: 0.95rem; padding: 0.9rem 1rem; background: rgba(255,255,255,0.04); color: var(--text); font: inherit; }
     .contact-card input::placeholder, .contact-card textarea::placeholder { color: #7c7c7c; }
     .contact-card button { margin-top: 0.3rem; width: fit-content; }
-    .founders-section { padding: 2.6rem 0 2.2rem; }
-    .founders-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; }
+    .founders-section { padding: var(--section-pad-y-sm) 0; }
+    .founders-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
     .founder-card { position: relative; overflow: hidden; padding: 1.15rem; min-height: 100%; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 1px solid var(--border); border-radius: 1.6rem; box-shadow: 0 24px 70px rgba(0,0,0,0.22); transition: transform 0.35s cubic-bezier(.22,.61,.36,1), box-shadow 0.35s cubic-bezier(.22,.61,.36,1), border-color 0.35s ease; will-change: transform; }
     .founder-card:hover { transform: translateY(-4px) scale(1.008); box-shadow: 0 30px 90px rgba(0,0,0,0.28); border-color: rgba(255,255,255,0.2); }
     .founder-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.12) 45%, transparent 70%); transform: translateX(-150%); transition: transform 0.7s cubic-bezier(.22,.61,.36,1); pointer-events: none; }
@@ -376,9 +445,9 @@
     .globe-tooltip.is-visible { opacity: 1; transform: translate(-50%, -120%) scale(1); }
     .globe-tooltip strong { font-size: 0.76rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--metal-4); }
     .globe-tooltip span { color: var(--text-soft); font-size: 0.82rem; line-height: 1.4; }
-    footer { padding: 2.4rem 1.25rem 3rem; max-width: 1240px; margin: 0 auto; color: var(--text-soft); font-size: 0.92rem; }
-    footer .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
-    footer .footer-social { display: inline-flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    footer { padding: 3rem 1.25rem 3.5rem; max-width: 1160px; margin: 0 auto; color: var(--text-soft); font-size: 0.92rem; }
+    footer .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.25rem; }
+    footer .footer-social { display: inline-flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
     footer .footer-social a { color: var(--text-soft); text-decoration: none; transition: color 0.25s ease, opacity 0.25s ease, text-shadow 0.25s ease; }
     footer .footer-social a:hover, footer .footer-social a:focus-visible { color: var(--metal-4); opacity: 0.92; text-shadow: 0 0 14px rgba(236,236,236,0.12); }
     .reveal { opacity: 0; transform: translateY(22px) scale(0.985); filter: blur(6px); }
@@ -432,24 +501,164 @@
     }
     .wa-btn:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 4px; }
     .wa-btn svg { width: 1.35rem; height: 1.35rem; color: #FFFFFF; }
-    .faq-section { padding: 1rem 0 2.2rem; }
-    .faq-list { display: grid; gap: 0.8rem; }
-    .faq-item { border: 1px solid var(--border); border-radius: 1.15rem; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)); padding: 1rem 1.2rem; }
+    .faq-section { padding: var(--section-pad-y-sm) 0; }
+    .faq-list { display: grid; gap: 1rem; }
+    .faq-item { border: 1px solid var(--border); border-radius: 1.15rem; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)); padding: 1.15rem 1.25rem; }
     .faq-item summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; font-weight: 600; color: var(--metal-4); }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item .faq-plus { font-size: 1.1rem; color: var(--metal-3); transition: transform 0.25s ease; }
     .faq-item[open] .faq-plus { transform: rotate(45deg); }
     .faq-item p { margin-top: 0.8rem; color: var(--text-soft); line-height: 1.8; font-size: 0.95rem; }
-    .marquee-section { padding: 0 0 2.4rem; }
-    .marquee-shell { border: 1px solid var(--border); border-radius: 1.35rem; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)); padding: 1rem 0; overflow: hidden; position: relative; }
-    .marquee-shell::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,5,5,0.9) 0%, transparent 12%, transparent 88%, rgba(5,5,5,0.9) 100%); pointer-events: none; z-index: 1; }
-    .marquee-title { padding: 0 1.2rem 0.8rem; font-size: 0.8rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--metal-3); }
-    .marquee-track { display: flex; gap: 0.8rem; width: max-content; animation: marquee 22s linear infinite; padding: 0 0.4rem; }
-    .marquee-track:hover { animation-play-state: paused; }
-    .license-card { min-width: 220px; padding: 0.95rem 1rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); }
-    .license-card strong { display: block; font-size: 0.9rem; color: var(--metal-4); margin-bottom: 0.35rem; }
-    .license-card span { color: var(--text-soft); font-size: 0.83rem; line-height: 1.6; }
-    .license-card small { display: block; margin-top: 0.45rem; color: var(--metal-2); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.7rem; }
+    .compliance-section { padding: 0 0 var(--section-pad-y-sm); }
+    .compliance-shell {
+      border: 1px solid var(--border);
+      border-radius: 1.6rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+      padding: 1.35rem 1.2rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 24px 70px rgba(0,0,0,0.18);
+    }
+    .compliance-shell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(236,236,236,0.12), transparent 30%);
+      pointer-events: none;
+    }
+    .compliance-title { padding: 0 0 1rem; font-size: 0.8rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--metal-3); }
+    .compliance-stage {
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 1rem 0 0.25rem;
+      isolation: isolate;
+    }
+    .compliance-viewport {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 0.2rem 0 0.5rem;
+      touch-action: pan-y;
+    }
+    .compliance-track {
+      display: flex;
+      gap: 1rem;
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+      padding: 0.25rem 0;
+      width: max-content;
+      transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .compliance-card {
+      position: relative;
+      flex: 0 0 clamp(12.5rem, 16vw, 14rem);
+      min-height: 14.5rem;
+      padding: 1rem;
+      border-radius: 1.15rem;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 14px 34px rgba(0,0,0,0.22);
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: transform 0.55s cubic-bezier(.22,.61,.36,1), border-color 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+      transform-origin: center center;
+      overflow: hidden;
+    }
+    .compliance-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.09) 40%, transparent 80%);
+      transform: translateX(-140%);
+      transition: transform 0.6s cubic-bezier(.22,.61,.36,1);
+      pointer-events: none;
+    }
+    .compliance-card:hover,
+    .compliance-card:focus-visible,
+    .compliance-card.is-centered {
+      transform: translateY(-8px) scale(1.05);
+      border-color: rgba(236,236,236,0.4);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 20px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(236,236,236,0.12);
+      filter: brightness(1.03);
+    }
+    .compliance-card:hover::before,
+    .compliance-card:focus-visible::before,
+    .compliance-card.is-centered::before {
+      transform: translateX(140%);
+    }
+    .compliance-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 110px;
+      padding: 18px;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.24));
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+    .compliance-logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.2));
+    }
+    .compliance-name {
+      font-size: 0.92rem;
+      color: var(--metal-4);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .compliance-subtitle {
+      font-size: 0.76rem;
+      line-height: 1.45;
+      color: var(--text-soft);
+    }
+    .compliance-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 4;
+      width: 2.85rem;
+      height: 2.85rem;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(10,10,10,0.76);
+      color: var(--metal-4);
+      display: grid;
+      place-items: center;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 12px 28px rgba(0,0,0,0.22);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      touch-action: manipulation;
+    }
+    .compliance-arrow:hover,
+    .compliance-arrow:focus-visible {
+      transform: translateY(-50%) scale(1.04);
+      border-color: rgba(236,236,236,0.4);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 16px 36px rgba(0,0,0,0.28);
+    }
+    .compliance-arrow.prev { left: -0.1rem; }
+    .compliance-arrow.next { right: -0.1rem; }
+    .compliance-arrow svg { width: 1rem; height: 1rem; }
+    .compliance-status {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--metal-3);
+    }
     @keyframes drift { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(2%, -1.5%, 0); } }
     @keyframes sweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
     @keyframes twinkle { 0%,100% { opacity: 0.28; transform: translateY(0); } 50% { opacity: 0.42; transform: translateY(-6px); } }
@@ -464,7 +673,8 @@
     @keyframes markerPulse { 0%,100% { transform: scale(0.92); opacity: 0.82; } 50% { transform: scale(1.08); opacity: 1; } }
     .ship-animate { animation: bob 5.2s ease-in-out infinite; transform-origin: center; }
     @media (max-width: 1200px) {
-      .hero-grid, .process-grid, .approach-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .hero-grid, .process-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .approach-grid { grid-template-columns: 1fr; gap: clamp(2.25rem, 5vw, 3.25rem); }
       .hero-visual { max-width: 760px; margin-inline: auto; }
       .services-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
@@ -475,6 +685,9 @@
       .hero-stats, .grid-2, .services-list, .founders-grid { grid-template-columns: 1fr; }
       .section-title p, .about-card p { max-width: 100%; }
       .service-card img { height: clamp(170px, 32vw, 210px); }
+      .compliance-orbit { min-height: clamp(28rem, 70vw, 34rem); }
+      .compliance-card { width: min(9.2rem, 32vw); padding: 0.8rem 0.75rem; }
+      .compliance-logo { min-height: 2.4rem; }
     }
     @media (max-width: 720px) {
       .topbar { padding: 0.7rem 0.7rem 0; }
@@ -485,6 +698,32 @@
       .hero-stats { grid-template-columns: 1fr; }
       .ship-card { padding: 0.75rem; }
       .globe-tooltip { min-width: 8rem; max-width: min(76vw, 12rem); }
+      .compliance-orbit {
+        min-height: auto;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.9rem;
+        place-items: stretch;
+      }
+      .compliance-center {
+        grid-column: 1 / -1;
+        width: min(12rem, 52vw);
+        justify-self: center;
+        margin-bottom: 0.25rem;
+      }
+      .compliance-card {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 100%;
+        transform: none;
+        min-height: 8.2rem;
+      }
+      .compliance-card::before { display: none; }
+      .compliance-card:hover,
+      .compliance-card:focus-visible,
+      .compliance-card.is-active { transform: translateY(-2px) scale(1.01); }
+      .compliance-tooltip { display: none; }
       footer .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
       .wa-btn { width: 3.35rem; height: 3.35rem; }
     }
@@ -583,37 +822,6 @@
               </div>
             </div>
           </div>
-          <div class="hero-visual reveal">
-            <div class="ship-card">
-              <div class="halo"></div>
-              <svg viewBox="0 0 740 420" role="img" aria-label="Cinematic cargo vessel illustration">
-                <defs>
-                  <linearGradient id="shipHull" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ececec" />
-                    <stop offset="35%" stop-color="#919191" />
-                    <stop offset="100%" stop-color="#6f6f6f" />
-                  </linearGradient>
-                  <linearGradient id="shipDeck" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#222222" />
-                    <stop offset="100%" stop-color="#0d0d0d" />
-                  </linearGradient>
-                </defs>
-                <rect x="70" y="150" width="560" height="140" rx="54" fill="url(#shipHull)" />
-                <rect x="115" y="170" width="470" height="90" rx="28" fill="url(#shipDeck)" opacity="0.92" />
-                <rect x="165" y="123" width="145" height="54" rx="20" fill="#1e1e1e" />
-                <rect x="410" y="120" width="125" height="48" rx="20" fill="#2b2b2b" />
-                <rect x="150" y="202" width="100" height="24" rx="10" fill="#ececec" opacity="0.8" />
-                <rect x="285" y="202" width="111" height="24" rx="10" fill="#ececec" opacity="0.75" />
-                <rect x="435" y="202" width="82" height="24" rx="10" fill="#ececec" opacity="0.78" />
-                <path d="M115 289 C250 255 470 255 610 289" stroke="rgba(236,236,236,0.28)" stroke-width="3" fill="none" stroke-linecap="round" />
-                <path d="M80 290 C220 270 500 270 640 290" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none" stroke-dasharray="6 8" />
-                <g class="ship-animate">
-                  <circle cx="170" cy="242" r="8" fill="#ececec" />
-                  <circle cx="500" cy="242" r="8" fill="#ececec" />
-                </g>
-              </svg>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -643,7 +851,7 @@
         </div>
         <div class="services-list">
           <article class="panel service-card reveal">
-            <img src="eggs and perishables.png" alt="Table eggs and premium perishables for export" />
+            <img src="perishables.jpg" alt="Table eggs and premium perishables for export" />
             <span>Eggs & Perishables</span>
             <h3>Cold-chain export readiness</h3>
             <p>Reliable handling for table eggs and temperature-sensitive goods with strict quality controls from origin to destination.</p>
@@ -667,19 +875,19 @@
             <p>Consistent access to fruits, vegetables, and staples supported by sourcing discipline and export planning.</p>
           </article>
           <article class="panel service-card reveal">
-            <img src="cars.jpg" alt="Vehicles and logistics support for premium export operations" />
+            <img src="exporting-a-vehicle-from-the-uk-factsheet.jpg" alt="Vehicles and logistics support for premium export operations" />
             <span>Vehicles</span>
             <h3>Premium transport support</h3>
             <p>Specialized vehicle and logistics support for cross-border movement, inland handling, and operational readiness.</p>
           </article>
           <article class="panel service-card reveal">
-            <img src="warehouse.png" alt="Electronics and industrial export categories" />
+            <img src="machineries.jpg" alt="Electronics and industrial export categories" />
             <span>Electronics</span>
             <h3>High-value commercial trade</h3>
             <p>Structured support for premium electronics and technology-linked consignments with disciplined execution.</p>
           </article>
           <article class="panel service-card reveal">
-            <img src="shipping port.png" alt="Additional product categories and export solutions" />
+            <img src="kerala handicrafts.png" alt="Additional product categories and export solutions" />
             <span>Kerala Handicrafts</span>
             <h3>Expanding Artworks</h3>
             <p>Additional product categories and export solutions are coordinated through the same premium trade framework.</p>
@@ -779,40 +987,23 @@
         </div>
       </section>
 
-      <section class="section marquee-section" aria-label="Licenses and compliance">
-        <div class="marquee-shell reveal">
-          <div class="marquee-title">Licenses & Compliance</div>
-          <div class="marquee-track">
-            <article class="license-card">
-              <strong>License Placeholder</strong>
-              <span>Official license title to be inserted when certification documentation is confirmed.</span>
-              <small>Replace with official data</small>
-            </article>
-            <article class="license-card">
-              <strong>Compliance Placeholder</strong>
-              <span>Official compliance record to be inserted after verification from company records.</span>
-              <small>Replace with official data</small>
-            </article>
-            <article class="license-card">
-              <strong>Certification Placeholder</strong>
-              <span>Certification name to be added once the approved documentation is available.</span>
-              <small>Replace with official data</small>
-            </article>
-            <article class="license-card">
-              <strong>License Placeholder</strong>
-              <span>Official license title to be inserted when certification documentation is confirmed.</span>
-              <small>Replace with official data</small>
-            </article>
-            <article class="license-card">
-              <strong>Compliance Placeholder</strong>
-              <span>Official compliance record to be inserted after verification from company records.</span>
-              <small>Replace with official data</small>
-            </article>
-            <article class="license-card">
-              <strong>Certification Placeholder</strong>
-              <span>Certification name to be added once the approved documentation is available.</span>
-              <small>Replace with official data</small>
-            </article>
+      <section class="section compliance-section" aria-labelledby="compliance-title">
+        <div class="compliance-shell reveal">
+          <div class="compliance-title" id="compliance-title">Licenses & Compliance</div>
+          <div class="compliance-stage">
+            <button class="compliance-arrow prev" type="button" aria-label="Show previous license">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 18L9 12l6-6" />
+              </svg>
+            </button>
+            <div class="compliance-viewport" id="compliance-viewport">
+              <div class="compliance-track" id="compliance-track" aria-live="polite"></div>
+            </div>
+            <button class="compliance-arrow next" type="button" aria-label="Show next license">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </button>
           </div>
         </div>
       </section>
@@ -1006,6 +1197,266 @@
       }
       window.addEventListener('resize', resize);
     }
+
+    const complianceItems = [
+      { title: 'CIN', subtitle: 'Certificate of Incorporation', label: 'Certificate of Incorporation logo', logo: 'warehouse.png' },
+      { title: 'Udyam', subtitle: 'MSME Registration', label: 'MSME Registration logo', logo: 'msme.png' },
+      { title: 'IEC', subtitle: 'Import Export Code', label: 'Import Export Code logo', logo: 'shipping port.png' },
+      { title: 'AD Code', subtitle: 'AD Code', label: 'AD Code registration', logo: 'global map.png' },
+      { title: 'APEDA RCMC', subtitle: 'APEDA RCMC', label: 'APEDA RCMC logo', logo: 'spice plantation.png' },
+      { title: 'Spices Board of India', subtitle: 'Spices Board of India', label: 'Spices Board of India logo', logo: 'spices board.png' },
+      { title: 'Coconut Development Board', subtitle: 'Coconut Development Board', label: 'Coconut Development Board logo', logo: 'coconut board.png' },
+      { title: 'FSSAI License', subtitle: 'FSSAI License', label: 'FSSAI License logo', logo: 'eggs and perishables.png' },
+      { title: 'GST Registration', subtitle: 'GST Registration', label: 'GST Registration logo', logo: 'global cargo.png' },
+    ];
+
+    function initComplianceCarousel() {
+      const track = document.getElementById('compliance-track');
+      const viewport = document.getElementById('compliance-viewport');
+      const prevButton = document.querySelector('.compliance-arrow.prev');
+      const nextButton = document.querySelector('.compliance-arrow.next');
+      if (!track || !viewport || !prevButton || !nextButton) return;
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const cards = [];
+      let offset = 0;
+      let activeIndex = 0;
+      let hoverActive = false;
+      let dragActive = false;
+      let startX = 0;
+      let cardStep = 0;
+      let cardWidth = 0;
+      let cardGap = 16;
+      let autoplayTimer = null;
+      let resumeTimer = null;
+      let isTransitioning = false;
+      const totalItems = complianceItems.length;
+
+      function createCard(item, originalIndex) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'compliance-card';
+        button.dataset.originalIndex = String(originalIndex);
+        button.setAttribute('role', 'listitem');
+        button.setAttribute('aria-label', `${item.title} — ${item.subtitle}`);
+        button.innerHTML = `
+          <div class="compliance-logo" role="img" aria-label="${item.label}">
+            <img src="${item.logo || 'LOGO.png'}" alt="${item.label}" loading="lazy" />
+          </div>
+          <span class="compliance-name">${item.title}</span>
+          <span class="compliance-subtitle">${item.subtitle}</span>
+          <span class="compliance-status">Registered</span>
+        `;
+        button.addEventListener('click', () => goToCard(originalIndex, true));
+        return button;
+      }
+
+      function buildTrack() {
+        track.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+        const clonedItems = [...complianceItems.slice(-1), ...complianceItems, ...complianceItems.slice(0, 1)];
+        clonedItems.forEach((item, index) => {
+          const itemIndex = index === 0 ? totalItems - 1 : index === clonedItems.length - 1 ? 0 : (index - 1 + totalItems) % totalItems;
+          fragment.appendChild(createCard(item, itemIndex));
+        });
+        track.appendChild(fragment);
+        cards.length = 0;
+        cards.push(...track.querySelectorAll('.compliance-card'));
+        requestAnimationFrame(() => {
+          measureLayout();
+        });
+      }
+
+      function measureLayout() {
+        const firstCard = cards[0];
+        if (!firstCard) return;
+        const rect = firstCard.getBoundingClientRect();
+        if (!rect.width) {
+          requestAnimationFrame(measureLayout);
+          return;
+        }
+        const computedGap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '16');
+        cardWidth = rect.width;
+        cardGap = Number.isFinite(computedGap) ? computedGap : 16;
+        cardStep = cardWidth + cardGap;
+        offset = -cardStep;
+        updateTrackTransform();
+        updateCardStates();
+        startAutoplay();
+      }
+
+      function updateTrackTransform() {
+        track.style.transition = 'transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1)';
+        track.style.transform = `translate3d(${offset}px, 0, 0)`;
+      }
+
+      function updateCardStates() {
+        const normalizedIndex = ((activeIndex % totalItems) + totalItems) % totalItems;
+        cards.forEach((card) => {
+          const index = Number(card.dataset.originalIndex || 0);
+          card.classList.toggle('is-centered', index === normalizedIndex);
+        });
+      }
+
+      function normalizeIndex(index) {
+        return ((index % totalItems) + totalItems) % totalItems;
+      }
+
+      function clearAutoplay() {
+        if (autoplayTimer) {
+          clearTimeout(autoplayTimer);
+          autoplayTimer = null;
+        }
+        if (resumeTimer) {
+          clearTimeout(resumeTimer);
+          resumeTimer = null;
+        }
+      }
+
+      function startAutoplay() {
+        if (reducedMotion || hoverActive || dragActive) return;
+        clearAutoplay();
+        autoplayTimer = setTimeout(() => {
+          moveBy(1, false);
+          startAutoplay();
+        }, 2800);
+      }
+
+      function pauseAutoplay(delay = 2400) {
+        clearAutoplay();
+        if (reducedMotion) return;
+        resumeTimer = setTimeout(() => {
+          resumeTimer = null;
+          startAutoplay();
+        }, delay);
+      }
+
+      function resumeAutoplay() {
+        if (reducedMotion || hoverActive || dragActive) return;
+        clearAutoplay();
+        startAutoplay();
+      }
+
+      function moveBy(direction, pauseForManual = false) {
+        if (isTransitioning) return;
+        const nextIndex = normalizeIndex(activeIndex + direction);
+        const nextOffset = -(nextIndex + 1) * cardStep;
+        isTransitioning = true;
+        offset = nextOffset;
+        activeIndex = nextIndex;
+        updateTrackTransform();
+        updateCardStates();
+        if (pauseForManual) {
+          pauseAutoplay(2400);
+        }
+      }
+
+      function handleTransitionEnd() {
+        if (!cardStep) return;
+        const position = Math.round(Math.abs(offset) / cardStep);
+        if (position === 0) {
+          track.style.transition = 'none';
+          offset = -totalItems * cardStep;
+          activeIndex = totalItems - 1;
+          updateTrackTransform();
+          updateCardStates();
+        } else if (position === totalItems + 1) {
+          track.style.transition = 'none';
+          offset = -cardStep;
+          activeIndex = 0;
+          updateTrackTransform();
+          updateCardStates();
+        }
+        isTransitioning = false;
+        if (!reducedMotion && !hoverActive && !dragActive) {
+          startAutoplay();
+        }
+      }
+
+      function goToCard(index, pauseAutoplayNow = false) {
+        const normalizedIndex = normalizeIndex(index);
+        activeIndex = normalizedIndex;
+        offset = -(normalizedIndex + 1) * cardStep;
+        updateTrackTransform();
+        updateCardStates();
+        if (pauseAutoplayNow) {
+          pauseAutoplay(2400);
+        }
+      }
+
+      prevButton.addEventListener('click', () => {
+        goToCard(activeIndex - 1, true);
+      });
+      nextButton.addEventListener('click', () => {
+        goToCard(activeIndex + 1, true);
+      });
+
+      track.addEventListener('transitionend', handleTransitionEnd);
+
+      viewport.addEventListener('mouseenter', () => {
+        hoverActive = true;
+        clearAutoplay();
+      });
+      viewport.addEventListener('mouseleave', () => {
+        hoverActive = false;
+        if (!reducedMotion && !dragActive) {
+          startAutoplay();
+        }
+      });
+
+      viewport.addEventListener('focusin', () => {
+        hoverActive = true;
+        pauseAutoplay(2400);
+      });
+      viewport.addEventListener('focusout', () => {
+        hoverActive = false;
+        if (!reducedMotion && !dragActive) {
+          startAutoplay();
+        }
+      });
+
+      viewport.addEventListener('touchstart', (event) => {
+        if (event.touches.length) {
+          dragActive = true;
+          startX = event.touches[0].clientX;
+          clearAutoplay();
+        }
+      }, { passive: true });
+      viewport.addEventListener('touchend', (event) => {
+        if (!dragActive) return;
+        const delta = event.changedTouches[0].clientX - startX;
+        if (Math.abs(delta) > 44) {
+          if (delta < 0) {
+            goToCard(activeIndex + 1, true);
+          } else {
+            goToCard(activeIndex - 1, true);
+          }
+        }
+        dragActive = false;
+        if (!reducedMotion) {
+          startAutoplay();
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        if (!cardStep) return;
+        const currentRealIndex = activeIndex;
+        offset = -(currentRealIndex + 1) * cardStep;
+        updateTrackTransform();
+      });
+
+      window.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          clearAutoplay();
+        } else if (!reducedMotion && !hoverActive && !dragActive) {
+          startAutoplay();
+        }
+      });
+
+      buildTrack();
+    }
+
+    initComplianceCarousel();
 
     const loader = document.getElementById('loader');
     const menuToggle = document.getElementById('menu-toggle');
