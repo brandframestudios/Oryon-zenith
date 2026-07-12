@@ -65,6 +65,7 @@
       --card-padding: 1.5rem;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; overflow-x: hidden; }
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #020202;
@@ -73,6 +74,7 @@
       overflow-x: hidden;
       position: relative;
     }
+    body.menu-open { overflow: hidden; }
     body::before, body::after {
       content: '';
       position: fixed;
@@ -98,8 +100,7 @@
       animation: twinkle 7s linear infinite;
     }
     a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    html { font-size: 16px; scroll-behavior: smooth; }
+    img, svg, video { display: block; max-width: 100%; height: auto; }
     body { font-size: clamp(0.95rem, 0.92rem + 0.2vw, 1rem); line-height: 1.65; }
     main { overflow-x: clip; }
     section[id] { scroll-margin-top: 6rem; }
@@ -115,12 +116,12 @@
     }
     .page-shell { position: relative; z-index: 2; }
     .topbar { position: sticky; top: 0; z-index: 50; padding: clamp(0.8rem, 2vw, 1.25rem) clamp(0.8rem, 3vw, 1.25rem) 0; }
-    .nav { max-width: min(1180px, calc(100% - clamp(1rem, 3vw, 2rem))); margin: 0 auto; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; border-radius: 999px; border: 1px solid var(--border); background: rgba(10,10,10,0.78); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); box-shadow: 0 12px 30px rgba(0,0,0,0.24); }
-    .brand { display: flex; align-items: center; gap: 0.75rem; }
-    .brand img { height: 2rem; width: auto; }
-    .brand strong { display: block; font-size: 0.85rem; letter-spacing: 0.28em; text-transform: uppercase; }
-    .brand span { display: block; font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-soft); }
-    .nav-links { display: flex; gap: 1.4rem; color: var(--text-soft); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.24em; }
+    .nav { max-width: min(1180px, calc(100% - clamp(1rem, 3vw, 2rem))); margin: 0 auto; padding: clamp(0.8rem, 1.8vw, 1rem) clamp(1rem, 2.2vw, 1.25rem); display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-radius: 999px; border: 1px solid var(--border); background: rgba(10,10,10,0.78); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); box-shadow: 0 12px 30px rgba(0,0,0,0.24); }
+    .brand { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+    .brand img { height: clamp(1.8rem, 2.1vw + 1rem, 2.2rem); width: auto; }
+    .brand strong { display: block; font-size: clamp(0.76rem, 0.8vw + 0.6rem, 0.85rem); letter-spacing: 0.28em; text-transform: uppercase; }
+    .brand span { display: block; font-size: clamp(0.62rem, 0.5vw + 0.48rem, 0.7rem); letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-soft); }
+    .nav-links { display: flex; gap: clamp(0.8rem, 1.2vw, 1.4rem); color: var(--text-soft); font-size: clamp(0.7rem, 0.5vw + 0.58rem, 0.8rem); text-transform: uppercase; letter-spacing: 0.24em; }
     .nav-links a { padding: 0.3rem 0; position: relative; }
     .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -0.2rem; width: 0; height: 1px; background: linear-gradient(90deg, var(--metal-3), var(--metal-1)); transition: width 0.3s ease; }
     .nav-links a:hover::after { width: 100%; }
@@ -190,23 +191,26 @@
     @keyframes sweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
     @keyframes twinkle { 0%,100% { opacity: 0.28; transform: translateY(0); } 50% { opacity: 0.42; transform: translateY(-6px); } }
     .menu-toggle { display: none; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text); padding: 0.7rem 0.8rem; border-radius: 999px; min-height: 44px; min-width: 44px; }
-    .mobile-nav { display: none; position: fixed; inset: 0 0 0 auto; z-index: 120; width: min(86vw, 320px); padding: 1.2rem; background: rgba(6,6,6,0.96); border-left: 1px solid rgba(255,255,255,0.12); transform: translateX(100%); transition: transform 0.35s cubic-bezier(.22,.61,.36,1); }
+    .mobile-nav { display: none; position: fixed; inset: 0 0 0 auto; z-index: 120; width: min(88vw, 360px); padding: 1.1rem; background: rgba(6,6,6,0.97); border-left: 1px solid rgba(255,255,255,0.12); transform: translateX(100%); transition: transform 0.35s cubic-bezier(.22,.61,.36,1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
     .mobile-nav.open { transform: translateX(0); }
-    .mobile-nav a { display: block; padding: 0.8rem 0; color: var(--text-soft); font-size: 0.8rem; letter-spacing: 0.26em; text-transform: uppercase; }
-    .mobile-nav .close { margin-bottom: 1rem; }
+    .mobile-nav a { display: block; padding: 0.95rem 0.2rem; color: var(--text-soft); font-size: 0.78rem; letter-spacing: 0.26em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .mobile-nav a:last-child { border-bottom: 0; }
+    .mobile-nav .close { margin-bottom: 0.6rem; }
     @media (max-width: 920px) {
       .nav-links { display: none; }
       .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
-      .mobile-nav { display: block; }
+      .mobile-nav { display: flex; flex-direction: column; }
       .hero-grid { grid-template-columns: 1fr; }
       .founders-grid { grid-template-columns: 1fr; }
       .founder-card { grid-template-columns: minmax(0, 1fr); }
+      .hero { padding-inline: clamp(0.8rem, 2.4vw, 1rem); }
     }
     @media (max-width: 720px) {
       .topbar { padding: 0.7rem 0.7rem 0; }
       .nav { padding: 0.8rem 0.95rem; border-radius: 1.2rem; }
       .hero { padding-top: 3.1rem; }
-      .hero h1 { max-width: 100%; }
+      .hero h1 { max-width: 100%; font-size: clamp(2.2rem, 6.8vw, 2.9rem); }
+      .hero p { font-size: clamp(0.95rem, 1vw + 0.84rem, 1rem); }
       .hero-card { padding: 0.8rem; }
       .founder-name-row { flex-direction: column; align-items: flex-start; }
       .founder-message { flex-direction: column; gap: 0.4rem; }
@@ -218,12 +222,16 @@
       .brand span { font-size: 0.64rem; }
       .brand img { height: 1.8rem; }
       .hero { padding-inline: 0.8rem; }
-      .hero h1 { font-size: clamp(2.2rem, 7.5vw, 2.85rem); }
-      .hero p { font-size: 0.96rem; }
+      .hero h1 { font-size: clamp(2rem, 7.5vw, 2.6rem); }
+      .hero p { font-size: 0.95rem; }
       .panel, .founder-card, .vision-card { border-radius: 1rem; padding: 1rem; }
       .founder-portrait-shell { padding: 0.4rem; }
       .founder-message p { font-size: 0.95rem; }
       .mobile-nav { width: min(92vw, 320px); padding: 1rem; }
+    }
+    @media (max-width: 360px) {
+      .brand { display: none; }
+      .hero h1 { font-size: clamp(1.8rem, 8vw, 2.3rem); }
     }
     @media (min-width: 1441px) {
       .hero, .content, footer { max-width: 1300px; }
@@ -334,7 +342,7 @@ Oryon Zenith was created to bring Kerala's finest agricultural products to the w
           <p>We built Oryon Zenith to bring a refined standard of execution to the export trade. Our approach is calm, highly disciplined, and focused on long-term trust rather than short-term noise.</p>
         </div>
         <div class="hero-card reveal">
-          <img src="shipping port.png" alt="Shipping and export infrastructure" />
+          <img src="LOGO.png" alt="Shipping and export infrastructure" />
         </div>
       </div>
     </section>
@@ -384,7 +392,7 @@ Oryon Zenith was created to bring Kerala's finest agricultural products to the w
     <div>© 2026 Oryon Zenith Private Limited. All rights reserved.</div>
   </footer>
 
-  <a class="wa-btn" href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <a class="wa-btn" href="https://wa.me/916238411167" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M12.04 2.25A9.76 9.76 0 0 0 2.29 12.01c0 1.72.45 3.4 1.31 4.87L2.25 21.75l4.96-1.3a9.75 9.75 0 0 0 4.83 1.2h.01a9.76 9.76 0 1 0 0-19.52Zm5.39 13.93c-.23.65-.95 1.18-1.62 1.34-.4.08-.93.15-2.68-.57-2.27-.74-3.73-2.57-3.84-2.69-.11-.12-1.57-2.09-1.57-3.98 0-1.88.98-2.8 1.33-3.18.34-.37.75-.46.98-.46h.7c.16 0 .35.01.5.39.14.35.48 1.1.52 1.18.05.08.09.18.02.33-.07.14-.1.23-.2.36-.1.12-.2.27-.29.36-.1.1-.2.21-.09.4.11.2.49.81 1.05 1.31.72.64 1.32.84 1.52.93.2.08.32.07.43-.04.12-.12.49-.57.62-.76.14-.19.28-.16.47-.1.19.06 1.16.55 1.35.65.2.1.33.15.38.09.05-.01.2-.08.4-.18.2-.1 1.19-.56 1.38-.66.2-.1.32-.16.37-.3.05-.15.04-.3-.04-.42Z" />
     </svg>
@@ -529,21 +537,35 @@ Oryon Zenith was created to bring Kerala's finest agricultural products to the w
     const loader = document.getElementById('loader');
     const menuToggle = document.getElementById('menu-toggle');
     const mobileNav = document.getElementById('mobile-nav');
+
+    function setMobileNavOpen(isOpen) {
+      mobileNav?.classList.toggle('open', isOpen);
+      menuToggle?.setAttribute('aria-expanded', String(isOpen));
+      document.body.classList.toggle('menu-open', isOpen);
+      document.documentElement.style.overflow = isOpen ? 'hidden' : '';
+    }
+
     window.addEventListener('load', () => {
       setTimeout(() => loader.classList.add('hidden'), 900);
     });
 
     menuToggle?.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
+      setMobileNavOpen(!mobileNav?.classList.contains('open'));
     });
 
     document.querySelectorAll('.mobile-nav a').forEach((link) => {
-      link.addEventListener('click', () => mobileNav.classList.remove('open'));
+      link.addEventListener('click', () => setMobileNavOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setMobileNavOpen(false);
+      }
     });
 
     window.addEventListener('resize', () => {
       if (window.innerWidth > 920) {
-        mobileNav.classList.remove('open');
+        setMobileNavOpen(false);
       }
     });
 

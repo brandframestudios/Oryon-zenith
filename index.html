@@ -42,7 +42,7 @@
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+91-9876543210",
+      "telephone": "+91 6238411167",
       "contactType": "sales"
     }
   }
@@ -54,7 +54,7 @@
     "name": "Oryon Zenith Private Limited",
     "image": "https://www.oryonzenith.com/LOGO.png",
     "url": "https://www.oryonzenith.com",
-    "telephone": "+91-9876543210",
+    "telephone": "+91-6238411167",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Kerala",
@@ -226,28 +226,31 @@
       opacity: 1;
     }
     .page-shell { position: relative; z-index: 2; }
-    html { font-size: 16px; scroll-behavior: smooth; }
+    html { font-size: 16px; scroll-behavior: smooth; overflow-x: hidden; }
     body { font-size: clamp(0.95rem, 0.92rem + 0.2vw, 1rem); line-height: 1.65; }
+    body.menu-open { overflow: hidden; }
     main { overflow-x: clip; }
     section[id] { scroll-margin-top: 6rem; }
     button, a, summary, input, textarea { touch-action: manipulation; }
+    img, svg, video { display: block; max-width: 100%; height: auto; }
+    :focus-visible { outline: 2px solid var(--metal-4); outline-offset: 3px; }
     .topbar {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 50;
+      z-index: 1000;
       padding: clamp(0.8rem, 2vw, 1.25rem) clamp(0.8rem, 3vw, 1.25rem) 0;
       background: transparent;
     }
     .nav {
       max-width: min(1220px, calc(100% - clamp(1rem, 3vw, 2rem)));
       margin: 0 auto;
-      padding: 1rem 1.25rem;
+      padding: clamp(0.85rem, 1.8vw, 1rem) clamp(1rem, 2.2vw, 1.25rem);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.2rem;
+      gap: 1rem;
       border: 1px solid var(--border);
       background: rgba(10,10,10,0.78);
       backdrop-filter: blur(24px);
@@ -255,16 +258,16 @@
       border-radius: 999px;
       box-shadow: 0 12px 45px rgba(0,0,0,0.25);
     }
-    .nav-brand { display: flex; align-items: center; gap: 0.75rem; }
-    .nav-brand img { height: 2.2rem; width: auto; }
-    .brand-copy strong { display: block; font-size: 0.85rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text); }
-    .brand-copy span { display: block; font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-soft); }
-    .nav-links { display: flex; align-items: center; gap: 1.4rem; font-size: 0.8rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-soft); }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+    .nav-brand img { height: clamp(1.8rem, 2.1vw + 1rem, 2.25rem); width: auto; }
+    .brand-copy strong { display: block; font-size: clamp(0.75rem, 0.8vw + 0.6rem, 0.85rem); letter-spacing: 0.28em; text-transform: uppercase; color: var(--text); }
+    .brand-copy span { display: block; font-size: clamp(0.62rem, 0.5vw + 0.48rem, 0.7rem); letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-soft); }
+    .nav-links { display: flex; align-items: center; gap: clamp(0.8rem, 1.2vw, 1.4rem); font-size: clamp(0.7rem, 0.5vw + 0.58rem, 0.8rem); letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-soft); }
     .nav-link { position: relative; padding: 0.45rem 0; transition: color 0.25s ease; }
     .nav-link::after { content: ''; position: absolute; left: 0; bottom: -0.2rem; width: 0; height: 1px; background: linear-gradient(90deg, var(--metal-3), var(--metal-1)); transition: width 0.3s cubic-bezier(.22,.61,.36,1); }
     .nav-link:hover, .nav-link.active { color: var(--text); }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-    .menu-toggle { display: none; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text); padding: 0.6rem 0.8rem; border-radius: 999px; }
+    .menu-toggle { display: none; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text); padding: 0.6rem 0.8rem; border-radius: 999px; min-height: 44px; min-width: 44px; }
     .section { width: min(100%, 1160px); margin-inline: auto; padding-inline: clamp(1rem, 3vw, 2rem); }
     .hero.section {
       width: 100vw;
@@ -326,7 +329,7 @@
     .hero h1 { font-size: clamp(2.7rem, 5vw, 4.8rem); line-height: 0.95; letter-spacing: -0.035em; margin-top: 1.15rem; max-width: 12ch; color: #f6f4ee; text-shadow: 0 2px 24px rgba(0,0,0,0.55), 0 0 36px rgba(0,0,0,0.28); }
     .hero p { margin-top: 1.45rem; max-width: 56ch; font-size: 1.02rem; line-height: 1.85; color: rgba(236,236,236,0.94); text-shadow: 0 2px 18px rgba(0,0,0,0.42); }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; min-height: 44px; padding: 0.95rem 1.3rem; border-radius: 999px; border: 1px solid var(--border); transition: transform 0.3s cubic-bezier(.22,.61,.36,1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease; will-change: transform; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; min-height: 44px; min-width: 44px; padding: clamp(0.8rem, 1.2vw, 1rem) clamp(1rem, 2.2vw, 1.35rem); border-radius: 999px; border: 1px solid var(--border); transition: transform 0.3s cubic-bezier(.22,.61,.36,1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease; will-change: transform; white-space: normal; text-align: center; }
     .btn:hover { transform: translateY(-2px); }
     .btn:focus-visible, .nav-link:focus-visible, .menu-toggle:focus-visible, .contact-card input:focus-visible, .contact-card textarea:focus-visible { outline: 2px solid var(--metal-4); outline-offset: 3px; }
     .btn-primary { background: linear-gradient(135deg, rgba(236,236,236,0.16), rgba(255,255,255,0.04)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 16px 45px rgba(0,0,0,0.22); }
@@ -377,9 +380,10 @@
     .quote { margin-top: 0.95rem; font-size: 1.05rem; line-height: 1.8; color: var(--text-soft); }
     .signature { margin-top: 1rem; font-size: 0.82rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--metal-3); }
     .contact-card form { display: grid; gap: 0.8rem; margin-top: 1rem; }
-    .contact-card input, .contact-card textarea { width: 100%; border: 1px solid var(--border); border-radius: 0.95rem; padding: 0.9rem 1rem; background: rgba(255,255,255,0.04); color: var(--text); font: inherit; }
+    .contact-card input, .contact-card textarea { width: 100%; border: 1px solid var(--border); border-radius: 0.95rem; padding: 0.9rem 1rem; min-height: 44px; background: rgba(255,255,255,0.04); color: var(--text); font: inherit; font-size: clamp(0.95rem, 0.9vw + 0.8rem, 1rem); }
     .contact-card input::placeholder, .contact-card textarea::placeholder { color: #7c7c7c; }
-    .contact-card button { margin-top: 0.3rem; width: fit-content; }
+    .contact-card textarea { min-height: 7.5rem; resize: vertical; }
+    .contact-card button { margin-top: 0.3rem; width: fit-content; min-height: 44px; }
     .founders-section { padding: var(--section-pad-y-sm) 0; }
     .founders-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
     .founder-card { position: relative; overflow: hidden; padding: 1.15rem; min-height: 100%; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 1px solid var(--border); border-radius: 1.6rem; box-shadow: 0 24px 70px rgba(0,0,0,0.22); transition: transform 0.35s cubic-bezier(.22,.61,.36,1), box-shadow 0.35s cubic-bezier(.22,.61,.36,1), border-color 0.35s ease; will-change: transform; }
@@ -586,24 +590,42 @@
       transform: translateX(140%);
     }
     .compliance-logo {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
-      height: 110px;
-      padding: 18px;
-      border-radius: 0.9rem;
+      min-height: clamp(8rem, 12vw, 9.4rem);
+      padding: clamp(0.8rem, 1.2vw, 1.05rem);
+      border-radius: 0.95rem;
       border: 1px solid rgba(255,255,255,0.12);
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.24));
+      background:
+        linear-gradient(145deg, rgba(238,238,238,0.16), rgba(18,18,18,0.34)),
+        linear-gradient(180deg, rgba(255,255,255,0.1), rgba(0,0,0,0.16));
       overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -8px 24px rgba(0,0,0,0.18);
+      isolation: isolate;
+    }
+    .compliance-logo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.22), transparent 48%);
+      pointer-events: none;
+      z-index: 0;
     }
     .compliance-logo img {
+      position: relative;
+      z-index: 1;
       width: 100%;
       height: 100%;
       display: block;
       object-fit: contain;
       object-position: center;
+      max-width: 94%;
+      max-height: 94%;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
       filter: drop-shadow(0 6px 18px rgba(0,0,0,0.2));
     }
     .compliance-name {
@@ -671,24 +693,31 @@
       .hero-visual { max-width: 760px; margin-inline: auto; }
       .services-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .menu-toggle { display: inline-flex; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; }
-      .mobile-nav { display: block; }
-      .hero-stats, .grid-2, .services-list, .founders-grid { grid-template-columns: 1fr; }
-      .section-title p, .about-card p { max-width: 100%; }
-      .service-card img { height: clamp(170px, 32vw, 210px); }
+    @media (max-width: 1024px) {
+      .section { width: min(100%, 1100px); }
+      .process-grid { gap: 1.2rem; }
+      .service-card img { height: clamp(170px, 28vw, 210px); }
       .compliance-orbit { min-height: clamp(28rem, 70vw, 34rem); }
       .compliance-card { width: min(9.2rem, 32vw); padding: 0.8rem 0.75rem; }
       .compliance-logo { min-height: 2.4rem; }
     }
-    @media (max-width: 720px) {
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .mobile-nav { display: flex; flex-direction: column; }
+      .hero-stats, .grid-2, .services-list, .founders-grid { grid-template-columns: 1fr; }
+      .section-title p, .about-card p { max-width: 100%; }
+      .hero { background-attachment: scroll; padding-top: calc(clamp(4.2rem, 10vw, 5.8rem) + 6.2rem); }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn { width: 100%; }
+      .contact-card button { width: 100%; max-width: none; }
+    }
+    @media (max-width: 768px) {
       .topbar { padding: 0.7rem 0.7rem 0; }
       .nav { padding: 0.8rem 0.95rem; border-radius: 1.2rem; }
-      .hero { padding-top: 3.25rem; }
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .btn { width: 100%; }
-      .hero-stats { grid-template-columns: 1fr; }
+      .hero { padding-top: calc(4.8rem + 6.8rem); }
+      .hero h1 { font-size: clamp(2.35rem, 7.3vw, 3.2rem); }
+      .hero p { font-size: clamp(0.96rem, 1vw + 0.82rem, 1.01rem); line-height: 1.75; }
       .ship-card { padding: 0.75rem; }
       .globe-tooltip { min-width: 8rem; max-width: min(76vw, 12rem); }
       .compliance-orbit {
@@ -720,21 +749,32 @@
       footer .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
       .wa-btn { width: 3.35rem; height: 3.35rem; }
     }
-    @media (max-width: 480px) {
-      .nav { gap: 0.65rem; padding: 0.75rem 0.8rem; }
-      .brand-copy strong { font-size: 0.76rem; letter-spacing: 0.2em; }
-      .brand-copy span { font-size: 0.64rem; }
-      .nav-brand img { height: 1.8rem; }
-      .hero { padding-top: 2.9rem; }
-      .hero h1 { font-size: clamp(2.25rem, 8vw, 2.9rem); }
-      .hero p { font-size: 0.96rem; line-height: 1.75; }
-      .section { padding-inline: 0.8rem; }
+    @media (max-width: 600px) {
+      .section { padding-inline: clamp(0.8rem, 2.8vw, 1rem); }
+      .hero { padding-top: calc(4.6rem + 6.4rem); }
+      .hero-stats { grid-template-columns: 1fr; }
+      .section-title h2 { font-size: clamp(1.6rem, 4vw, 2.1rem); }
+      .service-card img { height: clamp(150px, 40vw, 190px); }
       .panel, .service-card, .timeline-item, .stat-card, .founder-card, .contact-card, .faq-item, .license-card { border-radius: 1rem; }
       .founder-name-row { flex-direction: column; align-items: flex-start; }
       .map-shell { padding: 0.7rem; }
       .globe-scene { aspect-ratio: 1 / 1.05; }
       .map-hint { left: 0.6rem; bottom: 0.6rem; font-size: 0.65rem; padding: 0.4rem 0.55rem; }
+    }
+    @media (max-width: 480px) {
+      .nav { gap: 0.65rem; padding: 0.75rem 0.8rem; }
+      .brand-copy strong { font-size: 0.76rem; letter-spacing: 0.2em; }
+      .brand-copy span { font-size: 0.64rem; }
+      .nav-brand img { height: 1.8rem; }
+      .hero { padding-top: calc(4.4rem + 6rem); }
+      .hero h1 { font-size: clamp(2.15rem, 8vw, 2.8rem); }
+      .hero p { font-size: 0.96rem; line-height: 1.75; }
       .mobile-nav { width: min(92vw, 320px); padding: 1rem; }
+    }
+    @media (max-width: 360px) {
+      .nav { border-radius: 1.1rem; }
+      .brand-copy { display: none; }
+      .hero h1 { font-size: clamp(1.95rem, 8vw, 2.4rem); }
     }
     @media (min-width: 1441px) {
       .section, .hero, footer { max-width: 1360px; }
@@ -742,6 +782,7 @@
     }
     @media (min-width: 1920px) {
       .section { padding-inline: 2rem; }
+      .hero-grid { max-width: 1320px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
@@ -785,7 +826,7 @@
           <a class="nav-link" href="founders-note.html">Founder’s Note</a>
           <a class="nav-link" href="#contact">Contact</a>
         </div>
-        <button class="menu-toggle" type="button" aria-label="Open navigation" id="menu-toggle">☰</button>
+        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav" id="menu-toggle">☰</button>
       </nav>
     </header>
 
@@ -1013,14 +1054,14 @@
               <h2>Begin a premium export conversation.</h2>
             </div>
             <p class="quote">For product inquiries, strategic trade discussions, and shipment planning, we welcome direct conversations with importers, distributors, and procurement teams.</p>
-            <form>
+            <form action="https://formspree.io/f/xrewnajy" method="POST">
               <label class="sr-only" for="name">Name</label>
-              <input id="name" type="text" placeholder="Your name" />
+              <input id="name" name="name" type="text" placeholder="Your name" required />
               <label class="sr-only" for="email">Email</label>
-              <input id="email" type="email" placeholder="Email address" />
+              <input id="email" name="email" type="email" placeholder="Email address" required />
               <label class="sr-only" for="message">Message</label>
-              <textarea id="message" rows="4" placeholder="Tell us about your requirement"></textarea>
-              <button class="btn btn-primary" type="button">Send Inquiry</button>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us about your requirement" required></textarea>
+              <button class="btn btn-primary" type="submit">Send Inquiry</button>
             </form>
           </article>
         </div>
@@ -1038,7 +1079,7 @@
     </footer>
   </div>
 
-  <a class="wa-btn" href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <a class="wa-btn" href="https://wa.me/+916238411167" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M12.04 2.25A9.76 9.76 0 0 0 2.29 12.01c0 1.72.45 3.4 1.31 4.87L2.25 21.75l4.96-1.3a9.75 9.75 0 0 0 4.83 1.2h.01a9.76 9.76 0 1 0 0-19.52Zm5.39 13.93c-.23.65-.95 1.18-1.62 1.34-.4.08-.93.15-2.68-.57-2.27-.74-3.73-2.57-3.84-2.69-.11-.12-1.57-2.09-1.57-3.98 0-1.88.98-2.8 1.33-3.18.34-.37.75-.46.98-.46h.7c.16 0 .35.01.5.39.14.35.48 1.1.52 1.18.05.08.09.18.02.33-.07.14-.1.23-.2.36-.1.12-.2.27-.29.36-.1.1-.2.21-.09.4.11.2.49.81 1.05 1.31.72.64 1.32.84 1.52.93.2.08.32.07.43-.04.12-.12.49-.57.62-.76.14-.19.28-.16.47-.1.19.06 1.16.55 1.35.65.2.1.33.15.38.09.05-.01.2-.08.4-.18.2-.1 1.19-.56 1.38-.66.2-.1.32-.16.37-.3.05-.15.04-.3-.04-.42Z" />
     </svg>
@@ -1188,11 +1229,11 @@
     }
 
     const complianceItems = [
-      { title: 'CIN', subtitle: 'Certificate of Incorporation', label: 'Certificate of Incorporation logo', logo: 'warehouse.png' },
+      // { title: 'CIN', subtitle: 'Certificate of Incorporation', label: 'Certificate of Incorporation logo', logo: 'warehouse.png' },
       { title: 'Udyam', subtitle: 'MSME Registration', label: 'MSME Registration logo', logo: 'msme.png' },
       { title: 'IEC', subtitle: 'Import Export Code', label: 'Import Export Code logo', logo: 'shipping port.png' },
-      { title: 'AD Code', subtitle: 'AD Code', label: 'AD Code registration', logo: 'global map.png' },
-      { title: 'APEDA RCMC', subtitle: 'APEDA RCMC', label: 'APEDA RCMC logo', logo: 'spice plantation.png' },
+      { title: 'AD Code', subtitle: 'AD Code', label: 'AD Code registration', logo: 'ministry finance.png' },
+      { title: 'APEDA RCMC', subtitle: 'APEDA RCMC', label: 'APEDA RCMC logo', logo: 'apeda.png' },
       { title: 'Spices Board of India', subtitle: 'Spices Board of India', label: 'Spices Board of India logo', logo: 'spices board.png' },
       { title: 'Coconut Development Board', subtitle: 'Coconut Development Board', label: 'Coconut Development Board logo', logo: 'coconut board.png' },
       { title: 'FSSAI License', subtitle: 'FSSAI License', label: 'FSSAI License logo', logo: 'fssai.png' },
@@ -1451,6 +1492,13 @@
     const menuToggle = document.getElementById('menu-toggle');
     const mobileNav = document.getElementById('mobile-nav');
 
+    function setMobileNavOpen(isOpen) {
+      mobileNav?.classList.toggle('open', isOpen);
+      menuToggle?.setAttribute('aria-expanded', String(isOpen));
+      document.body.classList.toggle('menu-open', isOpen);
+      document.documentElement.style.overflow = isOpen ? 'hidden' : '';
+    }
+
     window.addEventListener('load', () => {
       setTimeout(() => loader.classList.add('hidden'), 900);
     });
@@ -1507,11 +1555,23 @@
     });
 
     menuToggle?.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
+      setMobileNavOpen(!mobileNav?.classList.contains('open'));
     });
 
     document.querySelectorAll('.mobile-nav a').forEach((link) => {
-      link.addEventListener('click', () => mobileNav.classList.remove('open'));
+      link.addEventListener('click', () => setMobileNavOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setMobileNavOpen(false);
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) {
+        setMobileNavOpen(false);
+      }
     });
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
