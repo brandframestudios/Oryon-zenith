@@ -537,6 +537,7 @@ Oryon Zenith was created to bring Kerala's finest agricultural products to the w
     const loader = document.getElementById('loader');
     const menuToggle = document.getElementById('menu-toggle');
     const mobileNav = document.getElementById('mobile-nav');
+    const closeMenuButton = document.querySelector('.mobile-nav .close');
 
     function setMobileNavOpen(isOpen) {
       mobileNav?.classList.toggle('open', isOpen);
@@ -551,6 +552,10 @@ Oryon Zenith was created to bring Kerala's finest agricultural products to the w
 
     menuToggle?.addEventListener('click', () => {
       setMobileNavOpen(!mobileNav?.classList.contains('open'));
+    });
+
+    closeMenuButton?.addEventListener('click', () => {
+      setMobileNavOpen(false);
     });
 
     document.querySelectorAll('.mobile-nav a').forEach((link) => {
