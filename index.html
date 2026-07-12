@@ -426,25 +426,17 @@
     .globe-shell::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(236,236,236,0.12), transparent 36%); pointer-events: none; }
     .globe-scene { position: relative; width: min(100%, 620px); aspect-ratio: 16 / 10.4; margin: 0 auto; isolation: isolate; overflow: hidden; border-radius: 1.2rem; border: 1px solid rgba(255,255,255,0.12); background: radial-gradient(circle at 24% 20%, rgba(236,236,236,0.08), transparent 24%), linear-gradient(135deg, rgba(6,8,12,0.95), rgba(18,20,24,0.92)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -20px 60px rgba(0,0,0,0.68); touch-action: manipulation; }
     .globe-scene::after { content: ''; position: absolute; inset: -8%; border-radius: inherit; pointer-events: none; background: radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 34%), linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.06) 100%); filter: blur(18px); opacity: 0.8; z-index: 0; }
-    .globe-scene .map-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; opacity: 0.95; filter: saturate(0.9) contrast(1.05) brightness(0.8); background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%); }
-    .globe-scene .map-overlay { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; }
-    .globe-scene .map-overlay .route-line { fill: none; opacity: 0; pointer-events: none; transition: opacity 220ms ease; stroke-linecap: round; stroke-linejoin: round; }
-    .globe-scene .map-overlay .route-line.main { stroke: rgba(236,236,236,0.9); stroke-width: 2.6; stroke-dasharray: 6 8; animation: routeFlow 3.2s linear infinite; filter: drop-shadow(0 0 8px rgba(236,236,236,0.2)); }
-    .globe-scene .map-overlay .route-line.glow { stroke: rgba(255,255,255,0.26); stroke-width: 5.4; stroke-dasharray: 2 8; animation: routeFlow 4.6s linear infinite; }
-    .globe-scene .map-overlay .route-line.primary { stroke-opacity: 1; }
-    .globe-scene .map-overlay .route-line.secondary { stroke-opacity: 0.82; }
-    .globe-scene.is-active .map-overlay .route-line { opacity: 1; pointer-events: auto; }
-    .globe-scene .map-marker { cursor: pointer; fill: #f7f2eb; stroke: rgba(255,255,255,0.9); stroke-width: 1.4; filter: drop-shadow(0 0 10px rgba(236,236,236,0.2)); transform-origin: center; animation: markerPulse 1.8s ease-out infinite; }
-    .globe-scene .map-marker.origin { fill: #ffffff; stroke: rgba(236,236,236,0.95); animation-duration: 1.45s; }
-    .globe-scene .map-marker.secondary { animation-duration: 2.3s; }
-    .globe-scene .route-cargo { fill: #f7f2eb; opacity: 0; transition: opacity 180ms ease; filter: drop-shadow(0 0 10px rgba(236,236,236,0.32)); }
-    .globe-scene.is-active .route-cargo { opacity: 1; }
-    .globe-scene .map-hint { position: absolute; left: 1rem; bottom: 1rem; z-index: 3; padding: 0.48rem 0.64rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(5,5,5,0.7); backdrop-filter: blur(12px); color: var(--text-soft); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; pointer-events: none; transition: opacity 220ms ease; }
-    .globe-scene .map-hint.is-hidden { opacity: 0; }
-    .globe-tooltip { position: absolute; z-index: 4; display: inline-flex; flex-direction: column; gap: 0.2rem; padding: 0.7rem 0.8rem; border-radius: 0.9rem; border: 1px solid rgba(255,255,255,0.12); background: rgba(5,5,5,0.86); backdrop-filter: blur(16px); box-shadow: 0 14px 40px rgba(0,0,0,0.24); opacity: 0; transform: translate(-50%, -120%) scale(0.96); transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none; min-width: 9rem; }
-    .globe-tooltip.is-visible { opacity: 1; transform: translate(-50%, -120%) scale(1); }
-    .globe-tooltip strong { font-size: 0.76rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--metal-4); }
-    .globe-tooltip span { color: var(--text-soft); font-size: 0.82rem; line-height: 1.4; }
+    .globe-scene .map-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; opacity: 0.96; filter: saturate(0.92) contrast(1.04) brightness(0.82); background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%); transform: scale(1.11); transform-origin: center; }
+    .globe-scene .map-route-overlay { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; opacity: 0; transition: opacity 0.35s ease; will-change: opacity, filter; }
+    .globe-scene.is-active .map-route-overlay { opacity: 1; }
+    .globe-scene .map-route-overlay .route-line { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.2; stroke: rgba(212, 175, 55, 0.12); opacity: 0; transition: opacity 0.35s ease, stroke 0.35s ease, filter 0.35s ease; }
+    .globe-scene .map-route-overlay .route-line.flow { stroke-dasharray: 12 10; animation: routeShimmer 4.8s linear infinite; }
+    .globe-scene .map-route-overlay .route-line.glow { stroke-width: 4.8; stroke: rgba(212, 175, 55, 0.2); }
+    .globe-scene.is-active .map-route-overlay .route-line { opacity: 1; }
+    .globe-scene.is-active .map-route-overlay .route-line.flow { stroke: rgba(230, 198, 106, 0.96); filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.24)) drop-shadow(0 0 12px rgba(248, 224, 142, 0.16)); }
+    .globe-scene.is-active .map-route-overlay .route-line.glow { stroke: rgba(248, 224, 142, 0.28); filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.22)); }
+    .globe-scene .map-route-overlay .route-node { fill: rgba(248, 224, 142, 0.12); opacity: 0; transition: opacity 0.35s ease, fill 0.35s ease, filter 0.35s ease; }
+    .globe-scene.is-active .map-route-overlay .route-node { opacity: 1; fill: rgba(248, 224, 142, 0.8); filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.26)); }
     footer { padding: 3rem 1.25rem 3.5rem; max-width: 1160px; margin: 0 auto; color: var(--text-soft); font-size: 0.92rem; }
     footer .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.25rem; }
     footer .footer-social { display: inline-flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
@@ -671,6 +663,7 @@
     @keyframes pulse { 0% { transform: scale(0.85); opacity: 0.6; } 70% { transform: scale(1.35); opacity: 0; } 100% { opacity: 0; } }
     @keyframes routeFlow { 0% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -44; } }
     @keyframes markerPulse { 0%,100% { transform: scale(0.92); opacity: 0.82; } 50% { transform: scale(1.08); opacity: 1; } }
+    @keyframes routeShimmer { to { stroke-dashoffset: -140; } }
     .ship-animate { animation: bob 5.2s ease-in-out infinite; transform-origin: center; }
     @media (max-width: 1200px) {
       .hero-grid, .process-grid { grid-template-columns: 1fr; gap: 1.2rem; }
@@ -943,10 +936,6 @@
           <div class="panel map-panel reveal">
             <div class="globe-shell">
               <div class="globe-scene" id="globe-scene"></div>
-              <div class="globe-tooltip" id="globe-tooltip" aria-live="polite">
-                <strong>India</strong>
-                <span>Origin • Kerala Exports</span>
-              </div>
             </div>
             <p class="map-note">Primary lanes connect India to the UAE and Sri Lanka, while secondary corridors reach the UK, Germany, the Netherlands, Singapore, and Canada through disciplined trade execution.</p>
           </div>
@@ -1206,8 +1195,8 @@
       { title: 'APEDA RCMC', subtitle: 'APEDA RCMC', label: 'APEDA RCMC logo', logo: 'spice plantation.png' },
       { title: 'Spices Board of India', subtitle: 'Spices Board of India', label: 'Spices Board of India logo', logo: 'spices board.png' },
       { title: 'Coconut Development Board', subtitle: 'Coconut Development Board', label: 'Coconut Development Board logo', logo: 'coconut board.png' },
-      { title: 'FSSAI License', subtitle: 'FSSAI License', label: 'FSSAI License logo', logo: 'eggs and perishables.png' },
-      { title: 'GST Registration', subtitle: 'GST Registration', label: 'GST Registration logo', logo: 'global cargo.png' },
+      { title: 'FSSAI License', subtitle: 'FSSAI License', label: 'FSSAI License logo', logo: 'fssai.png' },
+      { title: 'GST Registration', subtitle: 'GST Registration', label: 'GST Registration logo', logo: 'gst.png' },
     ];
 
     function initComplianceCarousel() {
@@ -1538,206 +1527,53 @@
     });
 
     const globeContainer = document.getElementById('globe-scene');
-    const globeTooltip = document.getElementById('globe-tooltip');
 
-    function renderMapNetwork() {
+    function renderMapImage() {
       if (!globeContainer) return;
 
-      const viewWidth = 1200;
-      const viewHeight = 1200;
-      const origin = { lat: 10.8505, lon: 76.2711 };
-      const destinations = [
-        { label: 'UAE', detail: 'Primary Market', lat: 25.2048, lon: 55.2708, primary: true, curve: -95 },
-        { label: 'Sri Lanka', detail: 'Primary Market', lat: 7.8731, lon: 80.7718, primary: true, curve: 88 },
-        { label: 'United Kingdom', detail: 'Secondary Market', lat: 55.3781, lon: -3.4360, primary: false, curve: -145 },
-        { label: 'Germany', detail: 'Secondary Market', lat: 51.1657, lon: 10.4515, primary: false, curve: -125 },
-        { label: 'Netherlands', detail: 'Secondary Market', lat: 52.1326, lon: 5.2913, primary: false, curve: -92 },
-        { label: 'Singapore', detail: 'Secondary Market', lat: 1.3521, lon: 103.8198, primary: false, curve: 132 },
-        { label: 'Canada', detail: 'Secondary Market', lat: 56.1304, lon: -106.3468, primary: false, curve: -210 }
-      ];
-
-      function project(lat, lon) {
-        const x = ((lon + 180) / 360) * viewWidth;
-        const y = ((90 - lat) / 180) * viewHeight;
-        return { x, y };
-      }
-
-      function createRoutePath(from, to, curveOffset) {
-        const midX = (from.x + to.x) / 2;
-        const midY = (from.y + to.y) / 2;
-        const controlX = midX + curveOffset;
-        const controlY = Math.max(140, Math.min(viewHeight - 140, midY - 118));
-        const startControlX = from.x + (to.x - from.x) * 0.28;
-        const endControlX = to.x - (to.x - from.x) * 0.28;
-        return `M ${from.x.toFixed(2)} ${from.y.toFixed(2)} C ${startControlX.toFixed(2)} ${Math.max(120, from.y - 90).toFixed(2)} ${controlX.toFixed(2)} ${controlY.toFixed(2)} ${to.x.toFixed(2)} ${to.y.toFixed(2)}`;
-      }
-
-      const originPoint = project(origin.lat, origin.lon);
-      const routeMarkup = destinations.map((route) => {
-        const destination = project(route.lat, route.lon);
-        const path = createRoutePath(originPoint, destination, route.curve);
-        return `
-          <path class="route-line glow ${route.primary ? 'primary' : 'secondary'}" d="${path}" data-label="${route.label}" data-detail="${route.detail}" data-x="${destination.x.toFixed(2)}" data-y="${destination.y.toFixed(2)}" />
-          <path class="route-line main ${route.primary ? 'primary' : 'secondary'}" d="${path}" data-label="${route.label}" data-detail="${route.detail}" data-x="${destination.x.toFixed(2)}" data-y="${destination.y.toFixed(2)}" />
-        `;
-      }).join('');
-
-      const markerMarkup = destinations.map((route) => {
-        const point = project(route.lat, route.lon);
-        const className = route.primary ? 'map-marker origin' : 'map-marker secondary';
-        return `<circle class="${className}" cx="${point.x.toFixed(2)}" cy="${point.y.toFixed(2)}" r="${route.primary ? 6.4 : 5.4}" data-label="${route.label}" data-detail="${route.detail}" data-x="${point.x.toFixed(2)}" data-y="${point.y.toFixed(2)}" />`;
-      }).join('');
-
-      const originMarker = `<circle class="map-marker origin" cx="${originPoint.x.toFixed(2)}" cy="${originPoint.y.toFixed(2)}" r="7.2" data-label="Kerala / South India" data-detail="Origin • Oryon Zenith" data-x="${originPoint.x.toFixed(2)}" data-y="${originPoint.y.toFixed(2)}" />`;
-
       globeContainer.innerHTML = `
-        <img class="map-image" src="./global%20map.png" alt="Flat world map showing Oryon Zenith export routes" />
-        <svg class="map-overlay" id="map-overlay" viewBox="0 0 ${viewWidth} ${viewHeight}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <g id="route-layer">
-            ${routeMarkup}
-          </g>
-          <g id="cargo-layer"></g>
-          <g id="marker-layer">
-            ${originMarker}
-            ${markerMarkup}
-          </g>
+        <img class="map-image" src="./map.png" alt="World map illustration for Oryon Zenith export process" />
+        <svg class="map-route-overlay" viewBox="0 0 1200 780" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <path class="route-line glow" d="M 640 440 C 700 420, 735 405, 760 390" />
+          <path class="route-line flow" d="M 640 440 C 700 420, 735 405, 760 390" />
+          <circle class="route-node" cx="760" cy="390" r="3.6" />
+          <path class="route-line glow" d="M 640 440 C 690 470, 705 490, 725 500" />
+          <path class="route-line flow" d="M 640 440 C 690 470, 705 490, 725 500" />
+          <circle class="route-node" cx="725" cy="500" r="3.6" />
+          <path class="route-line glow" d="M 640 440 C 500 300, 430 220, 350 175" />
+          <path class="route-line flow" d="M 640 440 C 500 300, 430 220, 350 175" />
+          <circle class="route-node" cx="350" cy="175" r="3.6" />
+          <path class="route-line glow" d="M 640 440 C 540 310, 485 250, 430 220" />
+          <path class="route-line flow" d="M 640 440 C 540 310, 485 250, 430 220" />
+          <circle class="route-node" cx="430" cy="220" r="3.6" />
+          <path class="route-line glow" d="M 640 440 C 770 470, 820 515, 850 540" />
+          <path class="route-line flow" d="M 640 440 C 770 470, 820 515, 850 540" />
+          <circle class="route-node" cx="850" cy="540" r="3.6" />
+          <path class="route-line glow" d="M 640 440 C 360 240, 240 180, 150 125" />
+          <path class="route-line flow" d="M 640 440 C 360 240, 240 180, 150 125" />
+          <circle class="route-node" cx="150" cy="125" r="3.6" />
         </svg>
-        <div class="globe-tooltip" id="globe-tooltip" aria-live="polite">
-          <strong>Kerala / South India</strong>
-          <span>Origin • Oryon Zenith</span>
-        </div>
-        <div class="map-hint">Hover or tap map to explore export routes</div>
       `;
 
-      const tooltip = globeContainer.querySelector('#globe-tooltip');
-      const hint = globeContainer.querySelector('.map-hint');
-      const markers = [...globeContainer.querySelectorAll('.map-marker')];
-      const routePaths = [...globeContainer.querySelectorAll('.route-line.main')];
-      const cargoLayer = globeContainer.querySelector('#cargo-layer');
-      const cargoNodes = [];
       const prefersHover = window.matchMedia('(hover: hover)').matches;
-
-      routePaths.forEach((pathEl, index) => {
-        const cargo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        cargo.setAttribute('class', 'route-cargo');
-        cargo.setAttribute('r', '4.8');
-        cargoLayer.appendChild(cargo);
-        cargoNodes.push({ element: cargo, path: pathEl, progress: 0.08 + index * 0.08, speed: 0.006 + (index % 3) * 0.0012 });
-      });
-
-      function positionTooltip(target) {
-        const rect = globeContainer.getBoundingClientRect();
-        const x = (Number(target.dataset.x || 0) / viewWidth) * rect.width;
-        const y = (Number(target.dataset.y || 0) / viewHeight) * rect.height;
-        tooltip.style.left = `${Math.max(84, Math.min(rect.width - 84, x))}px`;
-        tooltip.style.top = `${Math.max(72, Math.min(rect.height - 72, y))}px`;
-      }
-
-      function showTooltip(target) {
-        tooltip.querySelector('strong').textContent = target.dataset.label || 'Route';
-        tooltip.querySelector('span').textContent = target.dataset.detail || 'Export corridor';
-        tooltip.classList.add('is-visible');
-        positionTooltip(target);
-      }
-
-      function hideTooltip() {
-        tooltip.classList.remove('is-visible');
-      }
-
-      const setActive = () => {
-        globeContainer.classList.add('is-active');
-        hint.classList.add('is-hidden');
-      };
-
-      const clearActive = () => {
-        if (!prefersHover) return;
-        globeContainer.classList.remove('is-active');
-        hint.classList.remove('is-hidden');
-        hideTooltip();
-      };
-
       if (prefersHover) {
-        globeContainer.addEventListener('mouseenter', setActive);
-        globeContainer.addEventListener('mouseleave', clearActive);
+        globeContainer.addEventListener('mouseenter', () => globeContainer.classList.add('is-active'));
+        globeContainer.addEventListener('mouseleave', () => globeContainer.classList.remove('is-active'));
       } else {
         globeContainer.addEventListener('click', (event) => {
-          const target = event.target.closest('.map-marker, .route-line');
-          if (target) {
-            event.stopPropagation();
-            showTooltip(target);
-            setActive();
-            return;
-          }
-          globeContainer.classList.toggle('is-active');
-          hint.classList.toggle('is-hidden');
-          if (!globeContainer.classList.contains('is-active')) {
-            hideTooltip();
-          }
-        });
-      }
-
-      globeContainer.addEventListener('focusin', setActive);
-      globeContainer.addEventListener('focusout', clearActive);
-
-      markers.forEach((marker) => {
-        marker.addEventListener('mouseenter', () => {
-          showTooltip(marker);
-          setActive();
-        });
-        marker.addEventListener('mouseleave', hideTooltip);
-        marker.addEventListener('focus', () => {
-          showTooltip(marker);
-          setActive();
-        });
-        marker.addEventListener('blur', hideTooltip);
-        marker.addEventListener('click', (event) => {
           event.stopPropagation();
-          showTooltip(marker);
-          setActive();
+          globeContainer.classList.toggle('is-active');
         });
-      });
-
-      routePaths.forEach((route) => {
-        route.addEventListener('mouseenter', () => {
-          showTooltip(route);
-          setActive();
-        });
-        route.addEventListener('mouseleave', hideTooltip);
-        route.addEventListener('focus', () => {
-          showTooltip(route);
-          setActive();
-        });
-        route.addEventListener('blur', hideTooltip);
-      });
-
-      let lastFrame = performance.now();
-      function animateCargo(now) {
-        const delta = Math.min(0.03, (now - lastFrame) / 1000 || 0.016);
-        lastFrame = now;
-        const active = globeContainer.classList.contains('is-active');
-        cargoNodes.forEach((cargoNode) => {
-          cargoNode.progress = (cargoNode.progress + delta * cargoNode.speed) % 1;
-          const point = cargoNode.path.getPointAtLength(cargoNode.progress * cargoNode.path.getTotalLength());
-          cargoNode.element.setAttribute('cx', point.x);
-          cargoNode.element.setAttribute('cy', point.y);
-          cargoNode.element.style.opacity = active ? '1' : '0';
-        });
-        requestAnimationFrame(animateCargo);
-      }
-      requestAnimationFrame(animateCargo);
-
-      window.addEventListener('resize', () => {
-        if (tooltip.classList.contains('is-visible')) {
-          const activeTarget = globeContainer.querySelector('.map-marker:hover, .route-line:hover');
-          if (activeTarget) {
-            positionTooltip(activeTarget);
+        document.addEventListener('click', (event) => {
+          if (!globeContainer.contains(event.target)) {
+            globeContainer.classList.remove('is-active');
           }
-        }
-      });
+        });
+      }
     }
 
     if (globeContainer) {
-      renderMapNetwork();
+      renderMapImage();
     }
   </script>
 </body>
