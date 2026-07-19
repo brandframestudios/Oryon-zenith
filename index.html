@@ -332,7 +332,7 @@
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; min-height: 44px; min-width: 44px; padding: clamp(0.8rem, 1.2vw, 1rem) clamp(1rem, 2.2vw, 1.35rem); border-radius: 999px; border: 1px solid var(--border); transition: transform 0.3s cubic-bezier(.22,.61,.36,1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease; will-change: transform; white-space: normal; text-align: center; }
     .btn:hover { transform: translateY(-2px); }
     .btn:focus-visible, .nav-link:focus-visible, .menu-toggle:focus-visible, .contact-card input:focus-visible, .contact-card textarea:focus-visible { outline: 2px solid var(--metal-4); outline-offset: 3px; }
-    .btn-primary { background: linear-gradient(135deg, rgba(236,236,236,0.16), rgba(255,255,255,0.04)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 16px 45px rgba(0,0,0,0.22); }
+    .btn-primary { color: #fff; background: linear-gradient(135deg, rgba(236,236,236,0.16), rgba(255,255,255,0.04)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 16px 45px rgba(0,0,0,0.22); }
     .btn-secondary { background: rgba(255,255,255,0.03); }
     .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.4rem; }
     .stat-card { padding: 1.15rem 1rem; border-radius: 1.2rem; border: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08); }
@@ -748,6 +748,8 @@
       .compliance-tooltip { display: none; }
       footer .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
       .wa-btn { width: 3.35rem; height: 3.35rem; }
+      .map-shell { padding: 0.75rem; }
+      .globe-scene { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; min-height: 0; height: auto; }
     }
     @media (max-width: 600px) {
       .section { padding-inline: clamp(0.8rem, 2.8vw, 1rem); }
@@ -757,8 +759,8 @@
       .service-card img { height: clamp(150px, 40vw, 190px); }
       .panel, .service-card, .timeline-item, .stat-card, .founder-card, .contact-card, .faq-item, .license-card { border-radius: 1rem; }
       .founder-name-row { flex-direction: column; align-items: flex-start; }
-      .map-shell { padding: 0.7rem; }
-      .globe-scene { aspect-ratio: 1 / 1.05; }
+      .map-shell { padding: 0.55rem; }
+      .globe-scene { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; min-height: 0; height: auto; }
       .map-hint { left: 0.6rem; bottom: 0.6rem; font-size: 0.65rem; padding: 0.4rem 0.55rem; }
     }
     @media (max-width: 480px) {
@@ -805,7 +807,7 @@
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#network">Network</a>
-    <a href="founders-note.html">Founder’s Note</a>
+    <a href="/founders-note">Founder’s Note</a>
     <a href="#contact">Contact</a>
   </div>
 
@@ -823,7 +825,7 @@
           <a class="nav-link active" href="#about">About</a>
           <a class="nav-link" href="#services">Services</a>
           <a class="nav-link" href="#network">Network</a>
-          <a class="nav-link" href="founders-note.html">Founder’s Note</a>
+          <a class="nav-link" href="/founders-note">Founder’s Note</a>
           <a class="nav-link" href="#contact">Contact</a>
         </div>
         <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav" id="menu-toggle">☰</button>
