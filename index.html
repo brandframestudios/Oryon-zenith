@@ -16,6 +16,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
   <meta property="og:title" content="Oryon Zenith Pvt Ltd | Premium Export Company from Kerala" />
   <meta property="og:description" content="A luxury-grade export partner for premium agricultural produce, food commodities, and global trade execution from Kerala." />
   <meta property="og:type" content="website" />
@@ -442,10 +444,33 @@
     .globe-scene .map-route-overlay .route-node { fill: rgba(248, 224, 142, 0.12); opacity: 0; transition: opacity 0.35s ease, fill 0.35s ease, filter 0.35s ease; }
     .globe-scene.is-active .map-route-overlay .route-node { opacity: 1; fill: rgba(248, 224, 142, 0.8); filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.26)); }
     footer { padding: 3rem 1.25rem 3.5rem; max-width: 1160px; margin: 0 auto; color: var(--text-soft); font-size: 0.92rem; }
-    footer .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.25rem; }
-    footer .footer-social { display: inline-flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    footer .footer-inner { display: grid; grid-template-columns: 1fr 1.5fr 0.8fr; gap: clamp(2rem, 3vw, 3rem); align-items: start; border-top: 1px solid var(--border); padding-top: 1.25rem; }
+    footer .footer-company,
+    footer .footer-contact,
+    footer .footer-social { display: flex; flex-direction: column; gap: 0.9rem; }
+    footer .footer-company strong { display: block; color: var(--text); font-size: 1rem; letter-spacing: 0.18em; text-transform: uppercase; }
+    footer .footer-company div { color: var(--text-soft); line-height: 1.8; }
+    footer .footer-contact { max-width: min(32rem, 100%); }
+    footer .footer-contact-item { display: flex; align-items: flex-start; gap: 0.9rem; }
+    footer .footer-contact-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.25rem; min-width: 2.25rem; color: var(--metal-4); }
+    footer .footer-contact address,
+    footer .footer-contact a { display: block; color: var(--text-soft); font-style: normal; line-height: 1.75; text-decoration: none; }
+    footer .footer-contact address { white-space: pre-wrap; }
+    footer .footer-contact a:hover,
+    footer .footer-contact a:focus-visible { color: var(--metal-4); text-decoration: underline; }
+    footer .footer-social { align-items: flex-start; }
     footer .footer-social a { color: var(--text-soft); text-decoration: none; transition: color 0.25s ease, opacity 0.25s ease, text-shadow 0.25s ease; }
     footer .footer-social a:hover, footer .footer-social a:focus-visible { color: var(--metal-4); opacity: 0.92; text-shadow: 0 0 14px rgba(236,236,236,0.12); }
+    @media (max-width: 900px) {
+      footer .footer-inner { grid-template-columns: 1fr; }
+      footer .footer-social { flex-direction: row; flex-wrap: wrap; gap: 1rem; }
+    }
+    @media (max-width: 620px) {
+      footer { padding: 2.25rem 1rem 2.5rem; }
+      footer .footer-inner { gap: 1.5rem; }
+      footer .footer-company strong { font-size: 0.95rem; }
+      footer .footer-contact-item { gap: 0.75rem; }
+    }
     .reveal { opacity: 0; transform: translateY(22px) scale(0.985); filter: blur(6px); }
     .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); transition: opacity 0.8s cubic-bezier(.22,.61,.36,1), transform 0.8s cubic-bezier(.22,.61,.36,1), filter 0.8s cubic-bezier(.22,.61,.36,1); }
     #loader { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: linear-gradient(135deg, rgba(2,2,2,0.96), rgba(5,5,5,0.92)); transition: opacity 0.75s ease, visibility 0.75s ease; overflow: hidden; }
@@ -533,23 +558,51 @@
     .compliance-viewport {
       position: relative;
       width: 100%;
-      overflow: hidden;
-      padding: 0.2rem 0 0.5rem;
+      /* allow centered card to pop-out without clipping */
+      overflow: visible;
+      padding: 0.2rem 3.5rem 0.5rem;
       touch-action: pan-y;
     }
+    /* Constrain viewport height to card height plus room for pop-out */
+    .compliance-viewport { height: 420px; }
     .compliance-track {
       display: flex;
       gap: 1rem;
       will-change: transform;
       transform: translate3d(0, 0, 0);
       padding: 0.25rem 0;
-      width: max-content;
-      transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+      width: 100%;
+      align-items: flex-start;
+      box-sizing: border-box;
+    }
+    /* Swiper slides: enforce consistent width and center alignment */
+    .compliance-swiper { overflow: visible; }
+    .compliance-swiper .swiper-wrapper { align-items: stretch; }
+    .compliance-swiper { width: 100%; }
+    .compliance-swiper .swiper-slide {
+      width: clamp(240px, 22vw, 290px) !important;
+      flex: 0 0 clamp(240px, 22vw, 290px);
+      min-width: 0;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: auto;
+    }
+    /* Strong overrides for small viewports so slides stay uniform */
+    @media (max-width: 1024px) {
+      .compliance-swiper .swiper-slide { width: clamp(200px, 36vw, 260px) !important; }
+      .compliance-swiper .compliance-card { height: 340px !important; }
+    }
+    @media (max-width: 768px) {
+      .compliance-swiper .swiper-slide { width: clamp(180px, 46vw, 240px) !important; }
+      .compliance-swiper .compliance-card { height: 300px !important; }
     }
     .compliance-card {
       position: relative;
-      flex: 0 0 clamp(12.5rem, 16vw, 14rem);
-      min-height: 14.5rem;
+      width: 100%;
+      height: 360px;
+      flex: 0 0 100%;
       padding: 1rem;
       border-radius: 1.15rem;
       border: 1px solid rgba(255,255,255,0.16);
@@ -566,6 +619,7 @@
       transition: transform 0.55s cubic-bezier(.22,.61,.36,1), border-color 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
       transform-origin: center center;
       overflow: hidden;
+      box-sizing: border-box;
     }
     .compliance-card::before {
       content: '';
@@ -576,17 +630,42 @@
       transition: transform 0.6s cubic-bezier(.22,.61,.36,1);
       pointer-events: none;
     }
-    .compliance-card:hover,
-    .compliance-card:focus-visible,
+    /* Default (inactive) card appearance */
+    .compliance-card {
+      transform: translateY(0) scale(0.96);
+      opacity: 0.72;
+      filter: brightness(0.84);
+      transition:
+        transform 800ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 500ms ease,
+        filter 500ms ease,
+        border-color 500ms ease,
+        box-shadow 500ms ease;
+    }
+
+    /* Only the centered slide receives the pop/bright state */
     .compliance-card.is-centered {
-      transform: translateY(-8px) scale(1.05);
-      border-color: rgba(236,236,236,0.4);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 20px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(236,236,236,0.12);
-      filter: brightness(1.03);
+      transform: translateY(-10px) scale(1.08);
+      opacity: 1;
+      border-color: rgba(255,255,255,0.42);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.45), 0 0 24px rgba(255,255,255,0.12);
+      filter: brightness(1.08);
+      z-index: 5;
+    }
+    .compliance-card.is-centered::before {
+      transform: translateX(140%);
+    }
+    .compliance-card:hover,
+    .compliance-card.is-hovered {
+      transform: translateY(-10px) scale(1.07);
+      opacity: 1;
+      filter: brightness(1.08);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.45), 0 0 24px rgba(255,255,255,0.14);
+      z-index: 10;
     }
     .compliance-card:hover::before,
-    .compliance-card:focus-visible::before,
-    .compliance-card.is-centered::before {
+    .compliance-card.is-hovered::before {
       transform: translateX(140%);
     }
     .compliance-logo {
@@ -595,7 +674,7 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      min-height: clamp(8rem, 12vw, 9.4rem);
+      min-height: 180px;
       padding: clamp(0.8rem, 1.2vw, 1.05rem);
       border-radius: 0.95rem;
       border: 1px solid rgba(255,255,255,0.12);
@@ -617,13 +696,13 @@
     .compliance-logo img {
       position: relative;
       z-index: 1;
-      width: 100%;
-      height: 100%;
       display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
       object-fit: contain;
       object-position: center;
-      max-width: 94%;
-      max-height: 94%;
       image-rendering: -webkit-optimize-contrast;
       image-rendering: high-quality;
       filter: drop-shadow(0 6px 18px rgba(0,0,0,0.2));
@@ -633,11 +712,17 @@
       color: var(--metal-4);
       font-weight: 600;
       letter-spacing: 0.04em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .compliance-subtitle {
       font-size: 0.76rem;
       line-height: 1.45;
       color: var(--text-soft);
+      max-height: 2.9em;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .compliance-arrow {
       position: absolute;
@@ -666,6 +751,9 @@
     }
     .compliance-arrow.prev { left: -0.1rem; }
     .compliance-arrow.next { right: -0.1rem; }
+    /* better arrow placement aligned to viewport padding */
+    .compliance-stage .compliance-arrow.prev { left: 8px; }
+    .compliance-stage .compliance-arrow.next { right: 8px; }
     .compliance-arrow svg { width: 1rem; height: 1rem; }
     .compliance-status {
       font-size: 0.72rem;
@@ -698,8 +786,9 @@
       .process-grid { gap: 1.2rem; }
       .service-card img { height: clamp(170px, 28vw, 210px); }
       .compliance-orbit { min-height: clamp(28rem, 70vw, 34rem); }
-      .compliance-card { width: min(9.2rem, 32vw); padding: 0.8rem 0.75rem; }
+      .compliance-card { width: 100%; padding: 0.8rem 0.75rem; height: 340px; }
       .compliance-logo { min-height: 2.4rem; }
+      .compliance-viewport { height: 380px; padding: 0.2rem 1.5rem 0.5rem; }
     }
     @media (max-width: 900px) {
       .nav-links { display: none; }
@@ -742,9 +831,9 @@
         min-height: 8.2rem;
       }
       .compliance-card::before { display: none; }
-      .compliance-card:hover,
       .compliance-card:focus-visible,
-      .compliance-card.is-active { transform: translateY(-2px) scale(1.01); }
+      .compliance-card.is-centered { transform: translateY(-2px) scale(1.01); }
+      .compliance-viewport { height: 340px; padding: 0.2rem 0.9rem 0.5rem; }
       .compliance-tooltip { display: none; }
       footer .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
       .wa-btn { width: 3.35rem; height: 3.35rem; }
@@ -929,10 +1018,16 @@
             <p>Additional product categories and export solutions are coordinated through the same premium trade framework.</p>
           </article>
           <article class="panel service-card reveal">
+            <img src="industrial-supplies.png" alt="Industrial supplies and equipment for global export" />
+            <span>Industrial Supplies</span>
+            <h3>Supply chain essentials</h3>
+            <p>Reliable industrial materials, equipment, components, and essential supplies sourced for international trade and large-scale business requirements.</p>
+          </article>
+          <article class="panel service-card reveal">
             <img src="shipping port.png" alt="Additional product categories and export solutions" />
             <span>Many More</span>
             <h3>Expanding global scope</h3>
-            <p>More product categories and export solutions are coming soon</p>
+            <p>More product categories and export solutions are coming soon.</p>
           </article>
           <!--<article class="panel service-card reveal">
             <img src="global cargo.png" alt="Global export and cargo operations" />
@@ -980,7 +1075,7 @@
             <div class="globe-shell">
               <div class="globe-scene" id="globe-scene"></div>
             </div>
-            <p class="map-note">Primary lanes connect India to the UAE and Sri Lanka, while secondary corridors reach the UK, Germany, the Netherlands, Singapore, and Canada through disciplined trade execution.</p>
+            <p class="map-note">Primary trade lanes connect Kerala, India with key destinations such as the United Arab Emirates and Sri Lanka, forming the foundation of our export network. From these established corridors, our global reach extends seamlessly to the United Kingdom, Germany, the Netherlands, Singapore, and Canada through carefully planned international logistics and disciplined trade execution. Every shipment is supported by rigorous quality assurance, regulatory compliance, accurate documentation, and dependable supply chain management. By combining trusted sourcing, strategic partnerships, and efficient freight coordination, Oryon Zenith ensures that every consignment reaches its destination securely, on schedule, and in full compliance with international standards. As we continue expanding into new markets, our commitment remains unchanged—delivering premium products from Kerala to the world with professionalism, transparency, and long-term reliability, building enduring partnerships founded on trust, consistency, and operational excellence.</p>
           </div>
         </div>
       </section>
@@ -1029,7 +1124,9 @@
               </svg>
             </button>
             <div class="compliance-viewport" id="compliance-viewport">
-              <div class="compliance-track" id="compliance-track" aria-live="polite"></div>
+              <div class="swiper compliance-swiper">
+                <div class="swiper-wrapper compliance-track" id="compliance-track" aria-live="polite"></div>
+              </div>
             </div>
             <button class="compliance-arrow next" type="button" aria-label="Show next license">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1072,7 +1169,33 @@
 
     <footer>
       <div class="footer-inner">
-        <div>© 2026 Oryon Zenith Private Limited. All rights reserved.</div>
+        <div class="footer-company">
+          <strong>Oryon Zenith Private Limited</strong>
+          <div>© 2026 Oryon Zenith Private Limited. All rights reserved.</div>
+        </div>
+        <div class="footer-contact">
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+                <path d="M12 2.5c-3.59 0-6.5 2.91-6.5 6.5 0 5.63 6.5 12.5 6.5 12.5s6.5-6.87 6.5-12.5c0-3.59-2.91-6.5-6.5-6.5Zm0 8.25a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5Z" />
+              </svg>
+            </span>
+            <address>
+              BIZHAUS, Lower Ground Floor,<br />
+              T C 2833/7, Pavithra Enclave,<br />
+              C Street, Jawahar Nagar, Kowdiar P.O.,<br />
+              Thiruvananthapuram – 695003, Kerala, India
+            </address>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+                <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 12 4 6.01V6h16Zm-16 12V8.45l7.06 4.7a1 1 0 0 0 1.08 0L20 8.45V18H4Z" />
+              </svg>
+            </span>
+            <a href="mailto:info@oryonzenith.com">info@oryonzenith.com</a>
+          </div>
+        </div>
         <div class="footer-social" aria-label="Social links">
           <a href="https://www.instagram.com/oryonzenith/" target="_blank" rel="noopener noreferrer" aria-label="Visit Oryon Zenith on Instagram">Instagram</a>
           <a href="https://www.linkedin.com/company/oryon-zenith-private-limited/" target="_blank" rel="noopener noreferrer" aria-label="Visit Oryon Zenith on LinkedIn">LinkedIn</a>
@@ -1233,7 +1356,7 @@
     const complianceItems = [
       // { title: 'CIN', subtitle: 'Certificate of Incorporation', label: 'Certificate of Incorporation logo', logo: 'warehouse.png' },
       { title: 'Udyam', subtitle: 'MSME Registration', label: 'MSME Registration logo', logo: 'msme.png' },
-      { title: 'IEC', subtitle: 'Import Export Code', label: 'Import Export Code logo', logo: 'shipping port.png' },
+      { title: 'IEC', subtitle: 'Import Export Code', label: 'Import Export Code logo', logo: 'IEC.png' },
       { title: 'AD Code', subtitle: 'AD Code', label: 'AD Code registration', logo: 'ministry finance.png' },
       { title: 'APEDA RCMC', subtitle: 'APEDA RCMC', label: 'APEDA RCMC logo', logo: 'apeda.png' },
       { title: 'Spices Board of India', subtitle: 'Spices Board of India', label: 'Spices Board of India logo', logo: 'spices board.png' },
@@ -1249,29 +1372,16 @@
       const nextButton = document.querySelector('.compliance-arrow.next');
       if (!track || !viewport || !prevButton || !nextButton) return;
 
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const cards = [];
-      let offset = 0;
-      let activeIndex = 0;
-      let hoverActive = false;
-      let dragActive = false;
-      let startX = 0;
-      let cardStep = 0;
-      let cardWidth = 0;
-      let cardGap = 16;
-      let autoplayTimer = null;
-      let resumeTimer = null;
-      let isTransitioning = false;
-      const totalItems = complianceItems.length;
-
-      function createCard(item, originalIndex) {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'compliance-card';
-        button.dataset.originalIndex = String(originalIndex);
-        button.setAttribute('role', 'listitem');
-        button.setAttribute('aria-label', `${item.title} — ${item.subtitle}`);
-        button.innerHTML = `
+      track.innerHTML = '';
+      const fragment = document.createDocumentFragment();
+      complianceItems.forEach((item, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'swiper-slide compliance-card';
+        btn.dataset.index = String(idx);
+        btn.setAttribute('role', 'listitem');
+        btn.setAttribute('aria-label', `${item.title} — ${item.subtitle}`);
+        btn.innerHTML = `
           <div class="compliance-logo" role="img" aria-label="${item.label}">
             <img src="${item.logo || 'LOGO.png'}" alt="${item.label}" loading="lazy" />
           </div>
@@ -1279,213 +1389,49 @@
           <span class="compliance-subtitle">${item.subtitle}</span>
           <span class="compliance-status">Registered</span>
         `;
-        button.addEventListener('click', () => goToCard(originalIndex, true));
-        return button;
-      }
+        fragment.appendChild(btn);
+      });
+      track.appendChild(fragment);
 
-      function buildTrack() {
-        track.innerHTML = '';
-        const fragment = document.createDocumentFragment();
-        const clonedItems = [...complianceItems.slice(-1), ...complianceItems, ...complianceItems.slice(0, 1)];
-        clonedItems.forEach((item, index) => {
-          const itemIndex = index === 0 ? totalItems - 1 : index === clonedItems.length - 1 ? 0 : (index - 1 + totalItems) % totalItems;
-          fragment.appendChild(createCard(item, itemIndex));
-        });
-        track.appendChild(fragment);
-        cards.length = 0;
-        cards.push(...track.querySelectorAll('.compliance-card'));
-        requestAnimationFrame(() => {
-          measureLayout();
-        });
-      }
+      const slidesCount = complianceItems.length;
+      if (typeof Swiper === 'undefined' || slidesCount === 0) return;
 
-      function measureLayout() {
-        const firstCard = cards[0];
-        if (!firstCard) return;
-        const rect = firstCard.getBoundingClientRect();
-        if (!rect.width) {
-          requestAnimationFrame(measureLayout);
-          return;
-        }
-        const computedGap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '16');
-        cardWidth = rect.width;
-        cardGap = Number.isFinite(computedGap) ? computedGap : 16;
-        cardStep = cardWidth + cardGap;
-        offset = -cardStep;
-        updateTrackTransform();
-        updateCardStates();
-        startAutoplay();
-      }
-
-      function updateTrackTransform() {
-        track.style.transition = 'transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1)';
-        track.style.transform = `translate3d(${offset}px, 0, 0)`;
-      }
-
-      function updateCardStates() {
-        const normalizedIndex = ((activeIndex % totalItems) + totalItems) % totalItems;
-        cards.forEach((card) => {
-          const index = Number(card.dataset.originalIndex || 0);
-          card.classList.toggle('is-centered', index === normalizedIndex);
-        });
-      }
-
-      function normalizeIndex(index) {
-        return ((index % totalItems) + totalItems) % totalItems;
-      }
-
-      function clearAutoplay() {
-        if (autoplayTimer) {
-          clearTimeout(autoplayTimer);
-          autoplayTimer = null;
-        }
-        if (resumeTimer) {
-          clearTimeout(resumeTimer);
-          resumeTimer = null;
-        }
-      }
-
-      function startAutoplay() {
-        if (reducedMotion || hoverActive || dragActive) return;
-        clearAutoplay();
-        autoplayTimer = setTimeout(() => {
-          moveBy(1, false);
-          startAutoplay();
-        }, 2800);
-      }
-
-      function pauseAutoplay(delay = 2400) {
-        clearAutoplay();
-        if (reducedMotion) return;
-        resumeTimer = setTimeout(() => {
-          resumeTimer = null;
-          startAutoplay();
-        }, delay);
-      }
-
-      function resumeAutoplay() {
-        if (reducedMotion || hoverActive || dragActive) return;
-        clearAutoplay();
-        startAutoplay();
-      }
-
-      function moveBy(direction, pauseForManual = false) {
-        if (isTransitioning) return;
-        const nextIndex = normalizeIndex(activeIndex + direction);
-        const nextOffset = -(nextIndex + 1) * cardStep;
-        isTransitioning = true;
-        offset = nextOffset;
-        activeIndex = nextIndex;
-        updateTrackTransform();
-        updateCardStates();
-        if (pauseForManual) {
-          pauseAutoplay(2400);
-        }
-      }
-
-      function handleTransitionEnd() {
-        if (!cardStep) return;
-        const position = Math.round(Math.abs(offset) / cardStep);
-        if (position === 0) {
-          track.style.transition = 'none';
-          offset = -totalItems * cardStep;
-          activeIndex = totalItems - 1;
-          updateTrackTransform();
-          updateCardStates();
-        } else if (position === totalItems + 1) {
-          track.style.transition = 'none';
-          offset = -cardStep;
-          activeIndex = 0;
-          updateTrackTransform();
-          updateCardStates();
-        }
-        isTransitioning = false;
-        if (!reducedMotion && !hoverActive && !dragActive) {
-          startAutoplay();
-        }
-      }
-
-      function goToCard(index, pauseAutoplayNow = false) {
-        const normalizedIndex = normalizeIndex(index);
-        activeIndex = normalizedIndex;
-        offset = -(normalizedIndex + 1) * cardStep;
-        updateTrackTransform();
-        updateCardStates();
-        if (pauseAutoplayNow) {
-          pauseAutoplay(2400);
-        }
-      }
+      const swiper = new Swiper('.compliance-swiper', {
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        spaceBetween: 16,
+        speed: 22000,
+        autoplay: {
+          delay: 0,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+          waitForTransition: false,
+        },
+        watchSlidesProgress: true,
+        touchRatio: 1,
+        grabCursor: true,
+        navigation: {
+          nextEl: '.compliance-arrow.next',
+          prevEl: '.compliance-arrow.prev',
+        },
+        a11y: true,
+        on: {
+          init() {
+            if (this.autoplay && typeof this.autoplay.start === 'function') {
+              this.autoplay.start();
+            }
+          },
+        },
+      });
 
       prevButton.addEventListener('click', () => {
-        goToCard(activeIndex - 1, true);
+        swiper.slidePrev();
       });
+
       nextButton.addEventListener('click', () => {
-        goToCard(activeIndex + 1, true);
+        swiper.slideNext();
       });
-
-      track.addEventListener('transitionend', handleTransitionEnd);
-
-      viewport.addEventListener('mouseenter', () => {
-        hoverActive = true;
-        clearAutoplay();
-      });
-      viewport.addEventListener('mouseleave', () => {
-        hoverActive = false;
-        if (!reducedMotion && !dragActive) {
-          startAutoplay();
-        }
-      });
-
-      viewport.addEventListener('focusin', () => {
-        hoverActive = true;
-        pauseAutoplay(2400);
-      });
-      viewport.addEventListener('focusout', () => {
-        hoverActive = false;
-        if (!reducedMotion && !dragActive) {
-          startAutoplay();
-        }
-      });
-
-      viewport.addEventListener('touchstart', (event) => {
-        if (event.touches.length) {
-          dragActive = true;
-          startX = event.touches[0].clientX;
-          clearAutoplay();
-        }
-      }, { passive: true });
-      viewport.addEventListener('touchend', (event) => {
-        if (!dragActive) return;
-        const delta = event.changedTouches[0].clientX - startX;
-        if (Math.abs(delta) > 44) {
-          if (delta < 0) {
-            goToCard(activeIndex + 1, true);
-          } else {
-            goToCard(activeIndex - 1, true);
-          }
-        }
-        dragActive = false;
-        if (!reducedMotion) {
-          startAutoplay();
-        }
-      }, { passive: true });
-
-      window.addEventListener('resize', () => {
-        if (!cardStep) return;
-        const currentRealIndex = activeIndex;
-        offset = -(currentRealIndex + 1) * cardStep;
-        updateTrackTransform();
-      });
-
-      window.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          clearAutoplay();
-        } else if (!reducedMotion && !hoverActive && !dragActive) {
-          startAutoplay();
-        }
-      });
-
-      buildTrack();
     }
 
     initComplianceCarousel();
@@ -1643,5 +1589,6 @@
       renderMapImage();
     }
   </script>
+  
 </body>
 </html>
