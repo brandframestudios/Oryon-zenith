@@ -368,14 +368,17 @@
     .timeline-item strong { display: block; margin-bottom: 0.3rem; color: var(--metal-4); }
     .timeline-item span { color: var(--text-soft); font-size: 0.95rem; line-height: 1.7; }
     .map-panel { padding: 1.35rem; }
-    .map-shell { position: relative; overflow: hidden; border-radius: 1.4rem; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2)); padding: 1.15rem; }
-    .map-shell svg { width: 100%; height: auto; display: block; }
-    .route-line { stroke: rgba(236,236,236,0.75); stroke-width: 1.1; fill: none; stroke-dasharray: 8 8; stroke-linecap: round; animation: dash 8s linear infinite; }
-    .route-line.secondary { stroke: rgba(236,236,236,0.45); }
-    .route-node { fill: #ececec; filter: drop-shadow(0 0 10px rgba(236,236,236,0.3)); }
-    .route-node.origin { fill: #f6f3ef; }
-    .route-label { fill: #d5d5d5; font-size: 13px; font-family: Inter, sans-serif; }
     .map-note { margin-top: 0.9rem; color: var(--text-soft); font-size: 0.9rem; line-height: 1.7; }
+    .globe-scene video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border-radius: inherit;
+    }
     .approach { padding: var(--section-pad-y-sm) 0; }
     .approach-grid { display: grid; grid-template-columns: 1fr; gap: clamp(3rem, 6vw, 4.5rem); align-items: start; }
     .founder-card, .contact-card { padding: 1.5rem; width: 100%; }
@@ -432,17 +435,6 @@
     .globe-shell::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(236,236,236,0.12), transparent 36%); pointer-events: none; }
     .globe-scene { position: relative; width: min(100%, 620px); aspect-ratio: 16 / 10.4; margin: 0 auto; isolation: isolate; overflow: hidden; border-radius: 1.2rem; border: 1px solid rgba(255,255,255,0.12); background: radial-gradient(circle at 24% 20%, rgba(236,236,236,0.08), transparent 24%), linear-gradient(135deg, rgba(6,8,12,0.95), rgba(18,20,24,0.92)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -20px 60px rgba(0,0,0,0.68); touch-action: manipulation; }
     .globe-scene::after { content: ''; position: absolute; inset: -8%; border-radius: inherit; pointer-events: none; background: radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 34%), linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.06) 100%); filter: blur(18px); opacity: 0.8; z-index: 0; }
-    .globe-scene .map-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; opacity: 0.96; filter: saturate(0.92) contrast(1.04) brightness(0.82); background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%); transform: scale(1.11); transform-origin: center; }
-    .globe-scene .map-route-overlay { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; opacity: 0; transition: opacity 0.35s ease; will-change: opacity, filter; }
-    .globe-scene.is-active .map-route-overlay { opacity: 1; }
-    .globe-scene .map-route-overlay .route-line { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.2; stroke: rgba(212, 175, 55, 0.12); opacity: 0; transition: opacity 0.35s ease, stroke 0.35s ease, filter 0.35s ease; }
-    .globe-scene .map-route-overlay .route-line.flow { stroke-dasharray: 12 10; animation: routeShimmer 4.8s linear infinite; }
-    .globe-scene .map-route-overlay .route-line.glow { stroke-width: 4.8; stroke: rgba(212, 175, 55, 0.2); }
-    .globe-scene.is-active .map-route-overlay .route-line { opacity: 1; }
-    .globe-scene.is-active .map-route-overlay .route-line.flow { stroke: rgba(230, 198, 106, 0.96); filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.24)) drop-shadow(0 0 12px rgba(248, 224, 142, 0.16)); }
-    .globe-scene.is-active .map-route-overlay .route-line.glow { stroke: rgba(248, 224, 142, 0.28); filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.22)); }
-    .globe-scene .map-route-overlay .route-node { fill: rgba(248, 224, 142, 0.12); opacity: 0; transition: opacity 0.35s ease, fill 0.35s ease, filter 0.35s ease; }
-    .globe-scene.is-active .map-route-overlay .route-node { opacity: 1; fill: rgba(248, 224, 142, 0.8); filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.26)); }
     footer { padding: 3rem 1.25rem 3.5rem; max-width: 1160px; margin: 0 auto; color: var(--text-soft); font-size: 0.92rem; }
     footer .footer-inner { display: grid; grid-template-columns: 1fr 1.5fr 0.8fr; gap: clamp(2rem, 3vw, 3rem); align-items: start; border-top: 1px solid var(--border); padding-top: 1.25rem; }
     footer .footer-company,
@@ -576,7 +568,7 @@
       box-sizing: border-box;
     }
     /* Swiper slides: enforce consistent width and center alignment */
-    .compliance-swiper { overflow: visible; }
+    .compliance-swiper { overflow: visible; touch-action: pan-y; }
     .compliance-swiper .swiper-wrapper { align-items: stretch; }
     .compliance-swiper { width: 100%; }
     .compliance-swiper .swiper-slide {
@@ -588,6 +580,17 @@
       justify-content: center;
       align-items: flex-start;
       height: auto;
+    }
+    .compliance-swiper .swiper-slide-active {
+      z-index: 6;
+    }
+    .compliance-swiper .swiper-slide-active .compliance-card {
+      transform: translateY(-10px) scale(1.08);
+      opacity: 1;
+      filter: brightness(1.08);
+      border-color: rgba(255,255,255,0.42);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.45), 0 0 24px rgba(255,255,255,0.12);
+      z-index: 5;
     }
     /* Strong overrides for small viewports so slides stay uniform */
     @media (max-width: 1024px) {
@@ -837,7 +840,6 @@
       .compliance-tooltip { display: none; }
       footer .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
       .wa-btn { width: 3.35rem; height: 3.35rem; }
-      .map-shell { padding: 0.75rem; }
       .globe-scene { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; min-height: 0; height: auto; }
     }
     @media (max-width: 600px) {
@@ -848,7 +850,6 @@
       .service-card img { height: clamp(150px, 40vw, 190px); }
       .panel, .service-card, .timeline-item, .stat-card, .founder-card, .contact-card, .faq-item, .license-card { border-radius: 1rem; }
       .founder-name-row { flex-direction: column; align-items: flex-start; }
-      .map-shell { padding: 0.55rem; }
       .globe-scene { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; min-height: 0; height: auto; }
       .map-hint { left: 0.6rem; bottom: 0.6rem; font-size: 0.65rem; padding: 0.4rem 0.55rem; }
     }
@@ -896,7 +897,7 @@
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#network">Network</a>
-    <a href="/founders-note">Founder’s Note</a>
+    <a href="founders-note.html">Founder’s Note</a>
     <a href="#contact">Contact</a>
   </div>
 
@@ -914,7 +915,7 @@
           <a class="nav-link active" href="#about">About</a>
           <a class="nav-link" href="#services">Services</a>
           <a class="nav-link" href="#network">Network</a>
-          <a class="nav-link" href="/founders-note">Founder’s Note</a>
+          <a class="nav-link" href="founders-note.html">Founder’s Note</a>
           <a class="nav-link" href="#contact">Contact</a>
         </div>
         <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav" id="menu-toggle">☰</button>
@@ -1073,7 +1074,12 @@
           </div>
           <div class="panel map-panel reveal">
             <div class="globe-shell">
-              <div class="globe-scene" id="globe-scene"></div>
+              <div class="globe-scene">
+                <video class="map-video" autoplay muted loop playsinline preload="metadata" aria-label="Animated export map video">
+                  <source src="./MAP.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </div>
             <p class="map-note">Primary trade lanes connect Kerala, India with key destinations such as the United Arab Emirates and Sri Lanka, forming the foundation of our export network. From these established corridors, our global reach extends seamlessly to the United Kingdom, Germany, the Netherlands, Singapore, and Canada through carefully planned international logistics and disciplined trade execution. Every shipment is supported by rigorous quality assurance, regulatory compliance, accurate documentation, and dependable supply chain management. By combining trusted sourcing, strategic partnerships, and efficient freight coordination, Oryon Zenith ensures that every consignment reaches its destination securely, on schedule, and in full compliance with international standards. As we continue expanding into new markets, our commitment remains unchanged—delivering premium products from Kerala to the world with professionalism, transparency, and long-term reliability, building enduring partnerships founded on trust, consistency, and operational excellence.</p>
           </div>
@@ -1396,34 +1402,84 @@
       const slidesCount = complianceItems.length;
       if (typeof Swiper === 'undefined' || slidesCount === 0) return;
 
-      const swiper = new Swiper('.compliance-swiper', {
-        loop: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        spaceBetween: 16,
-        speed: 22000,
-        autoplay: {
-          delay: 0,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-          waitForTransition: false,
-        },
-        watchSlidesProgress: true,
-        touchRatio: 1,
-        grabCursor: true,
-        navigation: {
-          nextEl: '.compliance-arrow.next',
-          prevEl: '.compliance-arrow.prev',
-        },
-        a11y: true,
-        on: {
-          init() {
-            if (this.autoplay && typeof this.autoplay.start === 'function') {
-              this.autoplay.start();
+      const cards = track.querySelectorAll('.compliance-card');
+      function updateCenteredState() {
+        cards.forEach((card) => {
+          card.classList.toggle('is-centered', card.classList.contains('swiper-slide-active'));
+        });
+      }
+      updateCenteredState();
+
+      let swiper;
+      try {
+        swiper = new Swiper('.compliance-swiper', {
+          loop: true,
+          centeredSlides: true,
+          centeredSlidesBounds: true,
+          slidesPerView: 'auto',
+          spaceBetween: 16,
+          speed: 24000,
+          freeMode: {
+            enabled: true,
+            sticky: false,
+            momentum: false,
+            minimumVelocity: 0.02,
+          },
+          autoplay: {
+            delay: 1,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: false,
+            waitForTransition: false,
+            reverseDirection: false,
+          },
+          watchSlidesProgress: true,
+          watchSlidesVisibility: true,
+          touchRatio: 1,
+          allowTouchMove: true,
+          grabCursor: true,
+          slideToClickedSlide: true,
+          updateOnWindowResize: true,
+          loopedSlides: slidesCount * 3,
+          loopAdditionalSlides: slidesCount,
+          loopedSlidesLimit: true,
+          loopPreventsSlide: false,
+          observer: true,
+          observeParents: true,
+          navigation: {
+            nextEl: '.compliance-arrow.next',
+            prevEl: '.compliance-arrow.prev',
+          },
+          a11y: true,
+          on: {
+            init() {
+              if (this.autoplay && typeof this.autoplay.start === 'function') {
+                this.autoplay.start();
+              }
+            },
+            slideChange: function () {
+              updateCenteredState();
+            },
+            transitionEnd: function () {
+              updateCenteredState();
             }
           },
-        },
-      });
+        });
+      } catch (initError) {
+        console.error('Compliance carousel failed to initialize:', initError);
+      }
+
+      if (viewport) {
+        viewport.addEventListener('pointerenter', () => {
+          if (swiper.autoplay && typeof swiper.autoplay.stop === 'function') {
+            swiper.autoplay.stop();
+          }
+        });
+        viewport.addEventListener('pointerleave', () => {
+          if (swiper.autoplay && typeof swiper.autoplay.start === 'function') {
+            swiper.autoplay.start();
+          }
+        });
+      }
 
       prevButton.addEventListener('click', () => {
         swiper.slidePrev();
@@ -1448,9 +1504,31 @@
       document.documentElement.style.overflow = isOpen ? 'hidden' : '';
     }
 
-    window.addEventListener('load', () => {
-      setTimeout(() => loader.classList.add('hidden'), 900);
+    function hideLoader() {
+      if (!loader) return;
+      loader.classList.add('hidden');
+      if (document.body) {
+        document.body.classList.remove('menu-open');
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      setTimeout(hideLoader, 50);
+    } else {
+      window.addEventListener('load', () => {
+        setTimeout(hideLoader, 900);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(hideLoader, 1200);
     });
+
+    setTimeout(() => {
+      if (loader && !loader.classList.contains('hidden')) {
+        hideLoader();
+      }
+    }, 2500);
 
     const lenis = new Lenis({
       duration: 1.05,
@@ -1539,55 +1617,6 @@
       });
     });
 
-    const globeContainer = document.getElementById('globe-scene');
-
-    function renderMapImage() {
-      if (!globeContainer) return;
-
-      globeContainer.innerHTML = `
-        <img class="map-image" src="./map.png" alt="World map illustration for Oryon Zenith export process" />
-        <svg class="map-route-overlay" viewBox="0 0 1200 780" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <path class="route-line glow" d="M 640 440 C 700 420, 735 405, 760 390" />
-          <path class="route-line flow" d="M 640 440 C 700 420, 735 405, 760 390" />
-          <circle class="route-node" cx="760" cy="390" r="3.6" />
-          <path class="route-line glow" d="M 640 440 C 690 470, 705 490, 725 500" />
-          <path class="route-line flow" d="M 640 440 C 690 470, 705 490, 725 500" />
-          <circle class="route-node" cx="725" cy="500" r="3.6" />
-          <path class="route-line glow" d="M 640 440 C 500 300, 430 220, 350 175" />
-          <path class="route-line flow" d="M 640 440 C 500 300, 430 220, 350 175" />
-          <circle class="route-node" cx="350" cy="175" r="3.6" />
-          <path class="route-line glow" d="M 640 440 C 540 310, 485 250, 430 220" />
-          <path class="route-line flow" d="M 640 440 C 540 310, 485 250, 430 220" />
-          <circle class="route-node" cx="430" cy="220" r="3.6" />
-          <path class="route-line glow" d="M 640 440 C 770 470, 820 515, 850 540" />
-          <path class="route-line flow" d="M 640 440 C 770 470, 820 515, 850 540" />
-          <circle class="route-node" cx="850" cy="540" r="3.6" />
-          <path class="route-line glow" d="M 640 440 C 360 240, 240 180, 150 125" />
-          <path class="route-line flow" d="M 640 440 C 360 240, 240 180, 150 125" />
-          <circle class="route-node" cx="150" cy="125" r="3.6" />
-        </svg>
-      `;
-
-      const prefersHover = window.matchMedia('(hover: hover)').matches;
-      if (prefersHover) {
-        globeContainer.addEventListener('mouseenter', () => globeContainer.classList.add('is-active'));
-        globeContainer.addEventListener('mouseleave', () => globeContainer.classList.remove('is-active'));
-      } else {
-        globeContainer.addEventListener('click', (event) => {
-          event.stopPropagation();
-          globeContainer.classList.toggle('is-active');
-        });
-        document.addEventListener('click', (event) => {
-          if (!globeContainer.contains(event.target)) {
-            globeContainer.classList.remove('is-active');
-          }
-        });
-      }
-    }
-
-    if (globeContainer) {
-      renderMapImage();
-    }
   </script>
   
 </body>
