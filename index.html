@@ -613,14 +613,16 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 14px 34px rgba(0,0,0,0.22);
       color: var(--text);
       text-align: left;
-      cursor: pointer;
+      cursor: default;
       display: flex;
       flex-direction: column;
-      gap: 0.7rem;
+      gap: 0.6rem;
+      justify-content: flex-start;
+      box-sizing: border-box;
+      overflow: hidden;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      transition: transform 0.55s cubic-bezier(.22,.61,.36,1), border-color 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
-      transform-origin: center center;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
       overflow: hidden;
       box-sizing: border-box;
     }
@@ -677,8 +679,11 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      min-height: 180px;
-      padding: clamp(0.8rem, 1.2vw, 1.05rem);
+      /* Constrain logo area to a fraction of the card to avoid pushing text out */
+      height: 45%;
+      min-height: 96px;
+      max-height: 55%;
+      padding: 0.6rem;
       border-radius: 0.95rem;
       border: 1px solid rgba(255,255,255,0.12);
       background:
@@ -687,6 +692,8 @@
       overflow: hidden;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -8px 24px rgba(0,0,0,0.18);
       isolation: isolate;
+      flex: 0 0 auto;
+      box-sizing: border-box;
     }
     .compliance-logo::before {
       content: '';
@@ -701,7 +708,7 @@
       z-index: 1;
       display: block;
       width: auto;
-      height: auto;
+      height: 100%;
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
@@ -715,6 +722,7 @@
       color: var(--metal-4);
       font-weight: 600;
       letter-spacing: 0.04em;
+      margin-top: 0.45rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -723,7 +731,8 @@
       font-size: 0.76rem;
       line-height: 1.45;
       color: var(--text-soft);
-      max-height: 2.9em;
+      margin-top: 0.2rem;
+      max-height: 3.2em;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -763,6 +772,8 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--metal-3);
+      margin-top: 0.55rem;
+      flex: 0 0 auto;
     }
     @keyframes drift { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(2%, -1.5%, 0); } }
     @keyframes sweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
@@ -879,6 +890,13 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
     }
+    /* Manual compliance carousel overrides — disable all decorative/auto behavior */
+    .compliance-viewport { overflow: hidden !important; }
+    .compliance-track { transition: transform 350ms ease !important; will-change: transform !important; }
+    .compliance-card { transform: none !important; opacity: 1 !important; filter: none !important; box-shadow: inset 0 1px 0 rgba(255,255,255,0.12) !important; transition: none !important; cursor: default; }
+    .compliance-card::before { display: none !important; }
+    .compliance-card:hover, .compliance-card.is-hovered, .compliance-card.is-centered { transform: none !important; opacity: 1 !important; filter: none !important; box-shadow: inset 0 1px 0 rgba(255,255,255,0.12) !important; }
+    .compliance-arrow:disabled { opacity: 0.36; pointer-events: none; border-color: rgba(255,255,255,0.06); }
   </style>
 </head>
 <body>
@@ -1378,16 +1396,16 @@
       const nextButton = document.querySelector('.compliance-arrow.next');
       if (!track || !viewport || !prevButton || !nextButton) return;
 
+      // Build slides (static, non-animated cards)
       track.innerHTML = '';
       const fragment = document.createDocumentFragment();
       complianceItems.forEach((item, idx) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'swiper-slide compliance-card';
-        btn.dataset.index = String(idx);
-        btn.setAttribute('role', 'listitem');
-        btn.setAttribute('aria-label', `${item.title} — ${item.subtitle}`);
-        btn.innerHTML = `
+        const card = document.createElement('div');
+        card.className = 'compliance-card';
+        card.dataset.index = String(idx);
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('aria-label', `${item.title} — ${item.subtitle}`);
+        card.innerHTML = `
           <div class="compliance-logo" role="img" aria-label="${item.label}">
             <img src="${item.logo || 'LOGO.png'}" alt="${item.label}" loading="lazy" />
           </div>
@@ -1395,99 +1413,67 @@
           <span class="compliance-subtitle">${item.subtitle}</span>
           <span class="compliance-status">Registered</span>
         `;
-        fragment.appendChild(btn);
+        fragment.appendChild(card);
       });
       track.appendChild(fragment);
 
-      const slidesCount = complianceItems.length;
-      if (typeof Swiper === 'undefined' || slidesCount === 0) return;
-
-      const cards = track.querySelectorAll('.compliance-card');
-      function updateCenteredState() {
-        cards.forEach((card) => {
-          card.classList.toggle('is-centered', card.classList.contains('swiper-slide-active'));
-        });
-      }
-      updateCenteredState();
-
-      let swiper;
-      try {
-        swiper = new Swiper('.compliance-swiper', {
-          loop: true,
-          centeredSlides: true,
-          centeredSlidesBounds: true,
-          slidesPerView: 'auto',
-          spaceBetween: 16,
-          speed: 24000,
-          freeMode: {
-            enabled: true,
-            sticky: false,
-            momentum: false,
-            minimumVelocity: 0.02,
-          },
-          autoplay: {
-            delay: 1,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: false,
-            waitForTransition: false,
-            reverseDirection: false,
-          },
-          watchSlidesProgress: true,
-          watchSlidesVisibility: true,
-          touchRatio: 1,
-          allowTouchMove: true,
-          grabCursor: true,
-          slideToClickedSlide: true,
-          updateOnWindowResize: true,
-          loopedSlides: slidesCount * 3,
-          loopAdditionalSlides: slidesCount,
-          loopedSlidesLimit: true,
-          loopPreventsSlide: false,
-          observer: true,
-          observeParents: true,
-          navigation: {
-            nextEl: '.compliance-arrow.next',
-            prevEl: '.compliance-arrow.prev',
-          },
-          a11y: true,
-          on: {
-            init() {
-              if (this.autoplay && typeof this.autoplay.start === 'function') {
-                this.autoplay.start();
-              }
-            },
-            slideChange: function () {
-              updateCenteredState();
-            },
-            transitionEnd: function () {
-              updateCenteredState();
-            }
-          },
-        });
-      } catch (initError) {
-        console.error('Compliance carousel failed to initialize:', initError);
+      const cards = Array.from(track.querySelectorAll('.compliance-card'));
+      const slidesCount = cards.length;
+      if (slidesCount === 0) {
+        prevButton.disabled = true;
+        nextButton.disabled = true;
+        return;
       }
 
-      if (viewport) {
-        viewport.addEventListener('pointerenter', () => {
-          if (swiper.autoplay && typeof swiper.autoplay.stop === 'function') {
-            swiper.autoplay.stop();
-          }
-        });
-        viewport.addEventListener('pointerleave', () => {
-          if (swiper.autoplay && typeof swiper.autoplay.start === 'function') {
-            swiper.autoplay.start();
-          }
-        });
+      // Force viewport to clip overflow and prepare track for transform-based sliding
+      viewport.style.overflow = 'hidden';
+      track.style.transition = 'transform 350ms ease';
+      track.style.willChange = 'transform';
+
+      function measure() {
+        const style = getComputedStyle(track);
+        const gap = parseFloat(style.gap) || 16;
+        const slideRect = cards[0].getBoundingClientRect();
+        const slideW = Math.round(slideRect.width);
+        const step = slideW + gap;
+        const viewportWidth = Math.max(1, viewport.getBoundingClientRect().width);
+        const visibleCount = Math.max(1, Math.floor(viewportWidth / step));
+        const maxIndex = Math.max(0, slidesCount - visibleCount);
+        return { step, visibleCount, maxIndex };
+      }
+
+      let { step, visibleCount, maxIndex } = measure();
+      let currentIndex = 0;
+
+      function update() {
+        track.style.transform = `translateX(${ -currentIndex * step }px)`;
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex === maxIndex;
       }
 
       prevButton.addEventListener('click', () => {
-        swiper.slidePrev();
+        if (currentIndex > 0) {
+          currentIndex -= 1;
+          update();
+        }
       });
 
       nextButton.addEventListener('click', () => {
-        swiper.slideNext();
+        if (currentIndex < maxIndex) {
+          currentIndex += 1;
+          update();
+        }
       });
+
+      window.addEventListener('resize', () => {
+        const m = measure();
+        step = m.step; visibleCount = m.visibleCount; maxIndex = m.maxIndex;
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
+        update();
+      });
+
+      // initialize
+      update();
     }
 
     initComplianceCarousel();
@@ -1516,7 +1502,7 @@
       setTimeout(hideLoader, 50);
     } else {
       window.addEventListener('load', () => {
-        setTimeout(hideLoader, 900);
+        setTimeout(hideLoader, 900);  
       });
     }
 
